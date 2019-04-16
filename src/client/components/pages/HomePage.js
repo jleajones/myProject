@@ -1,5 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { frontloadConnect } from 'react-frontload';
+
+const frontload = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('ok');
+    }, 2000);
+  });
+};
 
 const HomePage = () => {
   return (
@@ -13,4 +22,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default frontloadConnect(frontload)(HomePage);

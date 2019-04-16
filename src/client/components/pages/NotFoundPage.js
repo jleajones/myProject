@@ -6,13 +6,13 @@ const NotFoundPage = ({ staticContext }) => {
     staticContext.statusCode = 404;
   }
   return (
-      <div>
-        <Helmet>
-          <title>Not Found</title>
-          <meta name="description" content="This is the About..." />
-        </Helmet>
-        <div>404 Page</div>
-      </div>
+    <div>
+      <Helmet>
+        <title>Not Found</title>
+        <meta name="description" content="This is the About..." />
+      </Helmet>
+      <div>404 Page</div>
+    </div>
   );
 };
 

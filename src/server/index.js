@@ -1,8 +1,8 @@
 import express from 'express';
 import React from 'react';
 
-import renderer from './handlers/renderer';
 import API from './routes/api';
+import renderer from './handlers/renderer';
 
 
 const app = express();

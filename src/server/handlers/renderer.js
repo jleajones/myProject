@@ -13,7 +13,7 @@ import App from '../../client/components/App';
 const statsFile = path.resolve('./build/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
 
-const renderer = (req, res) => {
+const renderer = async (req, res) => {
   let staticContext = {};
   const getStaticMarkup = () => {
     // extractor.collectChunks captures all loadable components
@@ -28,13 +28,14 @@ const renderer = (req, res) => {
     return ReactDOMServer.renderToStaticMarkup(html);
   };
 
-  frontloadServerRender(getStaticMarkup).then(staticMarkup => {
-    if (staticContext.statusCode === 302) {
-      // Somewhere a `<Redirect>` was rendered
-      res.redirect(302, context.url);
-    }
+  const staticMarkup = await frontloadServerRender(getStaticMarkup);
 
+  if (staticContext.statusCode === 302) {
+    // Somewhere a `<Redirect>` was rendered
+    res.redirect(302, staticContext.url);
+  } else {
     // we're good, send the response
+    // NOTE: could be 404
     const scriptTags = extractor.getScriptTags();
     const styleTags = extractor.getStyleTags();
     let meta = Helmet.renderStatic();
@@ -46,7 +47,7 @@ const renderer = (req, res) => {
         styles: styleTags
       })
     );
-  });
+  }
 };
 
 export default renderer;

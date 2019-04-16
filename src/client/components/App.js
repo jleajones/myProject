@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import Header from './shared/Header';
+import Redirect from './shared/Redirect';
 import { HomePage, AboutPage, NotFoundPage } from './pages';
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/about" exact component={AboutPage} />
+      <Redirect from="/new-about" to="/" />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   </div>
