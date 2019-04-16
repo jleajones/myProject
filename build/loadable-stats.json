@@ -1,0 +1,177 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.29.6",
+  "hash": "48eb5ddf5420c77c6386",
+  "publicPath": "",
+  "outputPath": "/Users/jasonlea-jones/Projects/myproj/build",
+  "assetsByChunkName": {
+    "AboutPage": [
+      "AboutPage.js",
+      "AboutPage.js.map"
+    ],
+    "HomePage": [
+      "HomePage.js",
+      "HomePage.js.map"
+    ],
+    "NotFoundPage": [
+      "NotFoundPage.js",
+      "NotFoundPage.js.map"
+    ],
+    "main": [
+      "main.js",
+      "main.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "AboutPage.js",
+      "size": 2326,
+      "chunks": [
+        "AboutPage"
+      ],
+      "chunkNames": [
+        "AboutPage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "AboutPage.js.map",
+      "size": 729,
+      "chunks": [
+        "AboutPage"
+      ],
+      "chunkNames": [
+        "AboutPage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "HomePage.js",
+      "size": 2316,
+      "chunks": [
+        "HomePage"
+      ],
+      "chunkNames": [
+        "HomePage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "HomePage.js.map",
+      "size": 725,
+      "chunks": [
+        "HomePage"
+      ],
+      "chunkNames": [
+        "HomePage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "NotFoundPage.js",
+      "size": 2453,
+      "chunks": [
+        "NotFoundPage"
+      ],
+      "chunkNames": [
+        "NotFoundPage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "NotFoundPage.js.map",
+      "size": 851,
+      "chunks": [
+        "NotFoundPage"
+      ],
+      "chunkNames": [
+        "NotFoundPage"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "main.js",
+      "size": 1141118,
+      "chunks": [
+        "main"
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "main.js.map",
+      "size": 1283180,
+      "chunks": [
+        "main"
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "main.js",
+        "main.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "main.js",
+        "main.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "HomePage": {
+      "chunks": [
+        "HomePage"
+      ],
+      "assets": [
+        "HomePage.js",
+        "HomePage.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "AboutPage": {
+      "chunks": [
+        "AboutPage"
+      ],
+      "assets": [
+        "AboutPage.js",
+        "AboutPage.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "NotFoundPage": {
+      "chunks": [
+        "NotFoundPage"
+      ],
+      "assets": [
+        "NotFoundPage.js",
+        "NotFoundPage.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "children": []
+}

@@ -1,0 +1,50 @@
+{
+  "name": "myproj",
+  "version": "1.0.0",
+  "description": "some project description",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "build": "NODE_ENV=development webpack -w",
+    "start": "NODE_ENV=development nodemon -r esm ./bin/server.js"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "react"
+  ],
+  "author": "j.lea-jones",
+  "license": "ISC",
+  "dependencies": {
+    "@loadable/component": "^5.7.0",
+    "@loadable/server": "^5.8.0",
+    "D": "^1.0.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "d": "^1.0.0",
+    "esm": "^3.2.20",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "path": "^0.12.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-frontload": "^1.0.7",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@loadable/babel-plugin": "^5.8.0",
+    "@loadable/webpack-plugin": "^5.7.1",
+    "babel-loader": "^8.0.5",
+    "babel-preset-react-app": "^7.0.2",
+    "clean-webpack-plugin": "^2.0.1",
+    "nodemon": "^1.18.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
