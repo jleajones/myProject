@@ -1,17 +1,10 @@
 import axios from 'axios';
 import { LEVER_URL } from '../../lib/constants';
 import filterHandler from '../../filters/global';
-import searchHandler from '../../filters/search';
-import { titleReducer } from '../reducers';
-import { lever2Dispay, lever2Group } from '../../lib/groupMappings';
 import { generateSlug } from '../../lib/utils';
-
-const API_V1_PATH = '/api/v1';
-
-export const apiCheck = (req, res) => {
-  req.url = API_V1_PATH;
-  req.app.handle(req, res);
-};
+import { lever2Dispay, lever2Group } from '../../lib/groupMappings';
+import { titleReducer } from '../reducers';
+import searchHandler from '../../filters/search';
 
 export async function allJobsHandler(req, res) {
   let finalJobs;
