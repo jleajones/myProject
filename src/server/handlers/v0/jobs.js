@@ -4,7 +4,7 @@ import filterHandler from '../../filters/global';
 import { generateSlug } from '../../lib/utils';
 import { lever2Dispay, lever2Group } from '../../lib/groupMappings';
 import { titleReducer } from '../reducers';
-import searchHandler from '../../filters/search';
+import searchHandler from '@filters/search';
 
 export async function allJobsHandler(req, res) {
   let finalJobs;

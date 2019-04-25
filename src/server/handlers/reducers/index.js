@@ -1,5 +1,5 @@
-import { lever2Dispay } from '../../lib/groupMappings';
-import { generateSlug } from '../../lib/utils';
+import { lever2Dispay } from '@serverLib/groupMappings';
+import { generateSlug } from '@serverLib/utils';
 
 export const titleReducer = (
   acc,

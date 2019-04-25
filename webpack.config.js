@@ -1,17 +1,36 @@
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const path = require('path');
 
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const autoprefixer = require("autoprefixer");
+
+const isDev = process.env.NODE_ENV === 'development';
+const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
+const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
+
+// const wpPlugins = [
+// ];
+
+const directoryAliases = {
+  '@client': path.resolve(__dirname, './src/client'),
+  '@clientLib': path.resolve(__dirname, './src/client/lib'),
+  '@components': path.resolve(__dirname, './src/client/components/shared'),
+  '@server': path.resolve(__dirname, './src/server'),
+  '@serverLib': path.resolve(__dirname, './src/server/lib'),
+  '@filters': path.resolve(__dirname, './src/server/filters'),
+  '@handlers': path.resolve(__dirname, './src/server/handlers'),
+  '@constants': path.resolve(__dirname, './src/constants')
+};
 
 const browserConfig = {
   mode: 'development',
   entry: './src/client/index.js',
   output: {
     path: path.join(__dirname, './build'),
-    filename: '[name].js'
+    filename: jsFileName
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -24,35 +43,36 @@ const browserConfig = {
       //     publicPath: url => url.replace(/public/, "")
       //   }
       // },
-      // {
-      //   test: /\.css$/,
-      //   use: ExtractTextPlugin.extract({
-      //     use: [
-      //       {
-      //         loader: "css-loader",
-      //         options: { importLoaders: 1 }
-      //       },
-      //       {
-      //         loader: "postcss-loader",
-      //         options: { plugins: [autoprefixer()] }
-      //       }
-      //     ]
-      //   })
-      // },
       {
         test: /js$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: { presets: ['react-app'] }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+        ],
       }
     ]
   },
   plugins: [
-    // new ExtractTextPlugin({
-    //   filename: "public/css/[name].css"
-    // })
-    new LoadablePlugin()
-  ]
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new LoadablePlugin(),
+    new MiniCssExtractPlugin({
+      filename: cssFileName,
+      chunkFilename: 'css/[chunkhash].css',
+    })],
+  resolve: {
+    alias: {
+      ...directoryAliases
+    }
+  }
 };
 
 const serverConfig = {
@@ -76,21 +96,35 @@ const serverConfig = {
       //     emit: false
       //   }
       // },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     {
-      //       loader: "css-loader/locals"
-      //     }
-      //   ]
-      // },
       {
         test: /js$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: { presets: ['react-app'] }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+        ],
       }
     ]
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new LoadablePlugin(),
+    new MiniCssExtractPlugin({
+      filename: cssFileName,
+      chunkFilename: 'css/[chunkhash].css',
+    })],
+  resolve: {
+    alias: {
+      ...directoryAliases
+    }
   }
 };
 

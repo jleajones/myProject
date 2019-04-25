@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-image: radial-gradient(yellow, #f06d06);
+}
+
+.appRoot {
+  margin: 0;
+}
+
+.error {
+  border: solid 3px red;
+}
+
+.success {
+  border: solid 3px green;
+}

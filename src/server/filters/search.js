@@ -1,4 +1,4 @@
-import { QUERY } from '../lib/constants';
+import { QUERY } from '@serverLib/constants';
 
 export default (query, data) => {
   let filteredData = [...data];

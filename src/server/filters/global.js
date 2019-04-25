@@ -1,6 +1,6 @@
-import { GROUP, TEAM } from '../lib/constants';
-import { lever2Group } from '../lib/groupMappings';
-import { generateSlug } from '../lib/utils';
+import { GROUP, TEAM } from '@serverLib/constants';
+import { lever2Group } from '@serverLib/groupMappings';
+import { generateSlug } from '@serverLib/utils';
 
 export default (query, data) => {
   let fv;

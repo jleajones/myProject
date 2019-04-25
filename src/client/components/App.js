@@ -1,31 +1,26 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Route, Switch } from 'react-router-dom';
 
-// import axios from 'axios';
-import { Link, Route, Switch } from 'react-router-dom';
+import styles from './App.css';
 
-import Header from './shared/Header';
-import Redirect from './shared/Redirect';
-import { HomePage, AboutPage, NotFoundPage } from './pages';
+import PATHS from '@constants/paths'
+import Header from '@components/Header';
+import Redirect from '@components/Redirect';
+import { HomePage, AboutPage, DriveWithUs, NotFoundPage } from './pages';
 
 const App = () => (
-  <div>
+  <div className={styles.appRoot}>
     <Helmet>
-      <title>My Title</title>
+      <title>LJ&ampG Freight, LLC</title>
       <meta name="description" content="Helmet application" />
     </Helmet>
     <Header />
-    <ul>
-      <li>
-        <Link to="/">home</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-    </ul>
     <Switch>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/about" exact component={AboutPage} />
+      <Route path={PATHS.home.path} exact component={HomePage} />
+      <Route path={PATHS.about.path} exact component={AboutPage} />
+      <Route path={PATHS.driveWithUs.path} exact component={DriveWithUs} />
+      <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
       <Redirect from="/new-about" to="/" />
       <Route path="*" component={NotFoundPage} />
     </Switch>
