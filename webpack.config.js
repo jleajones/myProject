@@ -55,7 +55,13 @@ const browserConfig = {
           {
             loader: MiniCssExtractPlugin.loader
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]-[local]__[hash:base64:5]'
+            }
+          },
         ],
       }
     ]
@@ -108,7 +114,13 @@ const serverConfig = {
           {
             loader: MiniCssExtractPlugin.loader
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]-[local]__[hash:base64:5]'
+            }
+          },
         ],
       }
     ]

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { pageView } from '@client/lib/tracking';
 
-const Page = ({ name, children }) => {
+const Page = ({ name, children, style }) => {
   pageView(name, {});
-  return <div>{children}</div>;
+  return <main style={style}>{children}</main>;
 };
 
 Page.propTypes = {

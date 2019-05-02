@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Link as OriginalLink } from 'react-router-dom';
+import { default as MUILink } from '@material-ui/core/Link';
 
 import { trackEvent } from '@client/lib/tracking';
 
 const EVENT_NAME = `LinkClick`;
 
-const Link = ({ children, label, category, onClick, to, history }) => {
+const Link = ({ children, label, category, onClick, to, history, ...rest }) => {
   const onClickFn = e => {
     e.preventDefault();
     trackEvent(EVENT_NAME, {
@@ -20,7 +21,7 @@ const Link = ({ children, label, category, onClick, to, history }) => {
 
   return (
     <OriginalLink onClick={onClickFn} to={to}>
-      {children}
+      <MUILink {...rest}>{children}</MUILink>
     </OriginalLink>
   );
 };
