@@ -7,7 +7,7 @@ import { trackEvent } from '@client/lib/tracking';
 
 const EVENT_NAME = `LinkClick`;
 
-const Link = ({ children, label, category, onClick, to, history, ...rest }) => {
+const Link = ({ children, label, category, onClick, to, history, color, ...rest }) => {
   const onClickFn = e => {
     e.preventDefault();
     trackEvent(EVENT_NAME, {
@@ -21,7 +21,9 @@ const Link = ({ children, label, category, onClick, to, history, ...rest }) => {
 
   return (
     <OriginalLink onClick={onClickFn} to={to}>
-      <MUILink {...rest}>{children}</MUILink>
+      <MUILink color={color} component="span">
+        {children}
+      </MUILink>
     </OriginalLink>
   );
 };

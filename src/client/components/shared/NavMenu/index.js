@@ -6,9 +6,11 @@ import PATHS from '@constants/paths';
 
 import { items } from './constants';
 import lang from './language';
+import styles from './stylesheet.css';
+
 
 const NavMenu = () => (
-  <nav>
+  <nav className={styles.navContainer}>
     <ul>
       {items.map(item => (
         <li key={item}>

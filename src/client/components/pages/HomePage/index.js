@@ -1,9 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import ReactFullpage from '@fullpage/react-fullpage';
 
 import Page from '../../shared/Page';
 import Container from '@components/Container';
+import Typography from '@material-ui/core/Typography';
+import Header from "@components/Header";
+import Fade from "@material-ui/core/Fade";
+import Footer from "@components/Footer";
 // import { frontloadConnect } from 'react-frontload';
 
 // const frontload = () => {
@@ -16,39 +19,25 @@ import Container from '@components/Container';
 
 const HomePage = () => {
   return (
-    <Page name="HomePage">
+    <Page
+      name="HomePage"
+      style={{
+        backgroundImage:
+          'url("https://source.unsplash.com/collection/4625959/1600x900")',
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+        minHeight: '100vh'
+      }}
+    >
       <Helmet>
         <title>HomePage</title>
         <meta name="description" content="This is the homepage..." />
       </Helmet>
-      <div>
-        <ReactFullpage
-          scrollOverflow={true}
-          onLeave={() => {
-            console.log('in here..');
-          }}
-          afterLoad={() => {
-            console.log('in here..');
-          }}
-          render={({ state, fullpageApi }) => {
-            return (
-                <div id="fullpage-wrapper">
-                  <div className="section">
-                    <div className="slide">
-                      <img style={ { maxWidth: '100%'}} src={'https://source.unsplash.com/collection/4625959/1600x900'} />
-                    </div>
-                    <div className="slide">
-                      <img style={ { maxWidth: '100%'}} src={'https://source.unsplash.com/collection/2378546/1600x900'} />
-                    </div>
-                    <div className="slide">
-                      <img style={ { maxWidth: '100%'}} src={'https://source.unsplash.com/collection/2479019/1600x900'} />
-                    </div>
-                  </div>
-                </div>
-            );
-          }}
-      />
-      </div>
+      <Header />
+      <Container>
+        <Typography>This is the home page</Typography>
+      </Container>
+      <Footer />
     </Page>
   );
 };

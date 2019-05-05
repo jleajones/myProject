@@ -11,6 +11,8 @@ import DriveWithUsForm from '@components/DriveWithUsForm';
 import { Divider, Typography } from '@material-ui/core';
 
 import styles from './stylesheet.css';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 
 const DriveWithUsPage = props => {
   return (
@@ -27,6 +29,7 @@ const DriveWithUsPage = props => {
         <title>Drive with Us | LJ&amp;G Freight, LLC</title>
         <meta name="description" content="Drive with LG&J Freight" />
       </Helmet>
+      <Header />
       <Fade in={true}>
         <Container>
           <Grid container justify="center">
@@ -49,6 +52,7 @@ const DriveWithUsPage = props => {
           </Grid>
         </Container>
       </Fade>
+      <Footer />
     </Page>
   );
 };
