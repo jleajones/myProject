@@ -1,4 +1,4 @@
-export default ({ body, meta, scripts, styles, css }) => {
+export default ({ body, meta, scripts, styles, css, styledComponents }) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -6,7 +6,8 @@ export default ({ body, meta, scripts, styles, css }) => {
         ${meta.title.toString()}
         ${styles}
         <style id="jss-server-side">${css}</style>
-      </head>
+        ${styledComponents}
+  </head>
       <body>
         <div id="root">${body}</div>
         ${scripts}

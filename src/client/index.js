@@ -3,15 +3,14 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Frontload } from 'react-frontload';
 import JssProvider from 'react-jss/lib/JssProvider';
+import MyThemeProvider from '@components/theme';
 
 import { loadableReady } from '@loadable/component';
 import {
-  MuiThemeProvider,
   createGenerateClassName
 } from '@material-ui/core/styles';
 
 import App from './components/App';
-import { theme } from '@components/theme';
 
 const generateClassName = createGenerateClassName();
 loadableReady(() => {
@@ -19,9 +18,9 @@ loadableReady(() => {
     <BrowserRouter>
       <Frontload noServerRender>
         <JssProvider generateClassName={generateClassName}>
-          <MuiThemeProvider theme={theme}>
+          <MyThemeProvider>
             <App />
-          </MuiThemeProvider>
+          </MyThemeProvider>
         </JssProvider>
       </Frontload>
     </BrowserRouter>,

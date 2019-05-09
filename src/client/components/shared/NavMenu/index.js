@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { camelCase } from '@clientLib/utils';
 
 import Link from '@components/Link';
@@ -13,7 +14,7 @@ const NavMenu = () => (
   <nav className={styles.navContainer}>
     <ul>
       {items.map(item => (
-        <li key={item}>
+        <NavItem key={item}>
           <Link
             to={PATHS[camelCase(item)].path}
             category={'Header'}
@@ -21,10 +22,14 @@ const NavMenu = () => (
           >
             {lang[camelCase(item)]()}
           </Link>
-        </li>
+        </NavItem>
       ))}
     </ul>
   </nav>
 );
+
+const NavItem = styled.li`
+  color: ${props => props.theme.colors.primary}
+`;
 
 export default NavMenu;
