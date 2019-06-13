@@ -2,50 +2,41 @@ import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-
 import { Helmet } from 'react-helmet';
-
 import { Frontload, frontloadServerRender } from 'react-frontload';
-
-import { SheetsRegistry } from 'jss';
 import { ServerStyleSheet } from 'styled-components';
-import JssProvider from 'react-jss/lib/JssProvider';
-import { createGenerateClassName } from '@material-ui/core/styles';
-
+import { ServerStyleSheets } from '@material-ui/styles';
 import { ChunkExtractor } from '@loadable/server';
 
 import html from '@server/html';
-import App from '@client/components/App';
-import MyThemeProvider from '@components/theme';
+import App from '@components/App';
+import MyThemeProvider from '@shared/theme';
 
 const statsFile = path.resolve('./build/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
 
 const renderer = async (req, res) => {
   let staticContext = {};
-  const sheet = new ServerStyleSheet();
-  const sheetsRegistry = new SheetsRegistry();
-  const sheetsManager = new Map();
-  const generateClassName = createGenerateClassName();
+  const scSheets = new ServerStyleSheet();
+  const muiSheets = new ServerStyleSheets();
 
   const getStaticMarkup = () => {
     // extractor.collectChunks captures all loadable components
     const html = extractor.collectChunks(
-      <StaticRouter location={req.url} context={staticContext}>
-        <Frontload isServer>
-          <JssProvider
-            registry={sheetsRegistry}
-            generateClassName={generateClassName}
-          >
-            <MyThemeProvider sheetsManager={sheetsManager}>
+        // collect MaterialUI Styles
+      muiSheets.collect(
+        <StaticRouter location={req.url} context={staticContext}>
+          <Frontload isServer>
+            <MyThemeProvider>
               <App />
             </MyThemeProvider>
-          </JssProvider>
-        </Frontload>
-      </StaticRouter>
+          </Frontload>
+        </StaticRouter>
+      )
     );
-
-    return ReactDOMServer.renderToStaticMarkup(sheet.collectStyles(html));
+    // collect Styled-Components Styles
+    scSheets.collectStyles(html);
+    return ReactDOMServer.renderToStaticMarkup(html);
   };
 
   const staticMarkup = await frontloadServerRender(getStaticMarkup);
@@ -53,11 +44,18 @@ const renderer = async (req, res) => {
     // Somewhere a `<Redirect>` was rendered
     res.redirect(302, staticContext.url);
   } else {
-    // we're good, send the response NOTE: could be 404
+    // we're good, send the response
+    // NOTE: could be 404
+    // get script tags
     const scriptTags = extractor.getScriptTags();
+    // get css styles
     const styleTags = extractor.getStyleTags();
-    const css = sheetsRegistry.toString();
-    const styledComponents = sheet.getStyleTags()
+    // get material-ui styles
+    const muiCss = muiSheets.toString();
+    // get styled components styles
+    const scCss = scSheets.getStyleTags();
+    scSheets.seal();
+
     let meta = Helmet.renderStatic();
     res.status(staticContext.statusCode || 200).send(
       html({
@@ -65,8 +63,8 @@ const renderer = async (req, res) => {
         meta,
         scripts: scriptTags,
         styles: styleTags,
-        css,
-        styledComponents
+        muiCss,
+        scCss
       })
     );
   }

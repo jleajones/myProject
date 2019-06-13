@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-
-import Page from '../../shared/Page';
-import Container from '@components/Container';
+import { frontloadConnect } from 'react-frontload';
 import Typography from '@material-ui/core/Typography';
-import Header from "@components/Header";
-import Fade from "@material-ui/core/Fade";
-import Footer from "@components/Footer";
-// import { frontloadConnect } from 'react-frontload';
 
-// const frontload = () => {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve('ok');
-//     }, 2000);
-//   });
-// };
+import Page from '@shared/Page';
+import Container from '@shared/Container';
+import Header from '@shared/Header';
+import Footer from '@shared/Footer';
+
+// import axios from 'axios';
+
+const frontload = async () => {
+  const p = new Promise(()=> {
+    console.log('in here...');
+  });
+
+  setTimeout(p.resolve('ok'), 2000);
+};
 
 const HomePage = () => {
   return (
@@ -35,12 +36,12 @@ const HomePage = () => {
       </Helmet>
       <Header />
       <Container>
-        <Typography>This is the home page</Typography>
+        <Typography>This is the home page...</Typography>
       </Container>
       <Footer />
     </Page>
   );
 };
 
-export default HomePage;
-// export default frontloadConnect(frontload)(HomePage);
+// export default HomePage;
+export default frontloadConnect(frontload)(HomePage);

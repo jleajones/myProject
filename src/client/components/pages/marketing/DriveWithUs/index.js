@@ -5,14 +5,14 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Fade from '@material-ui/core/Fade';
 
-import Page from '@components/Page';
-import Container from '@components/Container';
-import DriveWithUsForm from '@components/DriveWithUsForm';
+import Page from '@shared/Page';
+import Container from '@shared/Container';
+import DriveWithUsForm from '@shared/DriveWithUsForm';
 import { Divider, Typography } from '@material-ui/core';
 
 import styles from './stylesheet.css';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
+import Header from '@shared/Header';
+import Footer from '@shared/Footer';
 
 const DriveWithUsPage = props => {
   return (

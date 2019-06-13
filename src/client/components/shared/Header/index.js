@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavMenu from '@components/NavMenu';
-import Back from '@components/Back';
 
 import PATHS from '@constants/paths';
-import Container from '@components/Container';
+import NavMenu from '@shared/NavMenu';
+import Back from '@shared/Back';
+import Container from '@shared/Container';
 
 const Header = ({ location }) => {
   const NavComponent =

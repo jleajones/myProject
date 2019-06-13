@@ -1,15 +1,18 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Container from '@components/Container';
+import styled from 'styled-components'
 
-import styles from './stylesheet.css';
+import Container from '@shared/Container';
 
 const Footer = () => (
-  <footer className={styles.footer}>
+  <FooterWrapper>
     <Container>
       <Typography>All Rights Reserved. Copyright &copy; 2019</Typography>
     </Container>
-  </footer>
+  </FooterWrapper>
 );
 
+const FooterWrapper = styled.footer`
+  padding: 12px 0;
+`;
 export default Footer;

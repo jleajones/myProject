@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const autoprefixer = require("autoprefixer");
 
 const isDev = process.env.NODE_ENV === 'development';
+const mode = isDev ? 'development' : 'production';
 const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
 const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
 
@@ -17,7 +18,9 @@ const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
 const directoryAliases = {
   '@client': path.resolve(__dirname, './src/client'),
   '@clientLib': path.resolve(__dirname, './src/client/lib'),
-  '@components': path.resolve(__dirname, './src/client/components/shared'),
+  '@components': path.resolve(__dirname, './src/client/components'),
+  '@shared': path.resolve(__dirname, './src/client/components/shared'),
+  '@pages': path.resolve(__dirname, './src/client/components/pages'),
   '@server': path.resolve(__dirname, './src/server'),
   '@serverLib': path.resolve(__dirname, './src/server/lib'),
   '@filters': path.resolve(__dirname, './src/server/filters'),
@@ -26,7 +29,7 @@ const directoryAliases = {
 };
 
 const browserConfig = {
-  mode: 'development',
+  mode,
   entry: './src/client/index.js',
   output: {
     path: path.join(__dirname, './build'),
@@ -61,8 +64,8 @@ const browserConfig = {
               modules: true,
               localIdentName: '[name]-[local]__[hash:base64:5]'
             }
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -72,8 +75,14 @@ const browserConfig = {
     new LoadablePlugin(),
     new MiniCssExtractPlugin({
       filename: cssFileName,
-      chunkFilename: 'css/[chunkhash].css',
-    })],
+      chunkFilename: 'css/[chunkhash].css'
+    })
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   resolve: {
     alias: {
       ...directoryAliases
@@ -120,8 +129,8 @@ const serverConfig = {
               modules: true,
               localIdentName: '[name]-[local]__[hash:base64:5]'
             }
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -131,8 +140,9 @@ const serverConfig = {
     new LoadablePlugin(),
     new MiniCssExtractPlugin({
       filename: cssFileName,
-      chunkFilename: 'css/[chunkhash].css',
-    })],
+      chunkFilename: 'css/[chunkhash].css'
+    })
+  ],
   resolve: {
     alias: {
       ...directoryAliases

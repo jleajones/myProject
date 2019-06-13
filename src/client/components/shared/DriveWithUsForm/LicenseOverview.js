@@ -17,7 +17,7 @@ const LicenseOverview = ({
   endorsements,
   updateEndorsements
 }) => (
-  <Grid container spacing={16}>
+  <Grid container spacing={2}>
     <Grid item xs={12}>
       <Typography variant="h6">
         <b>License Overview</b>

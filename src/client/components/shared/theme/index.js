@@ -1,6 +1,6 @@
 import React from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 
 export const theme = createMuiTheme({
@@ -17,8 +17,8 @@ export const theme_s = {
   }
 };
 
-const MyThemeProvider = ({ children, muiTheme, styledTheme, sheetsManager }) => (
-  <MuiThemeProvider theme={muiTheme} sheetsManager={sheetsManager}>
+const MyThemeProvider = ({ children, muiTheme, styledTheme }) => (
+  <MuiThemeProvider theme={muiTheme}>
     <ThemeProvider theme={styledTheme}>{children}</ThemeProvider>
   </MuiThemeProvider>
 );

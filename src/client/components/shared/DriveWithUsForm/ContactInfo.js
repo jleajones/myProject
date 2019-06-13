@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -18,7 +18,7 @@ const ContactInfo = ({
   updateEmailConfirmation
 }) => {
   return (
-    <Grid container spacing={16}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h6">
           <b>Contact Information</b>

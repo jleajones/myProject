@@ -1,14 +1,13 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import PATHS from '@constants/paths';
 import {
   AboutPage,
   DriveWithUs,
   HomePage,
   NotFoundPage
-} from '@client/components/pages';
-
-import { Route, Switch } from 'react-router-dom';
-import Redirect from '@components/Redirect';
-import React from 'react';
+} from '@components/pages';
+import Redirect from '@shared/Redirect';
 
 const Routes = () => (
   <Switch>

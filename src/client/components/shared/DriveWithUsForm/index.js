@@ -1,17 +1,19 @@
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import React, { useState } from 'react';
 import { Typography } from '@material-ui/core';
-
-import Link from '@components/Link';
-import PersonalInfo from '@components/DriveWithUsForm/PersonalInfo';
-import Address from '@components/DriveWithUsForm/Address';
-import ContactInfo from '@components/DriveWithUsForm/ContactInfo';
-import LicenseOverview from '@components/DriveWithUsForm/LicenseOverview';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import NoSsr from '@material-ui/core/NoSsr';
+
+import Link from '@shared/Link';
+import PersonalInfo from '@shared/DriveWithUsForm/PersonalInfo';
+import Address from '@shared/DriveWithUsForm/Address';
+import ContactInfo from '@shared/DriveWithUsForm/ContactInfo';
+import LicenseOverview from '@shared/DriveWithUsForm/LicenseOverview';
 
 import styles from './stylesheet.css';
+import styled from 'styled-components';
 
 const DriveWithUsForm = () => {
   const [firstName, updateFirstName] = useState('');
@@ -40,7 +42,7 @@ const DriveWithUsForm = () => {
   const [physicalExpiration, updatePhysicalExpiration] = useState('');
   const [endorsements, updateEndorsements] = useState('');
 
-  const [termsConsent, updateTermsConsent] = useState('');
+  const [termsConsent, updateTermsConsent] = useState(false);
 
   const handleOnSubmit = e => {
     console.log(e);
@@ -51,7 +53,7 @@ const DriveWithUsForm = () => {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <section className={styles.formSection}>
+      <FormSection>
         <PersonalInfo
           onBlur={handleOnBlur}
           firstName={firstName}
@@ -63,8 +65,8 @@ const DriveWithUsForm = () => {
           updateSSN={updateSSN}
           updateDOB={updateDOB}
         />
-      </section>
-      <section className={styles.formSection}>
+      </FormSection>
+      <FormSection>
         <Address
           onBlur={handleOnBlur}
           streetAddress={streetAddress}
@@ -80,8 +82,8 @@ const DriveWithUsForm = () => {
           updateState={updateState}
           updatePostalCode={updatePostalCode}
         />
-      </section>
-      <section className={styles.formSection}>
+      </FormSection>
+      <FormSection>
         <ContactInfo
           onBlur={handleOnBlur}
           phoneNumber={phoneNumber}
@@ -97,8 +99,8 @@ const DriveWithUsForm = () => {
           emailConfirmation={emailConfirmation}
           updateEmailConfirmation={updateEmailConfirmation}
         />
-      </section>
-      <section className={styles.formSection}>
+      </FormSection>
+      <FormSection>
         <LicenseOverview
           licenseNumber={licenseNumber}
           updateLicenseNumber={updateLicenseNumber}
@@ -113,31 +115,33 @@ const DriveWithUsForm = () => {
           endorsements={endorsements}
           updateEndorsements={updateEndorsements}
         />
-      </section>
-      <section className={styles.formSection}>
-        <Grid container>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={termsConsent}
-                onChange={e => updateTermsConsent(!termsConsent)}
-                value="consent"
-                color="primary"
-              />
-            }
-            label={
-              <Typography classes={{ body1: styles.consentText }}>
-                I agree to the use and disclosure of my information as described
-                in{' '}
-                <Link to="/privacy-policy" label="privacy-policy">
-                  LJ&amp;G Freight's privacy policy
-                </Link>
-                .
-              </Typography>
-            }
-          />
-        </Grid>
-      </section>
+      </FormSection>
+      <NoSsr>
+        <FormSection>
+          <Grid container>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={termsConsent}
+                  onChange={e => updateTermsConsent(!termsConsent)}
+                  value="consent"
+                  color="primary"
+                />
+              }
+              label={
+                <ConsentText>
+                  I agree to the use and disclosure of my information as
+                  described in{' '}
+                  <Link to="/privacy-policy" label="privacy-policy">
+                    LJ&amp;G Freight's privacy policy
+                  </Link>
+                  .
+                </ConsentText>
+              }
+            />
+          </Grid>
+        </FormSection>
+      </NoSsr>
       <Grid container justify="flex-end">
         <Button variant="contained" color={'primary'} onClick={handleOnSubmit}>
           Submit
@@ -146,5 +150,13 @@ const DriveWithUsForm = () => {
     </form>
   );
 };
+
+const ConsentText = styled(Typography)`
+  font-size: 10px;
+`;
+
+const FormSection = styled.section`
+  margin: 24px 0;
+`;
 
 export default DriveWithUsForm;

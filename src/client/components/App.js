@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Routes from '@client/components/Routes';
+import Routes from '@components/Routes';
 
 const App = () => {
   useEffect(() => {

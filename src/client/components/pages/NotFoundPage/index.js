@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Page from '../../shared/Page';
+import Page from '@shared/Page';
 
 const NotFoundPage = ({ staticContext }) => {
   if (staticContext) {

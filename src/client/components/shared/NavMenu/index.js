@@ -2,17 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { camelCase } from '@clientLib/utils';
 
-import Link from '@components/Link';
 import PATHS from '@constants/paths';
+import Link from '@shared/Link';
 
 import { items } from './constants';
 import lang from './language';
 import styles from './stylesheet.css';
 
-
 const NavMenu = () => (
   <nav className={styles.navContainer}>
-    <ul>
+    <NavList>
       {items.map(item => (
         <NavItem key={item}>
           <Link
@@ -24,12 +23,16 @@ const NavMenu = () => (
           </Link>
         </NavItem>
       ))}
-    </ul>
+    </NavList>
   </nav>
 );
 
+const NavList = styled.ul`
+  margin: 0;
+`;
+
 const NavItem = styled.li`
-  color: ${props => props.theme.colors.primary}
+  color: ${props => props.theme.colors.primary};
 `;
 
 export default NavMenu;

@@ -1,6 +1,6 @@
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import React from 'react';
 import { Typography } from '@material-ui/core';
 
 import { USStatesForSelect } from '@constants/states';
@@ -20,7 +20,7 @@ const Address = ({
   updateCountry
 }) => {
   return (
-    <Grid container spacing={16}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h6">
           <b>Address</b>

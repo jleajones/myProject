@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 
-import Link from '@components/Link';
+import Link from '@shared/Link';
 import PATHS from '@constants/paths';
 
 import lang from "./language";
