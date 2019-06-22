@@ -7,10 +7,9 @@ import Link from '@shared/Link';
 
 import { items } from './constants';
 import lang from './language';
-import styles from './stylesheet.css';
 
 const NavMenu = () => (
-  <nav className={styles.navContainer}>
+  <nav>
     <NavList>
       {items.map(item => (
         <NavItem key={item}>

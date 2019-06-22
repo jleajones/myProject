@@ -12,7 +12,6 @@ import Address from '@shared/DriveWithUsForm/Address';
 import ContactInfo from '@shared/DriveWithUsForm/ContactInfo';
 import LicenseOverview from '@shared/DriveWithUsForm/LicenseOverview';
 
-import styles from './stylesheet.css';
 import styled from 'styled-components';
 
 const DriveWithUsForm = () => {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { TRACKING_API } from '../apiPaths';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -8,11 +9,10 @@ export const pageView = (pageName, properties) => {
       ...properties,
       pageName,
       screenX: window.innerWidth,
-      screenY: window.innerHeight,
-      timeStamp: Date.now()
+      screenY: window.innerHeight
     };
 
-    axios.post('/api/v0/analytics/pageView', {
+    axios.post(`${TRACKING_API}/pageView`, {
       ...trackingData
     });
   }
@@ -22,11 +22,10 @@ export const trackEvent = (eventName, properties) => {
   if(isBrowser) {
     const trackingData = {
       ...properties,
-      eventName,
-      timeStamp: Date.now()
+      eventName
     };
 
-    axios.post('/api/v0/analytics/trackEvent', {
+    axios.post(`${TRACKING_API}/trackEvent`, {
       ...trackingData
     });
   }

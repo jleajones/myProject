@@ -16,13 +16,17 @@ const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
 // ];
 
 const directoryAliases = {
+  '@root': path.resolve(__dirname, './'),
   '@client': path.resolve(__dirname, './src/client'),
   '@clientLib': path.resolve(__dirname, './src/client/lib'),
   '@components': path.resolve(__dirname, './src/client/components'),
   '@shared': path.resolve(__dirname, './src/client/components/shared'),
   '@pages': path.resolve(__dirname, './src/client/components/pages'),
   '@server': path.resolve(__dirname, './src/server'),
+  '@serverCore': path.resolve(__dirname, './src/server/core'),
   '@serverLib': path.resolve(__dirname, './src/server/lib'),
+  '@api': path.resolve(__dirname, './src/server/api'),
+  '@middleware': path.resolve(__dirname, './src/server/middleware'),
   '@filters': path.resolve(__dirname, './src/server/filters'),
   '@handlers': path.resolve(__dirname, './src/server/handlers'),
   '@constants': path.resolve(__dirname, './src/constants')

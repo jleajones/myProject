@@ -11,11 +11,13 @@ import Footer from '@shared/Footer';
 // import axios from 'axios';
 
 const frontload = async () => {
-  const p = new Promise(()=> {
-    console.log('in here...');
+  const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('ok');
+    }, 2000);
   });
 
-  setTimeout(p.resolve('ok'), 2000);
+  return p;
 };
 
 const HomePage = () => {

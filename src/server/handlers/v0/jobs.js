@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { LEVER_URL } from '../../lib/constants';
-import filterHandler from '../../filters/global';
-import { generateSlug } from '../../lib/utils';
-import { lever2Dispay, lever2Group } from '../../lib/groupMappings';
-import { titleReducer } from '../reducers';
+
+import { LEVER_URL } from '@serverLib/constants';
+import filterHandler from '@filters/global';
+import { generateSlug } from '@serverLib/utils';
+import { lever2Dispay, lever2Group } from '@serverLib/groupMappings';
+import { titleReducer } from '@handlers/reducers';
 import searchHandler from '@filters/search';
 
 export async function allJobsHandler(req, res) {
