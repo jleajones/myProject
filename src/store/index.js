@@ -13,7 +13,7 @@ export default createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-export const clientStore = () => {
+export const getClientStore = () => {
   const composeEnhancer =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const initialState = window.__INITIAL_STATE__;

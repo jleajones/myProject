@@ -12,11 +12,7 @@ const fetchData = async ({ getJobs }) => {
   await getJobs();
 };
 
-const HomePage = ({ jobs, getJobs }) => {
-  useEffect(() => {
-    fetchData({ getJobs });
-  }, []);
-
+const HomePage = ({ jobs }) => {
   return (
     <Page
       name="HomePage"
