@@ -4,32 +4,33 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const path = require('path');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const autoprefixer = require("autoprefixer");
 
 const isDev = process.env.NODE_ENV === 'development';
 const mode = isDev ? 'development' : 'production';
 const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
-const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
+// const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
 
 // const wpPlugins = [
 // ];
 
 const directoryAliases = {
-  '@root': path.resolve(__dirname, './'),
+  '@api': path.resolve(__dirname, './src/server/api'),
   '@client': path.resolve(__dirname, './src/client'),
   '@clientLib': path.resolve(__dirname, './src/client/lib'),
   '@components': path.resolve(__dirname, './src/client/components'),
-  '@shared': path.resolve(__dirname, './src/client/components/shared'),
+  '@constants': path.resolve(__dirname, './src/constants'),
+  '@filters': path.resolve(__dirname, './src/server/filters'),
+  '@handlers': path.resolve(__dirname, './src/server/handlers'),
+  '@middleware': path.resolve(__dirname, './src/server/middleware'),
   '@pages': path.resolve(__dirname, './src/client/components/pages'),
+  '@root': path.resolve(__dirname, './'),
   '@server': path.resolve(__dirname, './src/server'),
   '@serverCore': path.resolve(__dirname, './src/server/core'),
   '@serverLib': path.resolve(__dirname, './src/server/lib'),
-  '@api': path.resolve(__dirname, './src/server/api'),
-  '@middleware': path.resolve(__dirname, './src/server/middleware'),
-  '@filters': path.resolve(__dirname, './src/server/filters'),
-  '@handlers': path.resolve(__dirname, './src/server/handlers'),
-  '@constants': path.resolve(__dirname, './src/constants')
+  '@shared': path.resolve(__dirname, './src/client/components/shared'),
+  '@store': path.resolve(__dirname, './src/store')
 };
 
 const browserConfig = {
@@ -56,31 +57,31 @@ const browserConfig = {
         loader: 'babel-loader',
         query: { presets: ['react-app'] }
       },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]-[local]__[hash:base64:5]'
-            }
-          }
-        ]
-      }
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     {
+      //       loader: MiniCssExtractPlugin.loader
+      //     },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         localIdentName: '[name]-[local]__[hash:base64:5]'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new LoadablePlugin(),
-    new MiniCssExtractPlugin({
-      filename: cssFileName,
-      chunkFilename: 'css/[chunkhash].css'
-    })
+    // new MiniCssExtractPlugin({
+    //   filename: cssFileName,
+    //   chunkFilename: 'css/[chunkhash].css'
+    // })
   ],
   optimization: {
     splitChunks: {
@@ -121,31 +122,31 @@ const serverConfig = {
         loader: 'babel-loader',
         query: { presets: ['react-app'] }
       },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]-[local]__[hash:base64:5]'
-            }
-          }
-        ]
-      }
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     {
+      //       loader: MiniCssExtractPlugin.loader
+      //     },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         localIdentName: '[name]-[local]__[hash:base64:5]'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new LoadablePlugin(),
-    new MiniCssExtractPlugin({
-      filename: cssFileName,
-      chunkFilename: 'css/[chunkhash].css'
-    })
+    // new MiniCssExtractPlugin({
+    //   filename: cssFileName,
+    //   chunkFilename: 'css/[chunkhash].css'
+    // })
   ],
   resolve: {
     alias: {

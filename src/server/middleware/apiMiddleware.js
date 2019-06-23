@@ -2,7 +2,8 @@ import { Router } from 'express';
 
 import { eventIdMiddleware } from '@serverCore/middleware/eventIdMiddleware';
 import v0 from "@api/v0";
-// TODO: add new versions here and to versions object
+// TODO: Improve API Versioning
+// NOTE: add new versions here and to versions object
 // import v1 from "@api/v1";
 
 const versions = {

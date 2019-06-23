@@ -1,18 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Fade from '@material-ui/core/Fade';
-
-import Page from '@shared/Page';
-import Container from '@shared/Container';
-import DriveWithUsForm from '@shared/DriveWithUsForm';
 import { Divider, Typography } from '@material-ui/core';
 
-import styles from './stylesheet.css';
+import Page from '@shared/Page';
 import Header from '@shared/Header';
 import Footer from '@shared/Footer';
+import Container from '@shared/Container';
+import DriveWithUsForm from './components/DriveWithUsForm';
 
 const DriveWithUsPage = props => {
   return (
@@ -34,7 +33,7 @@ const DriveWithUsPage = props => {
         <Container>
           <Grid container justify="center">
             <Grid item xs={12} sm={10} md={8}>
-              <Paper classes={{ root: styles.paperContainer }} square={true}>
+              <StyledPaper square={true}>
                 <Typography
                   variant="h6"
                   align="center"
@@ -47,7 +46,7 @@ const DriveWithUsPage = props => {
                 </Typography>
                 <Divider light />
                 <DriveWithUsForm />
-              </Paper>
+              </StyledPaper>
             </Grid>
           </Grid>
         </Container>
@@ -56,5 +55,16 @@ const DriveWithUsPage = props => {
     </Page>
   );
 };
+
+const StyledPaper = styled(Paper)`
+  padding: 32px;
+  margin: 24px 0;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+
+  @media only screen and (max-width: 600px) {
+    padding: 32px 16px;
+    margin: 24px 0;
+  }
+`;
 
 export default DriveWithUsPage;

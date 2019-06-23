@@ -5,14 +5,14 @@ import { Typography } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import NoSsr from '@material-ui/core/NoSsr';
+import styled from 'styled-components';
 
 import Link from '@shared/Link';
-import PersonalInfo from '@shared/DriveWithUsForm/PersonalInfo';
-import Address from '@shared/DriveWithUsForm/Address';
-import ContactInfo from '@shared/DriveWithUsForm/ContactInfo';
-import LicenseOverview from '@shared/DriveWithUsForm/LicenseOverview';
+import PersonalInfo from './PersonalInfo';
+import Address from './Address';
+import ContactInfo from './ContactInfo';
+import LicenseOverview from './LicenseOverview';
 
-import styled from 'styled-components';
 
 const DriveWithUsForm = () => {
   const [firstName, updateFirstName] = useState('');
