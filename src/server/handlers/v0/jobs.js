@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { LEVER_URL } from '@serverLib/constants';
+import { JOBS } from '@serverLib/constants';
 import filterHandler from '@filters/global';
 import { generateSlug } from '@serverLib/utils';
 import { lever2Dispay, lever2Group } from '@serverLib/groupMappings';
@@ -9,10 +10,10 @@ import searchHandler from '@filters/search';
 
 export async function allJobsHandler(req, res) {
   let finalJobs;
-  const { data: jobs } = await axios.get(LEVER_URL);
-  // const json = JOBS;
+  // const { data: jobs } = await axios.get(LEVER_URL);
+  const { data: jobs } = JOBS;
   if (req.query) {
-    finalJobs = filterHandler(req.query, jobs);
+    finalJobs = filterHandler(req.query, jobs );
   } else {
     finalJobs = jobs;
   }

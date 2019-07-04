@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Routes from '@components/Routes';
+import Header from "@shared/Header";
+import Footer from "@shared/Footer";
 
 const App = () => {
   useEffect(() => {
@@ -13,7 +15,9 @@ const App = () => {
   return (
     <>
       <CssBaseline />
+      <Header/>
       <Routes />
+      <Footer />
     </>
   );
 };

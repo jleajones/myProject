@@ -5,13 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { Frontload } from 'react-frontload';
 import { loadableReady } from '@loadable/component';
 
-import { getClientStore } from '@store/index';
+import configureStore from '@store/index';
 import MyThemeProvider from '@shared/theme';
 import App from '@components/App';
 
-loadableReady(() => {
-  const store = getClientStore();
-  hydrate(
+const ClientApp = ({ store }) => (
   <Provider store={store}>
     <BrowserRouter>
       <Frontload>
@@ -20,7 +18,10 @@ loadableReady(() => {
         </MyThemeProvider>
       </Frontload>
     </BrowserRouter>
-  </Provider>,
-    document.getElementById('root')
-  );
+  </Provider>
+);
+
+loadableReady(() => {
+  const store = configureStore(window.__INITIAL_STATE__);
+  hydrate(<ClientApp store={store} />, document.getElementById('root'));
 });

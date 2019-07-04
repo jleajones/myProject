@@ -1,4 +1,4 @@
-import Types from './actions/types';
+import Types, { FETCH_CAREERS } from './actions/types';
 
 const initialState = {
   list: []
@@ -7,16 +7,16 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   const { type, data } = action;
   switch (type) {
-    case Types.FETCH_JOBS.PENDING:
+    case Types[FETCH_CAREERS].PENDING:
       return {
         ...state
       };
-    case Types.FETCH_JOBS.SUCCESS:
+    case Types[FETCH_CAREERS].SUCCESS:
       return {
         ...state,
         list: data
       };
-    case Types.FETCH_JOBS.ERROR:
+    case Types[FETCH_CAREERS].ERROR:
       return {
         ...state
       };
@@ -24,4 +24,3 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 };
-

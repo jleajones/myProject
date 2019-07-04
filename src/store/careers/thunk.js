@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-import { fetchJobs, setJobs } from './actions/creators';
+import { fetchCareers, setCareers } from './actions/creators';
 
 // TODO: create common store to handle 'error' && 'loading'
 const setError = error => {
   console.log(error);
 };
 
-export const getJobs = () => {
+export const getCareers = () => {
   return async dispatch => {
     try {
-      dispatch(fetchJobs());
+      dispatch(fetchCareers());
       const response = await axios.get('http://localhost:3001/api/jobs');
-      dispatch(setJobs(response.data));
+      dispatch(setCareers(response.data));
     } catch (error) {
       dispatch(setError(error));
     }

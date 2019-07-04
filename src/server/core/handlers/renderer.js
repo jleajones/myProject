@@ -7,10 +7,9 @@ import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
 import { ChunkExtractor } from '@loadable/server';
 
-import store from '@store/index';
+import configureStore from '@store/index';
 import html from '@serverCore/html';
 import ServerApp from '@serverCore/components/ServerApp';
-
 
 const statsFile = path.resolve('./build/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
@@ -20,13 +19,16 @@ const renderer = async (req, res, logger) => {
   let staticContext = {};
   const scSheets = new ServerStyleSheet();
   const muiSheets = new ServerStyleSheets();
+  const store = configureStore();
 
   const getStaticMarkup = () => {
     const html = extractor.collectChunks(
-      muiSheets.collect(<ServerApp req={req} staticContext={staticContext} store={store} />)
+      muiSheets.collect(
+        <ServerApp req={req} staticContext={staticContext} store={store} />
+      )
     );
     scSheets.collectStyles(html);
-    return ReactDOMServer.renderToStaticMarkup(html);
+    return ReactDOMServer.renderToString(html);
   };
 
   const staticMarkup = await frontloadServerRender(getStaticMarkup);

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const path = require('path');
 
@@ -36,6 +36,7 @@ const directoryAliases = {
 const browserConfig = {
   mode,
   entry: './src/client/index.js',
+  target: 'web',
   output: {
     path: path.join(__dirname, './build'),
     filename: jsFileName
@@ -56,38 +57,14 @@ const browserConfig = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: { presets: ['react-app'] }
-      },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     {
-      //       loader: MiniCssExtractPlugin.loader
-      //     },
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: true,
-      //         localIdentName: '[name]-[local]__[hash:base64:5]'
-      //       }
-      //     }
-      //   ]
-      // }
+      }
     ]
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new LoadablePlugin(),
-    // new MiniCssExtractPlugin({
-    //   filename: cssFileName,
-    //   chunkFilename: 'css/[chunkhash].css'
-    // })
+    new LoadablePlugin()
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
   resolve: {
     alias: {
       ...directoryAliases
@@ -142,7 +119,6 @@ const serverConfig = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new LoadablePlugin(),
     // new MiniCssExtractPlugin({
     //   filename: cssFileName,
     //   chunkFilename: 'css/[chunkhash].css'

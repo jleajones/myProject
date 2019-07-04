@@ -5,14 +5,14 @@ import Typography from '@material-ui/core/Typography';
 
 import Page from '@shared/Page';
 import Container from '@shared/Container';
-import Header from '@shared/Header';
 import Footer from '@shared/Footer';
 
-const fetchData = async ({ getJobs }) => {
-  await getJobs();
+const fetchData = async ({ getCareers }) => {
+  await getCareers();
 };
 
-const HomePage = ({ jobs }) => {
+const HomePage = ({ careers }) => {
+  console.log(careers);
   return (
     <Page
       name="HomePage"
@@ -28,7 +28,6 @@ const HomePage = ({ jobs }) => {
         <title>HomePage</title>
         <meta name="description" content="This is the homepage..." />
       </Helmet>
-      <Header />
       <Container>
         <Typography>This is the home page...</Typography>
       </Container>

@@ -13,7 +13,7 @@ import Footer from '@shared/Footer';
 import Container from '@shared/Container';
 import DriveWithUsForm from './components/DriveWithUsForm';
 
-const DriveWithUsPage = props => {
+const DriveWithUsPage = () => {
   return (
     <Page
       name="DriveWithUs"

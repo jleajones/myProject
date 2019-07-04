@@ -30,7 +30,7 @@ app.use(
   healthCheck(logger, projectConfig.version, projectConfig.name, startTime)
 );
 
-app.get('*', (req, res) => renderer(req, res, logger));
+app.get('*', async (req, res) => await renderer(req, res, logger));
 app.disable('x-powered-by');
 app.listen(PORT, () => {
   logger.info(`🌎 => Running... http://localhost:${PORT}`);

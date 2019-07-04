@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import Component from './component';
 
-import { getJobs } from '@store/jobs/thunk';
+import { getCareers } from '@store/careers/thunk';
 
 const mapStateToProps = state => {
-  const { jobs } = state;
+  const { careers } = state;
   return {
-    jobs
+    careers
   };
 };
 
 const mapDispatchToProps = {
-  getJobs
+  getCareers
 };
 
 export default connect(

@@ -10,7 +10,7 @@ export default ({ body, meta, scripts, styles, muiCss, scCss, state }) => {
       </head>
       <body>
         <div id="root">${body}</div>
-       
+
         <script>window.__INITIAL_STATE__= ${JSON.stringify(state).replace(
           /</g,
           '\\\u003c'

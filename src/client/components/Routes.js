@@ -7,6 +7,7 @@ import {
   HomePage,
   NotFoundPage
 } from '@components/pages';
+
 import Redirect from '@shared/Redirect';
 
 const Routes = () => (

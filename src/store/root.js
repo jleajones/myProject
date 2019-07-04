@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import jobs from './jobs';
+import careers from './careers';
 
 const root = combineReducers({
-  jobs
+  careers
 });
 
 export default root;
