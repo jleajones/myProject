@@ -1,3 +1,5 @@
+export const someOtherUtilFn = () => {};
+
 export const generateSlug = str =>
   str
     .toLowerCase()

@@ -13,7 +13,6 @@ import Address from './Address';
 import ContactInfo from './ContactInfo';
 import LicenseOverview from './LicenseOverview';
 
-
 const DriveWithUsForm = () => {
   const [firstName, updateFirstName] = useState('');
   const [lastName, updateLastName] = useState('');
@@ -122,7 +121,7 @@ const DriveWithUsForm = () => {
               control={
                 <Checkbox
                   checked={termsConsent}
-                  onChange={e => updateTermsConsent(!termsConsent)}
+                  onChange={() => updateTermsConsent(!termsConsent)}
                   value="consent"
                   color="primary"
                 />
@@ -132,7 +131,7 @@ const DriveWithUsForm = () => {
                   I agree to the use and disclosure of my information as
                   described in{' '}
                   <Link to="/privacy-policy" label="privacy-policy">
-                    LJ&amp;G Freight's privacy policy
+                    LJ&amp;G Freight&pos;s privacy policy
                   </Link>
                   .
                 </ConsentText>
@@ -142,7 +141,7 @@ const DriveWithUsForm = () => {
         </FormSection>
       </NoSsr>
       <Grid container justify="flex-end">
-        <Button variant="contained" color={'primary'} onClick={handleOnSubmit}>
+        <Button variant="contained" color="primary" onClick={handleOnSubmit}>
           Submit
         </Button>
       </Grid>

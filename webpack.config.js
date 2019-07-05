@@ -7,14 +7,6 @@ const path = require('path');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const autoprefixer = require("autoprefixer");
 
-const isDev = process.env.NODE_ENV === 'development';
-const mode = isDev ? 'development' : 'production';
-const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
-// const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
-
-// const wpPlugins = [
-// ];
-
 const directoryAliases = {
   '@api': path.resolve(__dirname, './src/server/api'),
   '@client': path.resolve(__dirname, './src/client'),
@@ -32,6 +24,13 @@ const directoryAliases = {
   '@shared': path.resolve(__dirname, './src/client/components/shared'),
   '@store': path.resolve(__dirname, './src/store')
 };
+const isDev = process.env.NODE_ENV === 'development';
+const mode = isDev ? 'development' : 'production';
+const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
+// const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
+
+// const wpPlugins = [
+// ];
 
 const browserConfig = {
   mode,
@@ -55,8 +54,10 @@ const browserConfig = {
       {
         test: /js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: { presets: ['react-app'] }
+        use: [
+          { loader: 'babel-loader', query: { presets: ['react-app'] } },
+          'eslint-loader'
+        ]
       }
     ]
   },
@@ -96,9 +97,11 @@ const serverConfig = {
       {
         test: /js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: { presets: ['react-app'] }
-      },
+        use: [
+          { loader: 'babel-loader', query: { presets: ['react-app'] } },
+          'eslint-loader'
+        ]
+      }
       // {
       //   test: /\.css$/,
       //   use: [
@@ -118,7 +121,7 @@ const serverConfig = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin()
     // new MiniCssExtractPlugin({
     //   filename: cssFileName,
     //   chunkFilename: 'css/[chunkhash].css'

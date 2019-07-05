@@ -16,19 +16,19 @@ const extractor = new ChunkExtractor({ statsFile });
 
 const renderer = async (req, res, logger) => {
   logger.info('⚙️ ==> rendering ', { url: req.url });
-  let staticContext = {};
+  const staticContext = {};
   const scSheets = new ServerStyleSheet();
   const muiSheets = new ServerStyleSheets();
   const store = configureStore();
 
   const getStaticMarkup = () => {
-    const html = extractor.collectChunks(
+    const markup = extractor.collectChunks(
       muiSheets.collect(
         <ServerApp req={req} staticContext={staticContext} store={store} />
       )
     );
-    scSheets.collectStyles(html);
-    return ReactDOMServer.renderToString(html);
+    scSheets.collectStyles(markup);
+    return ReactDOMServer.renderToString(markup);
   };
 
   const staticMarkup = await frontloadServerRender(getStaticMarkup);
@@ -41,7 +41,7 @@ const renderer = async (req, res, logger) => {
     const scCss = scSheets.getStyleTags();
     scSheets.seal();
 
-    let meta = Helmet.renderStatic();
+    const meta = Helmet.renderStatic();
     logger.info('📦 ==> sending html', { status: staticContext.statusCode });
     res.status(staticContext.statusCode || 200).send(
       html({

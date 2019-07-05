@@ -19,7 +19,7 @@ export const pageView = (pageName, properties) => {
 };
 
 export const trackEvent = (eventName, properties) => {
-  if(isBrowser) {
+  if (isBrowser) {
     const trackingData = {
       ...properties,
       eventName

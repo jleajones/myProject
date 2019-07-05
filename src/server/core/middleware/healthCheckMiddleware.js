@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import moment from 'moment';
 
-export const healthCheck = (logger, version, name, startTime) => {
+export default (logger, version, name, startTime) => {
   const router = Router();
 
   router.get('/', async (req, res) => {

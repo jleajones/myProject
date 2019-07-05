@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { LEVER_URL } from '@serverLib/constants';
-import { JOBS } from '@serverLib/constants';
+import { LEVER_URL, JOBS } from '@serverLib/constants';
 import filterHandler from '@filters/global';
 import { generateSlug } from '@serverLib/utils';
 import { lever2Dispay, lever2Group } from '@serverLib/groupMappings';
@@ -13,7 +12,7 @@ export async function allJobsHandler(req, res) {
   // const { data: jobs } = await axios.get(LEVER_URL);
   const { data: jobs } = JOBS;
   if (req.query) {
-    finalJobs = filterHandler(req.query, jobs );
+    finalJobs = filterHandler(req.query, jobs);
   } else {
     finalJobs = jobs;
   }
@@ -63,9 +62,8 @@ export async function jobHandler(req, res) {
         ...acc,
         { ...curr, slug, cat: lever2Dispay[team] || `INT-${team}` }
       ];
-    } else {
-      return acc;
     }
+    return acc;
   }, []);
 
   res.json(job);

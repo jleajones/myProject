@@ -38,7 +38,7 @@ import {
   PRODUCT,
   PM,
   FINANCE
-} from "./constants";
+} from './constants';
 
 export const lever2Dispay = {
   [RETAIL]: AUTO_RECON,

@@ -5,7 +5,7 @@ import { camelCase } from '@clientLib/utils';
 import PATHS from '@constants/paths';
 import Link from '@shared/Link';
 
-import { items } from './constants';
+import items from './constants';
 import lang from './language';
 
 const NavMenu = () => (
@@ -15,8 +15,9 @@ const NavMenu = () => (
         <NavItem key={item}>
           <Link
             to={PATHS[camelCase(item)].path}
-            category={'Header'}
+            category="Header"
             label={item}
+            color="primary"
           >
             {lang[camelCase(item)]()}
           </Link>

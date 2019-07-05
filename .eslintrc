@@ -1,0 +1,28 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  "plugins": ["import", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "comma-dangle": 0,
+    "react/jsx-filename-extension": 0,
+    "no-underscore-dangle": 0
+  },
+  "globals": {
+    "performance": "readonly",
+    "document": "readonly",
+    "window": "writable"
+  }
+}

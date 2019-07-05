@@ -1,6 +1,8 @@
 import { lever2Dispay } from '@serverLib/groupMappings';
 import { generateSlug } from '@serverLib/utils';
 
+export const anotherReducer = {};
+
 export const titleReducer = (
   acc,
   { id, text, applyUrl, categories: { team } }
@@ -11,9 +13,8 @@ export const titleReducer = (
       ...acc,
       { id, text, applyUrl, slug, cat: lever2Dispay[team] || `INT-${team}` }
     ];
-  } else {
-    return acc;
   }
+  return acc;
 };
 
 // export const jobReducer = (acc, curr, idx, col, jobSlug) => {

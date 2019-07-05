@@ -29,11 +29,11 @@ const DriveWithUsPage = () => {
         <meta name="description" content="Drive with LG&J Freight" />
       </Helmet>
       <Header />
-      <Fade in={true}>
+      <Fade in>
         <Container>
           <Grid container justify="center">
             <Grid item xs={12} sm={10} md={8}>
-              <StyledPaper square={true}>
+              <StyledPaper square>
                 <Typography
                   variant="h6"
                   align="center"

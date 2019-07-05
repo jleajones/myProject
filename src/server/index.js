@@ -1,14 +1,13 @@
 import express from 'express';
-import React from 'react';
 import bodyParser from 'body-parser';
 import moment from 'moment';
 import morgan from 'morgan';
 
 import buildLogger from '@serverCore/lib/logger';
 import renderer from '@serverCore/handlers/renderer';
-import { healthCheck } from '@serverCore/middleware/healthCheckMiddleware';
+import healthCheck from '@serverCore/middleware/healthCheckMiddleware';
 
-import { apiBuilder } from '@middleware/apiMiddleware';
+import apiBuilder from '@middleware/apiMiddleware';
 
 import projectConfig from '@root/package.json';
 import apiVersion from '@api/apiVersion';
@@ -30,7 +29,9 @@ app.use(
   healthCheck(logger, projectConfig.version, projectConfig.name, startTime)
 );
 
-app.get('*', async (req, res) => await renderer(req, res, logger));
+app.get('*', async (req, res) => {
+  await renderer(req, res, logger);
+});
 app.disable('x-powered-by');
 app.listen(PORT, () => {
   logger.info(`🌎 => Running... http://localhost:${PORT}`);

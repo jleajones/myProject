@@ -15,9 +15,8 @@ export default (query, data) => {
         } = curr;
         if (team && generateSlug(lever2Group[team].toLowerCase()) === fv) {
           return [...acc, curr];
-        } else {
-          return acc;
         }
+        return acc;
       }, []);
     }
 
@@ -28,9 +27,8 @@ export default (query, data) => {
         } = curr;
         if (team && team.toLowerCase() === fv) {
           return [...acc, curr];
-        } else {
-          return acc;
         }
+        return acc;
       }, []);
     }
   });

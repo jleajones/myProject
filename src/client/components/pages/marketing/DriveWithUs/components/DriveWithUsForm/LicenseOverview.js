@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { USStatesForSelect } from '@constants/states';
+import PropTypes from 'prop-types';
 
 const LicenseOverview = ({
   licenseNumber,
@@ -12,10 +13,10 @@ const LicenseOverview = ({
   licenseState,
   updateLicenseState,
   licenseExpiration,
-  updateLicenseExpiration,
-  physicalExpiration,
-  endorsements,
-  updateEndorsements
+  updateLicenseExpiration
+  // physicalExpiration,
+  // endorsements,
+  // updateEndorsements
 }) => (
   <Grid container spacing={2}>
     <Grid item xs={12}>
@@ -88,5 +89,19 @@ const LicenseOverview = ({
     </Grid>
   </Grid>
 );
+
+LicenseOverview.propTypes = {
+  licenseNumber: PropTypes.string.isRequired,
+  updateLicenseNumber: PropTypes.func.isRequired,
+  licenseCountry: PropTypes.string.isRequired,
+  updateLicenseCountry: PropTypes.func.isRequired,
+  licenseState: PropTypes.string.isRequired,
+  updateLicenseState: PropTypes.func.isRequired,
+  licenseExpiration: PropTypes.string.isRequired,
+  updateLicenseExpiration: PropTypes.func.isRequired
+  // physicalExpiration: PropTypes.string.isRequired,
+  // endorsements: PropTypes.string.isRequired,
+  // updateEndorsements: PropTypes.func.isRequired
+};
 
 export default LicenseOverview;

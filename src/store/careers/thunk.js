@@ -7,7 +7,7 @@ const setError = error => {
   console.log(error);
 };
 
-export const getCareers = () => {
+export default () => {
   return async dispatch => {
     try {
       dispatch(fetchCareers());

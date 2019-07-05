@@ -8,6 +8,7 @@ import { loadableReady } from '@loadable/component';
 import configureStore from '@store/index';
 import MyThemeProvider from '@shared/theme';
 import App from '@components/App';
+import PropTypes from 'prop-types';
 
 const ClientApp = ({ store }) => (
   <Provider store={store}>
@@ -20,6 +21,10 @@ const ClientApp = ({ store }) => (
     </BrowserRouter>
   </Provider>
 );
+
+ClientApp.propTypes = {
+  store: PropTypes.shape().isRequired
+};
 
 loadableReady(() => {
   const store = configureStore(window.__INITIAL_STATE__);

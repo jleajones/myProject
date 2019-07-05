@@ -5,11 +5,21 @@ import { Typography } from '@material-ui/core';
 
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import PropTypes from 'prop-types';
 
-const PersonalInfo = ({firstName, updateFirstName, lastName, updateLastName, ssn, updateSSN, dob, updateDOB}) => {
+const PersonalInfo = ({
+  firstName,
+  updateFirstName,
+  lastName,
+  updateLastName,
+  ssn,
+  updateSSN,
+  dob,
+  updateDOB
+}) => {
   const [ssnVisibility, updateSSNVisibility] = useState(false);
 
-  const handleClickShowSSN = e => {
+  const handleClickShowSSN = () => {
     updateSSNVisibility(!ssnVisibility);
   };
 
@@ -56,8 +66,11 @@ const PersonalInfo = ({firstName, updateFirstName, lastName, updateLastName, ssn
           InputProps={{
             endAdornment: (
               <div
+                tabIndex={0}
+                onKeyPress={() => {}}
                 aria-label="Toggle social security visibility"
                 onClick={handleClickShowSSN}
+                role="button"
               >
                 {ssnVisibility ? <Visibility /> : <VisibilityOff />}
               </div>
@@ -72,15 +85,26 @@ const PersonalInfo = ({firstName, updateFirstName, lastName, updateLastName, ssn
           label="Date of birth"
           margin="normal"
           fullWidth
-          type='date'
+          type="date"
           InputLabelProps={{
-            shrink: true,
+            shrink: true
           }}
           onChange={e => updateDOB(e.target.value)}
         />
       </Grid>
     </Grid>
   );
+};
+
+PersonalInfo.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  updateFirstName: PropTypes.func.isRequired,
+  lastName: PropTypes.string.isRequired,
+  updateLastName: PropTypes.func.isRequired,
+  ssn: PropTypes.string.isRequired,
+  updateSSN: PropTypes.func.isRequired,
+  dob: PropTypes.string.isRequired,
+  updateDOB: PropTypes.func.isRequired
 };
 
 export default PersonalInfo;

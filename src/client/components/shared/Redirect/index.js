@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch, Redirect as Original } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Redirect = ({ from = [], to }) => (
+const Redirect = ({ from, to }) => (
   <Route
     render={({ staticContext }) => {
       if (staticContext) {
@@ -20,4 +21,10 @@ const Redirect = ({ from = [], to }) => (
     }}
   />
 );
+
+Redirect.propTypes = {
+  to: PropTypes.string.isRequired,
+  from: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
 export default Redirect;

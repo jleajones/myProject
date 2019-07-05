@@ -1,1 +1,1 @@
-export const items = ['home', 'about', 'drive with us'];
+export default ['home', 'about', 'drive with us'];

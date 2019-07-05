@@ -5,9 +5,9 @@ export const getDisplayName = WrappedComponent => {
 export const camelCase = str =>
   str
     .split(' ')
-    .map((str, idx) => {
-      if (idx > 0) return str.charAt(0).toUpperCase() + str.slice(1);
+    .map((piece, idx) => {
+      if (idx > 0) return piece.charAt(0).toUpperCase() + piece.slice(1);
 
-      return str;
+      return piece;
     })
     .join('');

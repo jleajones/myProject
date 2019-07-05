@@ -1,11 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Page from '@shared/Page'
+import Page from '@shared/Page';
 
 const AboutPage = () => {
   return (
-    <Page name='AboutPage'>
+    <Page name="AboutPage">
       <Helmet>
         <title>About Page</title>
         <meta name="description" content="This is the About..." />

@@ -1,3 +1,5 @@
+export const test = {};
+
 export const USStatesForSelect = [
   { value: 'AL', name: 'Alabama' },
   { value: 'AK', name: 'Alaska' },

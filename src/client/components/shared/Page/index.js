@@ -7,9 +7,14 @@ const Page = ({ name, children, style }) => {
   return <main style={style}>{children}</main>;
 };
 
+Page.defaultProps = {
+  style: {}
+};
+
 Page.propTypes = {
   children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  style: PropTypes.shape()
 };
 
 export default Page;

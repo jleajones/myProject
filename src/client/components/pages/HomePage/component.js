@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { frontloadConnect } from 'react-frontload';
 import Typography from '@material-ui/core/Typography';
@@ -34,6 +35,14 @@ const HomePage = ({ careers }) => {
       <Footer />
     </Page>
   );
+};
+
+HomePage.propTypes = {
+  careers: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
 // export default HomePage;

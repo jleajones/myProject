@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import PATHS from '@constants/paths';
@@ -16,6 +17,12 @@ const Header = ({ location }) => {
       </Container>
     </header>
   );
+};
+
+Header.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default withRouter(Header);

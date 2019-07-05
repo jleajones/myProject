@@ -12,7 +12,7 @@ class Logger {
           filename: errorFilename,
           level: 'error'
         }),
-        new winston.transports.File({ filename: filename }),
+        new winston.transports.File({ filename }),
         new winston.transports.Console({
           json: true,
           stringify: obj => JSON.stringify(obj)
@@ -24,7 +24,7 @@ class Logger {
   silly(event, obj = {}) {
     this.logger.silly(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
@@ -33,7 +33,7 @@ class Logger {
   debug(event, obj = {}) {
     this.logger.debug(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
@@ -42,7 +42,7 @@ class Logger {
   verbose(event, obj = {}) {
     this.logger.verbose(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
@@ -51,7 +51,7 @@ class Logger {
   info(event, obj = {}) {
     this.logger.info(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
@@ -60,7 +60,7 @@ class Logger {
   warn(event, obj = {}) {
     this.logger.warn(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
@@ -69,19 +69,19 @@ class Logger {
   error(event, obj = {}) {
     this.logger.error(
       event,
-      Object.assign(this.sanitizeObject(obj), {
+      Object.assign(Logger.sanitizeObject(obj), {
         timestamp: new Date().toISOString()
       })
     );
   }
 
   stream = {
-    write: (message, encoding) => {
+    write: message => {
       this.logger.info(message);
     }
   };
 
-  sanitizeObject(obj) {
+  static sanitizeObject(obj) {
     return obj;
   }
 }

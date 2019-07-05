@@ -1,4 +1,4 @@
-import Types, { FETCH_CAREERS } from './actions/types';
+import { Types, FETCH_CAREERS } from './actions/types';
 
 const initialState = {
   list: []

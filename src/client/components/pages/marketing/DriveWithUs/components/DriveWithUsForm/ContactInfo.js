@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 
 const ContactInfo = ({
   phoneNumber,
@@ -10,10 +11,10 @@ const ContactInfo = ({
   updateCellPhone,
   email,
   updateEmail,
-  preferredContactMethod,
-  updatePreferredContactMethod,
-  preferredContactTime,
-  updatePreferredContactTime,
+  // preferredContactMethod,
+  // updatePreferredContactMethod,
+  // preferredContactTime,
+  // updatePreferredContactTime,
   emailConfirmation,
   updateEmailConfirmation
 }) => {
@@ -70,6 +71,21 @@ const ContactInfo = ({
       </Grid>
     </Grid>
   );
+};
+
+ContactInfo.propTypes = {
+  phoneNumber: PropTypes.string.isRequired,
+  updatePhoneNumber: PropTypes.string.isRequired,
+  cellPhone: PropTypes.string.isRequired,
+  updateCellPhone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  updateEmail: PropTypes.string.isRequired,
+  // preferredContactMethod: PropTypes.string.isRequired,
+  // updatePreferredContactMethod: PropTypes.string.isRequired,
+  // preferredContactTime: PropTypes.string.isRequired,
+  // updatePreferredContactTime: PropTypes.string.isRequired,
+  emailConfirmation: PropTypes.string.isRequired,
+  updateEmailConfirmation: PropTypes.string.isRequired
 };
 
 export default ContactInfo;

@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
+import getCareers from '@store/careers/thunk';
 import Component from './component';
-
-import { getCareers } from '@store/careers/thunk';
 
 const mapStateToProps = state => {
   const { careers } = state;
   return {
-    careers
+    careers: careers.list
   };
 };
 

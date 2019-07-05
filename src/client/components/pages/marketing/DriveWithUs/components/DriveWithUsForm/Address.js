@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Typography } from '@material-ui/core';
 
 import { USStatesForSelect } from '@constants/states';
+import PropTypes from 'prop-types';
 
 const Address = ({
   streetAddress,
@@ -70,22 +71,22 @@ const Address = ({
 
       <Grid item xs={12} md={6}>
         <TextField
-            select
-            value={state}
-            onChange={e => updateState(e.target.value)}
-            id="state"
-            label="State/Province"
-            margin="normal"
-            fullWidth
-            SelectProps={{
-              native: true
-            }}
+          select
+          value={state}
+          onChange={e => updateState(e.target.value)}
+          id="state"
+          label="State/Province"
+          margin="normal"
+          fullWidth
+          SelectProps={{
+            native: true
+          }}
         >
           <option />
           {USStatesForSelect.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.name}
-              </option>
+            <option key={option.value} value={option.value}>
+              {option.name}
+            </option>
           ))}
         </TextField>
       </Grid>
@@ -111,6 +112,21 @@ const Address = ({
       </Grid>
     </Grid>
   );
+};
+
+Address.propTypes = {
+  streetAddress: PropTypes.string.isRequired,
+  streetAddressCont: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  postalCode: PropTypes.string.isRequired,
+  updateStreetAddress: PropTypes.func.isRequired,
+  updateStreetAddressCont: PropTypes.func.isRequired,
+  updateCity: PropTypes.func.isRequired,
+  updateState: PropTypes.func.isRequired,
+  updatePostalCode: PropTypes.func.isRequired,
+  country: PropTypes.string.isRequired,
+  updateCountry: PropTypes.func.isRequired
 };
 
 export default Address;
