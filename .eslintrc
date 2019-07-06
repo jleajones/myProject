@@ -23,6 +23,8 @@
   "globals": {
     "performance": "readonly",
     "document": "readonly",
-    "window": "writable"
+    "window": "writable",
+    "test": "readonly",
+    "expect": "readonly"
   }
 }

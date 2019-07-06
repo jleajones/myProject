@@ -5,19 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors",
     "build": "NODE_ENV=development webpack -w",
     "start": "NODE_ENV=development nodemon -r esm ./bin/server.js",
     "build:prod": "NODE_ENV=production webpack",
     "start:prod": "NODE_ENV=production node -r esm ./bin/server.js"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "^@shared(.*)$": "<rootDir>/src/client/components/shared$1",
-      "^@client(.*)$": "<rootDir>/src/client$1",
-      "^@constants(.*)$": "<rootDir>/src/constants$1"
-    }
-  },
   "keywords": [
+    "jest",
+    "enzyme",
     "javascript",
     "node",
     "express",
@@ -64,6 +61,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "@babel/preset-react": "^7.0.0",
     "@loadable/babel-plugin": "^5.10.0",
@@ -76,6 +74,9 @@
     "babel-preset-react-app": "^7.0.2",
     "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",

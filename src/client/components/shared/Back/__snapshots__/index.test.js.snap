@@ -15,26 +15,23 @@ exports[`Renders Back Button 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <h6
-    className="MuiTypography-root MuiTypography-h6"
+    class="MuiTypography-root MuiTypography-h6"
   >
     <a
       href="/"
-      onClick={[Function]}
     >
       <span
-        className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-        onBlur={[Function]}
-        onFocus={[Function]}
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
       >
         <span
-          className="c1"
+          class="c1"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root"
+            class="MuiSvgIcon-root"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -44,7 +41,7 @@ exports[`Renders Back Button 1`] = `
             />
           </svg>
           <span
-            className="c2"
+            class="c2"
           >
             Back
           </span>

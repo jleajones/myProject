@@ -7,6 +7,12 @@ Some introduction to the detailed info to come.
 - express
 - webpack
 - react
+- redux
+- styled-components
+- jest
+- enzyme
+- eslint
+- prettier
 ### Directory Structure
 ```yaml
 /
@@ -72,9 +78,44 @@ npn run start:prod
 ```
 
 ## Road Map
-- [ ] Unit test framework
-- [ ] Styling integration
-- [ ] Static asset management
+-[x] webpack configuration
+    -[x] client
+    -[x] server
+    -[x] Aliases
+-[x] client
+    -[x] React
+    -[x] Styled Components
+    -[x] Redux
+-[x] server
+    -[x] Express
+    -[x] Logger
+    -[x] API
+    -[x] SSR
+    -[ ] Auth
+-[x] eslint configuration
+    - `.eslintrc`
+    - `webpack.config.js`
+-[x] PropTypes
+-[ ] Environment Configuration
+-[ ] Tests
+    -[ ] jest
+        - `jest.config.js`
+        -[x] styled components
+        - https://www.styled-components.com/docs/tooling#jest-integration
+        -[x] withRouter (React Router)
+        - https://reacttraining.com/react-router/web/guides/testing
+        -[ ] connect (Redux)
+    -[x] enzyme
+        - `enzyme.setup.js`
+        - https://airbnb.io/enzyme/
+    -[ ] client
+        - [x] unit tests
+        - [ ] integration tests
+        - [ ] e2e tests
+    -[ ] server
+        - [ ] unit tests
+        - [ ] integration tests
+        - [ ] e2e tests
 
 ## Contribution
 create an issue, create a feature branch, create a pull request
