@@ -78,45 +78,45 @@ npn run start:prod
 ```
 
 ## Road Map
--[x] webpack configuration
-    -[x] client
-    -[x] server
-    -[x] Aliases
--[x] client
-    -[x] React
-    -[x] Styled Components
-    -[x] Redux
--[x] server
-    -[x] Express
-    -[x] Logger
-    -[x] API
-    -[x] SSR
-    -[ ] Auth
--[x] eslint configuration
+- [x] webpack configuration
+    - [x] client
+    - [x] server
+    - [x] Aliases
+- [x] client
+    - [x] React
+    - [x] Styled Components
+    - [x] Redux
+- [x] server
+    - [x] Express
+    - [x] Logger
+    - [x] API
+    - [x] SSR
+    - [ ] Auth
+- [x] eslint configuration
     - `.eslintrc`
     - `webpack.config.js`
--[x] PropTypes
--[ ] Environment Configuration
--[ ] Database connection
-    -[ ] Postgres
-    -[ ] Knex
-    -[ ] GraphQL
--[ ] Tests
-    -[ ] jest
+- [x] PropTypes
+- [ ] Environment Configuration
+- [ ] Database connection
+    - [ ] Postgres
+    - [ ] Knex
+    - [ ] GraphQL
+- [ ] Tests
+    - [ ] jest
         - `jest.config.js`
-        -[x] styled components
+        - [x] styled components
         - https://www.styled-components.com/docs/tooling#jest-integration
-        -[x] withRouter (React Router)
+        - [x] withRouter (React Router)
         - https://reacttraining.com/react-router/web/guides/testing
-        -[ ] connect (Redux)
-    -[x] enzyme
+        - [ ] connect (Redux)
+    - [x] enzyme
         - `enzyme.setup.js`
         - https://airbnb.io/enzyme/
-    -[ ] client
+    - [ ] client
         - [x] unit tests
         - [ ] integration tests
         - [ ] e2e tests
-    -[ ] server
+    - [ ] server
         - [ ] unit tests
         - [ ] integration tests
         - [ ] e2e tests
