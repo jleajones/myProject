@@ -1,13 +1,14 @@
-import axios from 'axios';
+import axios from 'axios/index';
 
 import { LEVER_URL, JOBS } from '@serverLib/constants';
-import filterHandler from '@filters/global';
+import filterHandler from '@api/filters/global';
 import { generateSlug } from '@serverLib/utils';
 import { lever2Dispay, lever2Group } from '@serverLib/groupMappings';
-import { titleReducer } from '@handlers/reducers';
-import searchHandler from '@filters/search';
+import { titleReducer } from '@api/reducers';
+import searchHandler from '@api/filters/search';
 
-export async function allJobsHandler(req, res) {
+// export async function allJobsHandler(req, res, logger, db) {
+export async function getJobs(req, res) {
   let finalJobs;
   // const { data: jobs } = await axios.get(LEVER_URL);
   const { data: jobs } = JOBS;
@@ -16,7 +17,6 @@ export async function allJobsHandler(req, res) {
   } else {
     finalJobs = jobs;
   }
-
   res.json(
     finalJobs.map(job => ({
       ...job,
@@ -33,7 +33,8 @@ export async function allJobsHandler(req, res) {
   );
 }
 
-export async function allJobTitlesHandler(req, res) {
+// export async function allJobTitlesHandler(req, res, logger, db) {
+export async function getJobTitles(req, res) {
   const { data: jobs } = await axios.get(LEVER_URL);
   // const jobs = JOBS;
   if (req.query) {
@@ -48,7 +49,8 @@ export async function allJobTitlesHandler(req, res) {
   }
 }
 
-export async function jobHandler(req, res) {
+// export async function jobHandler(req, res, logger, db) {
+export async function getJob(req, res) {
   const { data: jobs } = await axios.get(LEVER_URL);
   // const json = JOBS;
   const job = jobs.reduce((acc, curr) => {

@@ -10,13 +10,13 @@ const versions = {
   v0
 };
 
-export default (logger, version) => {
+export default (logger, version, db) => {
   const router = Router();
   router.use('*', (req, res, next) =>
     eventIdMiddleware(req, res, next, logger)
   );
 
-  router.use('/', versions[version](logger));
+  router.use('/', versions[version](logger, db));
 
   router.get('*', (req, res) => {
     res.status(404).send('status 404: url not found');

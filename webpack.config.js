@@ -13,8 +13,8 @@ const directoryAliases = {
   '@clientLib': path.resolve(__dirname, './src/client/lib'),
   '@components': path.resolve(__dirname, './src/client/components'),
   '@constants': path.resolve(__dirname, './src/constants'),
-  '@filters': path.resolve(__dirname, './src/server/filters'),
-  '@handlers': path.resolve(__dirname, './src/server/handlers'),
+  '@filters': path.resolve(__dirname, './src/server/api/filters'),
+  '@reducers': path.resolve(__dirname, './src/server/api/reducers'),
   '@middleware': path.resolve(__dirname, './src/server/middleware'),
   '@pages': path.resolve(__dirname, './src/client/components/pages'),
   '@root': path.resolve(__dirname, './'),
@@ -78,6 +78,9 @@ const serverConfig = {
   entry: './src/server/index.js',
   target: 'node',
   // externals: [nodeExternals()],
+  externals: {
+    knex: 'commonjs knex'
+  },
   output: {
     path: path.join(__dirname, './bin'),
     filename: 'server.js'

@@ -1,4 +1,4 @@
-export const trackEventHandler = (req, res, logger) => {
+export const trackEventHandler = (req, res, logger /* ,db */) => {
   logger.info('🚜 Track event', {
     eventName: req.body.eventName,
     eventId: req.body.eventId

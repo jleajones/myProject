@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_PATH } from '@store/constants';
 
 import { fetchCareers, setCareers } from './actions/creators';
 
@@ -11,7 +12,7 @@ export default () => {
   return async dispatch => {
     try {
       dispatch(fetchCareers());
-      const response = await axios.get('http://localhost:3001/api/jobs');
+      const response = await axios.get(`${API_PATH}/jobs`);
       dispatch(setCareers(response.data));
     } catch (error) {
       dispatch(setError(error));

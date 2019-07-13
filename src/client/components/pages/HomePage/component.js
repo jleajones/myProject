@@ -8,12 +8,14 @@ import Page from '@shared/Page';
 import Container from '@shared/Container';
 import Footer from '@shared/Footer';
 
-const fetchData = async ({ getCareers }) => {
+const fetchData = async ({ getCareers, getUsers }) => {
   await getCareers();
+  await getUsers();
 };
 
-const HomePage = ({ careers }) => {
+const HomePage = ({ careers, users }) => {
   console.log(careers);
+  console.log(users);
   return (
     <Page
       name="HomePage"
@@ -38,11 +40,8 @@ const HomePage = ({ careers }) => {
 };
 
 HomePage.propTypes = {
-  careers: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired
-    })
-  ).isRequired
+  careers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
 // export default HomePage;

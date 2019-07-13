@@ -97,6 +97,10 @@ npn run start:prod
     - `webpack.config.js`
 -[x] PropTypes
 -[ ] Environment Configuration
+-[ ] Database connection
+    -[ ] Postgres
+    -[ ] Knex
+    -[ ] GraphQL
 -[ ] Tests
     -[ ] jest
         - `jest.config.js`
