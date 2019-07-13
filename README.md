@@ -13,6 +13,9 @@ Some introduction to the detailed info to come.
 - enzyme
 - eslint
 - prettier
+- Postgres
+- GraphQL
+- Knex.js
 ### Directory Structure
 ```yaml
 /
@@ -98,8 +101,9 @@ npn run start:prod
 - [x] PropTypes
 - [ ] Environment Configuration
 - [ ] Database connection
-    - [ ] Postgres
-    - [ ] Knex
+    - [x] Postgres
+    - [x] Knex
+    - https://knexjs.org/
     - [ ] GraphQL
 - [ ] Tests
     - [ ] jest
@@ -122,4 +126,4 @@ npn run start:prod
         - [ ] e2e tests
 
 ## Contribution
-create an issue, create a feature branch, create a pull request
+Create an issue, create a feature branch, create a pull request
