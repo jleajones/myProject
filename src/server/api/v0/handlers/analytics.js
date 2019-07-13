@@ -1,31 +1,43 @@
-export const trackEventHandler = (req, res, logger /* ,db */) => {
-  logger.info('🚜 Track event', {
-    eventName: req.body.eventName,
-    eventId: req.body.eventId
-  });
-  res.status(200).json({
-    type: 'event',
+export const someOtherhandler = () => null;
+
+const buildPageview = body => {
+  const { pageName, screenX, screenY, properties = {} } = body;
+  return {
+    pageName,
+    screenX,
+    screenY,
     properties: {
-      ...req.body.properties
-    },
-    eventName: req.body.eventName,
-    timeStamp: req.body.timeStamp
-  });
+      ...properties
+    }
+  };
 };
 
-export const pageViewHandler = (req, res, logger) => {
-  logger.info('🔭 Page view', {
-    pageName: req.body.pageName,
-    eventId: req.body.eventId
-  });
-  res.status(200).json({
-    type: 'pageView',
+const buildInteraction = body => {
+  const { eventName, label, category, url, properties = {} } = body;
+  return {
+    eventName,
+    label,
+    category,
+    url,
     properties: {
-      ...req.body.properties
-    },
-    pageName: req.body.pageName,
-    screenX: req.body.screenX,
-    screenY: req.body.screenY,
-    timeStamp: req.body.timeStamp
+      ...properties
+    }
+  };
+};
+
+export const analyticsHandler = (req, res, logger /* ,db */) => {
+  const { type } = req.body;
+  let trackingProperties;
+
+  if (type === 'p') {
+    trackingProperties = buildPageview(req.body);
+  } else if (type === 'i') {
+    trackingProperties = buildInteraction(req.body);
+  }
+  logger.info('🚜 Track event', {
+    eventType: type,
+    eventId: req.body.eventId,
+    ...trackingProperties
   });
+  res.status(200).json('OK');
 };

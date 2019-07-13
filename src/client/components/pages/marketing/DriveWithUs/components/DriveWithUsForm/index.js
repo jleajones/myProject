@@ -131,7 +131,7 @@ const DriveWithUsForm = () => {
                   I agree to the use and disclosure of my information as
                   described in{' '}
                   <Link to="/privacy-policy" label="privacy-policy">
-                    LJ&amp;G Freight&pos;s privacy policy
+                    LJ&amp;G Freight&apos;s privacy policy
                   </Link>
                   .
                 </ConsentText>

@@ -75,17 +75,17 @@ const ContactInfo = ({
 
 ContactInfo.propTypes = {
   phoneNumber: PropTypes.string.isRequired,
-  updatePhoneNumber: PropTypes.string.isRequired,
+  updatePhoneNumber: PropTypes.func.isRequired,
   cellPhone: PropTypes.string.isRequired,
-  updateCellPhone: PropTypes.string.isRequired,
+  updateCellPhone: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
-  updateEmail: PropTypes.string.isRequired,
+  updateEmail: PropTypes.func.isRequired,
   // preferredContactMethod: PropTypes.string.isRequired,
   // updatePreferredContactMethod: PropTypes.string.isRequired,
   // preferredContactTime: PropTypes.string.isRequired,
   // updatePreferredContactTime: PropTypes.string.isRequired,
   emailConfirmation: PropTypes.string.isRequired,
-  updateEmailConfirmation: PropTypes.string.isRequired
+  updateEmailConfirmation: PropTypes.func.isRequired
 };
 
 export default ContactInfo;

@@ -1,53 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Renders Back Button 1`] = `
-.c0 {
-  padding-top: 24px;
-}
-
-.c1 {
-  color: white;
-}
-
-.c2 {
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-
-<div
-  class="c0"
->
-  <h6
-    class="MuiTypography-root MuiTypography-h6"
+<Back__BackContainer>
+  <WithStyles(ForwardRef(Typography))
+    variant="h6"
   >
-    <a
-      href="/"
+    <Connect(withRouter(Link))
+      category="top-nav"
+      color="primary"
+      label="back"
+      to={
+        Object {
+          "pathname": "/",
+        }
+      }
     >
-      <span
-        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-      >
-        <span
-          class="c1"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"
-            />
-          </svg>
-          <span
-            class="c2"
-          >
-            Back
-          </span>
-        </span>
-      </span>
-    </a>
-  </h6>
-</div>
+      <Back__WhiteText>
+        <KeyboardBackspaceIcon />
+        <Back__InnerText>
+          Back
+        </Back__InnerText>
+      </Back__WhiteText>
+    </Connect(withRouter(Link))>
+  </WithStyles(ForwardRef(Typography))>
+</Back__BackContainer>
 `;

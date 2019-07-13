@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
@@ -10,11 +9,16 @@ import PATHS from '@constants/paths';
 
 import lang from './language';
 
-const Back = ({ theme }) => (
+const Back = () => (
   <BackContainer>
     <Typography variant="h6">
-      <Link to={{ pathname: PATHS.home.path }} label="back" color="primary">
-        <WhiteText theme={theme}>
+      <Link
+        to={{ pathname: PATHS.home.path }}
+        label="back"
+        category="top-nav"
+        color="primary"
+      >
+        <WhiteText>
           <KeyboardBackspace />
           <InnerText>{lang.back()}</InnerText>
         </WhiteText>
@@ -22,10 +26,6 @@ const Back = ({ theme }) => (
     </Typography>
   </BackContainer>
 );
-
-Back.propTypes = {
-  theme: PropTypes.shape().isRequired
-};
 
 const BackContainer = styled.div`
   padding-top: 24px;

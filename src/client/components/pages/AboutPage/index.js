@@ -5,7 +5,7 @@ import Page from '@shared/Page';
 
 const AboutPage = () => {
   return (
-    <Page name="AboutPage">
+    <Page pageName="AboutPage">
       <Helmet>
         <title>About Page</title>
         <meta name="description" content="This is the About..." />

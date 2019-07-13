@@ -8,17 +8,15 @@ import Page from '@shared/Page';
 import Container from '@shared/Container';
 import Footer from '@shared/Footer';
 
-const fetchData = async ({ getCareers, getUsers }) => {
-  await getCareers();
+const fetchData = async ({ getUsers }) => {
   await getUsers();
 };
 
-const HomePage = ({ careers, users }) => {
-  console.log(careers);
+const HomePage = ({ users }) => {
   console.log(users);
   return (
     <Page
-      name="HomePage"
+      pageName="HomePage"
       style={{
         backgroundImage:
           'url("https://source.unsplash.com/collection/4625959/1600x900")',
@@ -40,7 +38,6 @@ const HomePage = ({ careers, users }) => {
 };
 
 HomePage.propTypes = {
-  careers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   users: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 

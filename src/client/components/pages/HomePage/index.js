@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getCareers from '@store/careers/thunk';
+// import getCareers from '@store/careers/thunk';
 import { getUsers } from '@store/users/thunk';
 import Component from './component';
 
@@ -12,7 +12,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getCareers,
   getUsers
 };
 

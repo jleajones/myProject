@@ -16,7 +16,7 @@ import DriveWithUsForm from './components/DriveWithUsForm';
 const DriveWithUsPage = () => {
   return (
     <Page
-      name="DriveWithUs"
+      pageName="DriveWithUs"
       style={{
         backgroundImage:
           'url("https://source.unsplash.com/collection/4625959/1600x900")',

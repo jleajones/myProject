@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { pageView } from '@client/lib/tracking';
+import { connect } from 'react-redux';
+import { dispatchPageview } from '@store/analytics/thunk';
 
-const Page = ({ name, children, style }) => {
-  pageView(name, {});
-  return <main style={style}>{children}</main>;
+import Component from './component';
+
+const mapStateToProps = state => {
+  const { analytics } = state;
+  return {
+    analytics
+  };
 };
 
-Page.defaultProps = {
-  style: {}
+const mapDispatchToProps = {
+  dispatchPageview
 };
 
-Page.propTypes = {
-  children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
-  style: PropTypes.shape()
-};
-
-export default Page;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Component);

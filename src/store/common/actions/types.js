@@ -1,0 +1,2 @@
+export const SOME_OTHER_COMMON_THING = 'SOME_OTHER_COMMON_THING';
+export const SET_ERROR = 'SET_ERROR';

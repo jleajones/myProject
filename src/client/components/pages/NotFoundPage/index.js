@@ -9,7 +9,7 @@ const NotFoundPage = ({ staticContext }) => {
     staticContext.statusCode = 404;
   }
   return (
-    <Page name="NotFound">
+    <Page pageName="NotFound">
       <Helmet>
         <title>Not Found</title>
         <meta name="description" content="This is the About..." />
