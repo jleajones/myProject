@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Link as OriginalLink } from 'react-router-dom';
 import MUILink from '@material-ui/core/Link';
 
-const EVENT_NAME = `LinkClick`;
+const EVENT_NAME = `Click`;
 
 const Link = ({
   category,
@@ -13,16 +13,18 @@ const Link = ({
   history,
   label,
   onClick,
-  to
+  to,
+  uuid
 }) => {
   const onClickFn = e => {
     e.preventDefault();
     dispatchInteraction({
       eventName: EVENT_NAME,
-      label,
+      label: `${label}-link`,
       category,
       url: window.location.href,
-      uuid: 'SOME_VALUE_FROM_REDUX_COOKIE'
+      uuid,
+      properties: {}
     });
 
     if (onClick) onClick(e);
@@ -46,6 +48,7 @@ Link.defaultProps = {
 
 Link.propTypes = {
   label: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   to: PropTypes.oneOfType([
     PropTypes.string,

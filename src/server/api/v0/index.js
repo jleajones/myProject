@@ -2,8 +2,7 @@ import { Router } from 'express';
 import listEndpoints from 'express-list-endpoints';
 
 import healthCheckHandler from './handlers/healthCheck';
-// import { trackEventHandler, pageViewHandler } from './handlers/analytics';
-import { analyticsHandler } from './handlers/analytics';
+import { analyticsHandler, identityHandler } from './handlers/analytics';
 
 // import { getJobs, getJobTitles, getJob } from './handlers/jobs';
 import {
@@ -28,6 +27,7 @@ export default (logger, db) => {
   // router.post('/analytics', (req, res) =>
   //   trackEventHandler(req, res, logger, db)
   // );
+  router.get('/analytics', (req, res) => identityHandler(req, res, logger, db));
 
   router.post('/analytics', (req, res) =>
     analyticsHandler(req, res, logger, db)

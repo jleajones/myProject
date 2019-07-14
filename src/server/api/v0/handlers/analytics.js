@@ -1,11 +1,13 @@
-export const someOtherhandler = () => null;
+import uuidv4 from 'uuid/v4';
+import { ANALYTICS_TABLE } from '@serverLib/utils/db';
+import { UUID_COOKIE_NAME } from '@serverLib/constants';
 
 const buildPageview = body => {
-  const { pageName, screenX, screenY, properties = {} } = body;
+  const { uuid, pageName, url, properties = {} } = body;
   return {
+    uuid,
     pageName,
-    screenX,
-    screenY,
+    url,
     properties: {
       ...properties
     }
@@ -13,8 +15,9 @@ const buildPageview = body => {
 };
 
 const buildInteraction = body => {
-  const { eventName, label, category, url, properties = {} } = body;
+  const { uuid, eventName, label, category, url, properties = {} } = body;
   return {
+    uuid,
     eventName,
     label,
     category,
@@ -25,19 +28,39 @@ const buildInteraction = body => {
   };
 };
 
-export const analyticsHandler = (req, res, logger /* ,db */) => {
-  const { type } = req.body;
-  let trackingProperties;
-
-  if (type === 'p') {
-    trackingProperties = buildPageview(req.body);
-  } else if (type === 'i') {
-    trackingProperties = buildInteraction(req.body);
+const buildTrackingProperties = body => {
+  if (body.type === 'p') {
+    return buildPageview(body);
   }
+  return buildInteraction(body);
+};
+
+export const identityHandler = (req, res, logger) => {
+  const uuid = req.cookies[UUID_COOKIE_NAME] || uuidv4();
+  logger.info('UUID', { uuid });
+  res.cookie(UUID_COOKIE_NAME, uuid, { path: '/' });
+  res.status(200).json(uuid);
+};
+
+export const analyticsHandler = async (req, res, logger, db) => {
+  const { type, eventId } = req.body;
+  const trackingProperties = buildTrackingProperties(req.body);
   logger.info('🚜 Track event', {
     eventType: type,
-    eventId: req.body.eventId,
+    eventId,
     ...trackingProperties
   });
-  res.status(200).json('OK');
+
+  try {
+    const resp = await db(ANALYTICS_TABLE).insert({
+      eventType: type,
+      eventId: req.body.eventId,
+      ...trackingProperties
+    });
+
+    res.status(200).json(resp);
+  } catch (e) {
+    logger.error(e);
+    res.json(e);
+  }
 };

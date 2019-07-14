@@ -6,7 +6,7 @@ import Component from './component';
 const mapStateToProps = state => {
   const { analytics } = state;
   return {
-    analytics
+    uuid: analytics.uuid
   };
 };
 

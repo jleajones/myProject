@@ -1,8 +1,9 @@
-import { Types, PAGE_VIEW, INTERACTION } from './actions/types';
+import { Types, PAGE_VIEW, INTERACTION, IDENTITY } from './actions/types';
 
 const initialState = {
   pageviews: [],
-  interactions: []
+  interactions: [],
+  uuid: ''
 };
 
 export default (state = initialState, action = {}) => {
@@ -20,10 +21,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         pageviews
       };
-    case Types[PAGE_VIEW].ERROR:
-      return {
-        ...state
-      };
     case Types[INTERACTION].PENDING:
       return {
         ...state
@@ -34,9 +31,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         interactions
       };
-    case Types[INTERACTION].ERROR:
+    case Types[IDENTITY].PENDING:
       return {
         ...state
+      };
+    case Types[IDENTITY].SUCCESS:
+      return {
+        ...state,
+        uuid: data
       };
     default:
       return state;

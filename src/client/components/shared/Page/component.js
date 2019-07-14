@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Page = ({ pageName, children, style, dispatchPageview }) => {
+const Page = ({ pageName, uuid, children, style, dispatchPageview }) => {
   useEffect(() => {
-    dispatchPageview({
-      pageName,
-      uuid: 'COME_FROM_COOKIE',
-      properties: {
-        referrer: document.referrer,
+    if (uuid) {
+      dispatchPageview({
+        pageName,
+        uuid,
         url: window.location.href,
-        screenX: window.innerWidth,
-        screenY: window.innerHeight,
-        userAgent: window.navigator.userAgent,
-        languages: window.navigator.languages
-      }
-    });
-  }, [pageName]);
+        properties: {
+          referrer: document.referrer,
+          screenX: window.innerWidth,
+          screenY: window.innerHeight,
+          userAgent: window.navigator.userAgent,
+          languages: window.navigator.languages
+        }
+      });
+    }
+  }, [pageName, uuid]);
   return <main style={style}>{children}</main>;
 };
 
@@ -26,6 +28,7 @@ Page.defaultProps = {
 Page.propTypes = {
   children: PropTypes.node.isRequired,
   pageName: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
   style: PropTypes.shape(),
   dispatchPageview: PropTypes.func.isRequired
 };

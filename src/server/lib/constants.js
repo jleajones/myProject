@@ -1,3 +1,5 @@
+export const UUID_COOKIE_NAME = 'myproj_uuid';
+
 // PARAMS
 export const GROUP = 'group';
 export const TEAM = 'team';

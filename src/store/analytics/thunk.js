@@ -6,10 +6,26 @@ import {
   pageview,
   setPageview,
   interaction,
-  setInteraction
+  setInteraction,
+  getIdentity,
+  setIdentity
 } from './actions/creators';
 
+export const dispatchIdentity = () => {
+  console.log('dispatchIdentity::');
+  return async dispatch => {
+    dispatch(getIdentity());
+    try {
+      const response = await axios.get(`${API_PATH}/analytics`);
+      dispatch(setIdentity(response.data));
+    } catch (error) {
+      dispatch(setError(error));
+    }
+  };
+};
+
 export const dispatchPageview = (trackingProperties = {}) => {
+  console.log('dispatchPageview::');
   return async dispatch => {
     dispatch(pageview());
     try {

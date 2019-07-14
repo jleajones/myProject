@@ -15,8 +15,8 @@ const NavMenu = () => (
         <NavItem key={item}>
           <Link
             to={PATHS[camelCase(item)].path}
-            category="Header"
-            label={item}
+            category="header"
+            label={item.replace(/\s+/g, '-')}
             color="primary"
           >
             {lang[camelCase(item)]()}
