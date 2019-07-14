@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import monitorReducerEnhancer from '@store/enhancers/monitorReducer';
+import monitorReducerEnhancer from '@store/lib/enhancers/monitorReducer';
 import reducers from '@store/root';
-import middleware from '@store/middleware';
+import middleware from '@store/lib/middleware';
 
 export default preloadedState => {
   const composeEnhancers = composeWithDevTools({}) || compose;

@@ -1,4 +1,6 @@
-export default actionTypes => {
+export const someOtherFunc = () => {};
+
+export const createAsyncActionTypes = actionTypes => {
   const asyncTypes = {};
   actionTypes.forEach(type => {
     asyncTypes[type] = {

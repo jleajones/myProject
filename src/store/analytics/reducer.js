@@ -26,7 +26,7 @@ export default (state = initialState, action = {}) => {
         ...state
       };
     case Types[INTERACTION].SUCCESS:
-      pageviews.push(data);
+      interactions.push(data);
       return {
         ...state,
         interactions
