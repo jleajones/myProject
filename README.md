@@ -91,7 +91,11 @@ npn run start:prod
     - [x] Redux
 - [x] server
     - [x] Express
-    - [x] Logger
+    - [x] Logging
+        - [x] Logger
+        - https://github.com/winstonjs/winston
+        - [x] request
+        - https://github.com/expressjs/morgan
     - [x] API
     - [x] SSR
     - [ ] Auth
@@ -124,6 +128,12 @@ npn run start:prod
         - [ ] unit tests
         - [ ] integration tests
         - [ ] e2e tests
+    - [ ] store
+        - [ ] action creator tests
+        - https://redux.js.org/recipes/writing-tests#action-creators
+        - https://redux.js.org/recipes/writing-tests#async-action-creators
+        - [ ] reducer tests
+        - https://redux.js.org/recipes/writing-tests#reducers
 
 ## Contribution
 Create an issue, create a feature branch, create a pull request

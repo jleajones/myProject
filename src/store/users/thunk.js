@@ -1,21 +1,17 @@
-import axios from 'axios';
 import { API_PATH } from '@store/constants';
+import { get } from '@store/lib/request';
 
+import { setError } from '@store/common/actions/creators';
 import { fetchUsers, setUsers } from './actions/creators';
-
-// TODO: create common store to handle 'error' && 'loading'
-const setError = error => {
-  console.log(error);
-};
 
 export const getUsers = () => {
   return async dispatch => {
     try {
       dispatch(fetchUsers());
-      const response = await axios.get(`${API_PATH}/users`);
+      const response = await get(`${API_PATH}/user`);
       dispatch(setUsers(response.data));
     } catch (error) {
-      dispatch(setError(error));
+      dispatch(setError(error.message));
     }
   };
 };
@@ -24,7 +20,7 @@ export const getUser = uid => {
   return async dispatch => {
     try {
       dispatch(fetchUsers());
-      const response = await axios.get(`${API_PATH}/user/${uid}`);
+      const response = await get(`${API_PATH}/user/${uid}`);
       dispatch(setUsers(response.data));
     } catch (error) {
       dispatch(setError(error));

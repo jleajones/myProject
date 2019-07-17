@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk/index';
+import thunk from 'redux-thunk';
 import loggerMiddleware from './logger';
 
 const middleware = [loggerMiddleware, thunk];

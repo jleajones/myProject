@@ -51,5 +51,9 @@ export default (logger, db) => {
   router.post('/users/:uid', (req, res) => updateUser(req, res, logger, db));
   router.post('/users/:uid', (req, res) => deleteUser(req, res, logger, db));
 
+  router.get('*', (req, res) => {
+    res.status(404).send('status 404: url not found');
+  });
+
   return router;
 };

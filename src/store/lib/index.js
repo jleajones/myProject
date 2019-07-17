@@ -1,4 +1,4 @@
-export const someOtherFunc = () => {};
+export const someOtherThing = () => {};
 
 export const createAsyncActionTypes = actionTypes => {
   const asyncTypes = {};
