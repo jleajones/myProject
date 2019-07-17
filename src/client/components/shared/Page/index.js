@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { dispatchPageview } from '@store/analytics/thunk';
+import { selectUuid } from '@store/analytics/selector';
 
 import Component from './component';
 
 const mapStateToProps = state => {
-  const { analytics } = state;
   return {
-    uuid: analytics.uuid
+    uuid: selectUuid(state)
   };
 };
 
