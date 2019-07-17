@@ -88,7 +88,10 @@ npn run start:prod
 - [x] client
     - [x] React
     - [x] Styled Components
-    - [x] Redux
+    - [ ] Redux
+        - [ ] Selectors/Reselect
+        - [ ] Persist
+        - [x] Thunk
 - [x] server
     - [x] Express
     - [x] Logging
