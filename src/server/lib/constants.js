@@ -1,5 +1,11 @@
 export const UUID_COOKIE_NAME = 'myproj_uuid';
 
+// ANALYTICS EVENTTYPE
+export const EVENT_TYPES = {
+  p: 'pageview',
+  i: 'interaction'
+};
+
 // PARAMS
 export const GROUP = 'group';
 export const TEAM = 'team';

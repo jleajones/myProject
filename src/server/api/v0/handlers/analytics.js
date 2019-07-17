@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4';
 import { ANALYTICS_TABLE } from '@serverLib/utils/db';
-import { UUID_COOKIE_NAME } from '@serverLib/constants';
+import { UUID_COOKIE_NAME, EVENT_TYPES } from '@serverLib/constants';
 
 const buildPageview = body => {
   const { uuid, pageName, url, properties = {} } = body;
@@ -46,14 +46,14 @@ export const analyticsHandler = async (req, res, logger, db) => {
   const { type, eventId } = req.body;
   const trackingProperties = buildTrackingProperties(req.body);
   logger.info('🚜 Track event', {
-    eventType: type,
+    eventType: EVENT_TYPES[type],
     eventId,
     ...trackingProperties
   });
 
   try {
     const resp = await db(ANALYTICS_TABLE).insert({
-      eventType: type,
+      eventType: EVENT_TYPES[type],
       eventId: req.body.eventId,
       ...trackingProperties
     });

@@ -24,9 +24,6 @@ export default (logger, db) => {
   );
 
   /* ******************ANALYTICS********************** */
-  // router.post('/analytics', (req, res) =>
-  //   trackEventHandler(req, res, logger, db)
-  // );
   router.get('/analytics', (req, res) => identityHandler(req, res, logger, db));
 
   router.post('/analytics', (req, res) =>
