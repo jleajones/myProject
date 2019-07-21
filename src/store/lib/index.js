@@ -1,5 +1,9 @@
 export const someOtherThing = () => {};
 
+/**
+ *
+ * @param actionTypes
+ */
 export const createAsyncActionTypes = actionTypes => {
   const asyncTypes = {};
   actionTypes.forEach(type => {

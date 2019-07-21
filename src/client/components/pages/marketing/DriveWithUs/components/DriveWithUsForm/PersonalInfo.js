@@ -7,6 +7,19 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param firstName
+ * @param updateFirstName
+ * @param lastName
+ * @param updateLastName
+ * @param ssn
+ * @param updateSSN
+ * @param dob
+ * @param updateDOB
+ * @returns {*}
+ * @constructor
+ */
 const PersonalInfo = ({
   firstName,
   updateFirstName,

@@ -13,6 +13,11 @@ import Footer from '@shared/Footer';
 import Container from '@shared/Container';
 import DriveWithUsForm from './components/DriveWithUsForm';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const DriveWithUsPage = () => {
   return (
     <Page

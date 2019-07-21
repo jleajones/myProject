@@ -2,6 +2,12 @@ import { GROUP, TEAM } from '@serverLib/constants';
 import { lever2Group } from '@serverLib/groupMappings';
 import { generateSlug } from '@serverLib/utils';
 
+/**
+ *
+ * @param query
+ * @param data
+ * @returns {...*[]}
+ */
 export default (query, data) => {
   let fv;
   let filteredData = [...data];

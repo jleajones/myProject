@@ -14,8 +14,15 @@ import ServerApp from '@serverCore/components/ServerApp';
 const statsFile = path.resolve('./build/loadable-stats.json');
 const extractor = new ChunkExtractor({ statsFile });
 
+/**
+ *
+ * @param req
+ * @param res
+ * @param logger
+ * @returns {Promise<void>}
+ */
 const renderer = async (req, res, logger) => {
-  logger.info('⚙️ ==> rendering ', { url: req.url });
+  logger.info('🖌==> rendering ', { url: req.url });
   const staticContext = {};
   const scSheets = new ServerStyleSheet();
   const muiSheets = new ServerStyleSheets();

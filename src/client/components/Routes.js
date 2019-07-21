@@ -10,13 +10,18 @@ import {
 
 import Redirect from '@shared/Redirect';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const Routes = () => (
   <Switch>
     <Route path={PATHS.home.path} exact component={HomePage} />
     <Route path={PATHS.about.path} exact component={AboutPage} />
     <Route path={PATHS.driveWithUs.path} exact component={DriveWithUs} />
     <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
-    <Redirect from={['/new-about']} to="/" />
+    <Redirect fromUrl={['/new-about']} to="/" />
     <Route path="*" component={NotFoundPage} />
   </Switch>
 );

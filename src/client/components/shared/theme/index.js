@@ -14,6 +14,14 @@ export const themeS = {
   }
 };
 
+/**
+ *
+ * @param children
+ * @param muiTheme
+ * @param styledTheme
+ * @returns {*}
+ * @constructor
+ */
 const MyThemeProvider = ({ children, muiTheme, styledTheme }) => (
   <MuiThemeProvider theme={muiTheme}>
     <ThemeProvider theme={styledTheme}>{children}</ThemeProvider>

@@ -6,6 +6,23 @@ import { Typography } from '@material-ui/core';
 import { USStatesForSelect } from '@constants/states';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param streetAddress
+ * @param streetAddressCont
+ * @param city
+ * @param state
+ * @param postalCode
+ * @param updateStreetAddress
+ * @param updateStreetAddressCont
+ * @param updateCity
+ * @param updateState
+ * @param updatePostalCode
+ * @param country
+ * @param updateCountry
+ * @returns {*}
+ * @constructor
+ */
 const Address = ({
   streetAddress,
   streetAddressCont,

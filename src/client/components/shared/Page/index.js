@@ -4,6 +4,11 @@ import { selectUuid } from '@store/analytics/selector';
 
 import Component from './component';
 
+/**
+ *
+ * @param state
+ * @returns {{uuid: *}}
+ */
 const mapStateToProps = state => {
   return {
     uuid: selectUuid(state)

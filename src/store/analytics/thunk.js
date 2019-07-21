@@ -12,6 +12,10 @@ import {
   setIdentity
 } from './actions/creators';
 
+/**
+ *
+ * @returns {Function}
+ */
 export const dispatchIdentity = () => {
   return async dispatch => {
     dispatch(getIdentity());
@@ -24,6 +28,11 @@ export const dispatchIdentity = () => {
   };
 };
 
+/**
+ *
+ * @param trackingProperties
+ * @returns {Function}
+ */
 export const dispatchPageview = (trackingProperties = {}) => {
   return async dispatch => {
     dispatch(pageview());
@@ -39,6 +48,11 @@ export const dispatchPageview = (trackingProperties = {}) => {
   };
 };
 
+/**
+ *
+ * @param trackingProperties
+ * @returns {Function}
+ */
 export const dispatchInteraction = (trackingProperties = {}) => {
   return async dispatch => {
     try {

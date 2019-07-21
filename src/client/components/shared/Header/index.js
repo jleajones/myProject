@@ -7,6 +7,12 @@ import NavMenu from '@shared/NavMenu';
 import Back from '@shared/Back';
 import Container from '@shared/Container';
 
+/**
+ *
+ * @param location
+ * @returns {*}
+ * @constructor
+ */
 const Header = ({ location }) => {
   const NavComponent =
     location.pathname === PATHS.driveWithUs.path ? Back : NavMenu;

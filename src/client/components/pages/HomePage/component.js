@@ -12,6 +12,12 @@ const fetchData = async ({ getUsers }) => {
   await getUsers();
 };
 
+/**
+ *
+ * @param users
+ * @returns {*}
+ * @constructor
+ */
 const HomePage = ({ users }) => {
   console.log(users);
   return (

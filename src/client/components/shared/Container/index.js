@@ -2,6 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param children
+ * @returns {*}
+ * @constructor
+ */
 const Container = ({ children }) => <MyContainer>{children}</MyContainer>;
 
 Container.propTypes = {

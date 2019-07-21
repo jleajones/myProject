@@ -1,7 +1,17 @@
+/**
+ *
+ * @param WrappedComponent
+ * @returns {*|string}
+ */
 export const getDisplayName = WrappedComponent => {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 };
 
+/**
+ *
+ * @param str
+ * @returns {*}
+ */
 export const camelCase = str =>
   str
     .split(' ')

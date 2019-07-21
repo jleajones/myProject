@@ -1,3 +1,8 @@
+/**
+ *
+ * @param store
+ * @returns {function(*): function(*=): *}
+ */
 const logger = store => next => action => {
   console.group(action.type);
   console.info('dispatching', action);

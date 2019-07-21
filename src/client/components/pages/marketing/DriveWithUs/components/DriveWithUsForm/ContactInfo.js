@@ -4,6 +4,19 @@ import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param phoneNumber
+ * @param updatePhoneNumber
+ * @param cellPhone
+ * @param updateCellPhone
+ * @param email
+ * @param updateEmail
+ * @param emailConfirmation
+ * @param updateEmailConfirmation
+ * @returns {*}
+ * @constructor
+ */
 const ContactInfo = ({
   phoneNumber,
   updatePhoneNumber,

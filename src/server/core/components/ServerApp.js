@@ -6,6 +6,14 @@ import App from '@components/App';
 import { StaticRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param req
+ * @param staticContext
+ * @param store
+ * @returns {*}
+ * @constructor
+ */
 const ServerApp = ({ req, staticContext, store }) => {
   return (
     <Provider store={store}>

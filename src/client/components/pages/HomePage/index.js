@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { getUsers } from '@store/users/thunk';
 import Component from './component';
 
+/**
+ *
+ * @param state
+ * @returns {{careers: *, users: *}}
+ */
 const mapStateToProps = state => {
   const { careers, users } = state;
   return {

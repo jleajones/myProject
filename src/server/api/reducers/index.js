@@ -3,6 +3,15 @@ import { generateSlug } from '@serverLib/utils';
 
 export const anotherReducer = {};
 
+/**
+ *
+ * @param acc
+ * @param id
+ * @param text
+ * @param applyUrl
+ * @param team
+ * @returns {*[]|*}
+ */
 export const titleReducer = (
   acc,
   { id, text, applyUrl, categories: { team } }

@@ -4,6 +4,12 @@ import { Helmet } from 'react-helmet';
 import Page from '@shared/Page';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param staticContext
+ * @returns {*}
+ * @constructor
+ */
 const NotFoundPage = ({ staticContext }) => {
   if (staticContext) {
     staticContext.statusCode = 404;

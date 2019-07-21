@@ -4,6 +4,11 @@ import styled from 'styled-components';
 
 import Container from '@shared/Container';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const Footer = () => (
   <FooterWrapper>
     <Container>

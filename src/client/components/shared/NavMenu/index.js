@@ -8,6 +8,11 @@ import Link from '@shared/Link';
 import items from './constants';
 import lang from './language';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const NavMenu = () => (
   <nav>
     <NavList>

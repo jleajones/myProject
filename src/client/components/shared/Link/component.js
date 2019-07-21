@@ -5,6 +5,20 @@ import MUILink from '@material-ui/core/Link';
 
 const EVENT_NAME = `Click`;
 
+/**
+ *
+ * @param category
+ * @param children
+ * @param color
+ * @param dispatchInteraction
+ * @param history
+ * @param label
+ * @param onClick
+ * @param to
+ * @param uuid
+ * @returns {*}
+ * @constructor
+ */
 const Link = ({
   category,
   children,

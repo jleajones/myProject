@@ -5,6 +5,13 @@ import MyThemeProvider from '@shared/theme';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+/**
+ *
+ * @param store
+ * @param children
+ * @returns {*}
+ * @constructor
+ */
 const ClientApp = ({ store, children }) => (
   <Provider store={store}>
     <BrowserRouter>

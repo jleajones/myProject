@@ -5,6 +5,11 @@ import monitorReducerEnhancer from '@store/lib/enhancers/monitorReducer';
 import reducers from '@store/root';
 import middleware from '@store/lib/middleware';
 
+/**
+ *
+ * @param preloadedState
+ * @returns {any}
+ */
 export default preloadedState => {
   const composeEnhancers = composeWithDevTools({}) || compose;
   const composedEnhancers = composeEnhancers(

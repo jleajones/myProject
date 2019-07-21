@@ -4,6 +4,12 @@ const initialState = {
   list: []
 };
 
+/**
+ *
+ * @param state
+ * @param action
+ * @returns {{list: Array}|({list}&{list})}
+ */
 export default (state = initialState, action = {}) => {
   const { type, data } = action;
   switch (type) {

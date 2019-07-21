@@ -1,3 +1,14 @@
+/**
+ *
+ * @param body
+ * @param meta
+ * @param scripts
+ * @param styles
+ * @param muiCss
+ * @param scCss
+ * @param state
+ * @returns {string}
+ */
 export default ({ body, meta, scripts, styles, muiCss, scCss, state }) => {
   return `
     <!DOCTYPE html>

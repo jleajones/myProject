@@ -9,6 +9,11 @@ import PATHS from '@constants/paths';
 
 import lang from './language';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const Back = () => (
   <BackContainer>
     <Typography variant="h6">

@@ -1,5 +1,11 @@
 import { QUERY } from '@serverLib/constants';
 
+/**
+ *
+ * @param query
+ * @param data
+ * @returns {...*[]}
+ */
 export default (query, data) => {
   let filteredData = [...data];
   const params = Object.keys(query);

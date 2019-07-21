@@ -10,6 +10,13 @@ const versions = {
   v0
 };
 
+/**
+ *
+ * @param logger
+ * @param version
+ * @param db
+ * @returns {Router}
+ */
 export default (logger, version, db) => {
   const router = Router();
   router.use('*', (req, res, next) =>

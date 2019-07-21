@@ -4,6 +4,10 @@ import { get } from '@store/lib/request';
 import { setError } from '@store/common/actions/creators';
 import { fetchUsers, setUsers } from './actions/creators';
 
+/**
+ *
+ * @returns {Function}
+ */
 export const getUsers = () => {
   return async dispatch => {
     try {
@@ -16,6 +20,11 @@ export const getUsers = () => {
   };
 };
 
+/**
+ *
+ * @param uid
+ * @returns {Function}
+ */
 export const getUser = uid => {
   return async dispatch => {
     try {

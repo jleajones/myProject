@@ -4,6 +4,10 @@ import { get } from '@store/lib/request';
 import { setError } from '@store/common/actions/creators';
 import { fetchCareers, setCareers } from './actions/creators';
 
+/**
+ *
+ * @returns {Function}
+ */
 export default () => {
   return async dispatch => {
     try {

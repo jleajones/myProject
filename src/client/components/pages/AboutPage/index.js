@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet';
 
 import Page from '@shared/Page';
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 const AboutPage = () => {
   return (
     <Page pageName="AboutPage">

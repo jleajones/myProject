@@ -5,6 +5,19 @@ import TextField from '@material-ui/core/TextField';
 import { USStatesForSelect } from '@constants/states';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param licenseNumber
+ * @param updateLicenseNumber
+ * @param licenseCountry
+ * @param updateLicenseCountry
+ * @param licenseState
+ * @param updateLicenseState
+ * @param licenseExpiration
+ * @param updateLicenseExpiration
+ * @returns {*}
+ * @constructor
+ */
 const LicenseOverview = ({
   licenseNumber,
   updateLicenseNumber,

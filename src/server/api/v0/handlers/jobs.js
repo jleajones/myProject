@@ -8,6 +8,12 @@ import { titleReducer } from '@api/reducers';
 import searchHandler from '@api/filters/search';
 
 // export async function allJobsHandler(req, res, logger, db) {
+/**
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 export async function getJobs(req, res) {
   let finalJobs;
   // const { data: jobs } = await axios.get(LEVER_URL);
@@ -34,6 +40,12 @@ export async function getJobs(req, res) {
 }
 
 // export async function allJobTitlesHandler(req, res, logger, db) {
+/**
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 export async function getJobTitles(req, res) {
   const { data: jobs } = await axios.get(LEVER_URL);
   // const jobs = JOBS;

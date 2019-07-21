@@ -6,6 +6,12 @@ const initialState = {
   uuid: ''
 };
 
+/**
+ *
+ * @param state
+ * @param action
+ * @returns {({pageviews, uuid, interactions}&{interactions: *[]})|({pageviews, uuid, interactions}&{pageviews: *[]})|{pageviews: Array, uuid: string, interactions: Array}|({pageviews, uuid, interactions}&{uuid})}
+ */
 export default (state = initialState, action = {}) => {
   const { type, data } = action;
   const pageviews = [...state.pageviews];

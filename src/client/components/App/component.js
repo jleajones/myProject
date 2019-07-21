@@ -5,6 +5,12 @@ import Header from '@shared/Header';
 import Footer from '@shared/Footer';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param dispatchIdentity
+ * @returns {*}
+ * @constructor
+ */
 const App = ({ dispatchIdentity }) => {
   useEffect(() => {
     const jssStyles = document.getElementById('jss-server-side');

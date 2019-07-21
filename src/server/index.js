@@ -34,5 +34,5 @@ app.get('*', async (req, res) => {
 });
 app.disable('x-powered-by');
 app.listen(PORT, async () => {
-  logger.info(`🌎 => Running... ${PROTOCOL}://${HOST}:${PORT}`);
+  logger.info(`🏃 => Running... ${PROTOCOL}://${HOST}:${PORT}`);
 });

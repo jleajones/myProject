@@ -16,20 +16,23 @@ import {
   deleteUser
 } from './handlers/users';
 
+/**
+ *
+ * @param logger
+ * @param db
+ * @returns {Router}
+ */
 export default (logger, db) => {
   const router = Router();
   /* ******************HEALTHCHECK********************** */
   router.get('/', (req, res) =>
     healthCheckHandler(req, res, listEndpoints(router))
   );
-
   /* ******************ANALYTICS********************** */
   router.get('/analytics', (req, res) => identityHandler(req, res, logger, db));
-
   router.post('/analytics', (req, res) =>
     analyticsHandler(req, res, logger, db)
   );
-
   /* ******************JOBS********************** */
   // router.get('/jobs', (req, res) => getJobs(req, res, logger, db));
   // router.get('/jobs/titles', (req, res) => getJobTitles(req, res, logger, db));
@@ -47,7 +50,7 @@ export default (logger, db) => {
   router.post('/users/:uid', (req, res) => readUser(req, res, logger, db));
   router.post('/users/:uid', (req, res) => updateUser(req, res, logger, db));
   router.post('/users/:uid', (req, res) => deleteUser(req, res, logger, db));
-
+  /* ******************Catch 404********************** */
   router.get('*', (req, res) => {
     res.status(404).send('status 404: url not found');
   });

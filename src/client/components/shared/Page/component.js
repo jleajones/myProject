@@ -1,6 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param pageName
+ * @param uuid
+ * @param children
+ * @param style
+ * @param dispatchPageview
+ * @returns {*}
+ * @constructor
+ */
 const Page = ({ pageName, uuid, children, style, dispatchPageview }) => {
   useEffect(() => {
     if (uuid) {
