@@ -9,9 +9,8 @@ import Component from './component';
  * @returns {{careers: *, users: *}}
  */
 const mapStateToProps = state => {
-  const { careers, users } = state;
+  const { users } = state;
   return {
-    careers: careers.list,
     users: users.list
   };
 };

@@ -1,6 +1,12 @@
 import uuidv4 from 'uuid/v4';
 import { ANALYTICS_TABLE } from '@serverLib/utils/db';
 import { UUID_COOKIE_NAME, EVENT_TYPES } from '@serverLib/constants';
+import {
+  producerCallback,
+  buildProducerPayloads
+} from '@serverCore/lib/producer';
+
+const KAFKA_TOPIC = 'analytics';
 
 /**
  *
@@ -55,10 +61,21 @@ const buildTrackingProperties = body => {
  * @param req
  * @param res
  * @param logger
+ * @param db
+ * @param producer
  */
-export const identityHandler = (req, res, logger) => {
+export const identityHandler = (req, res, logger, db, producer) => {
   const uuid = req.cookies[UUID_COOKIE_NAME] || uuidv4();
-  logger.info('👤 UUID', { uuid });
+  const payload = {
+    eventType: EVENT_TYPES.u,
+    eventId: req.body.eventId,
+    uuid
+  };
+  logger.info('👤 Setting UUID ==>', { ...payload });
+  producer.send(
+    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  );
   res.cookie(UUID_COOKIE_NAME, uuid, { path: '/' });
   res.status(200).json(uuid);
 };
@@ -69,27 +86,31 @@ export const identityHandler = (req, res, logger) => {
  * @param res
  * @param logger
  * @param db
+ * @param producer
  * @returns {Promise<void>}
  */
-export const analyticsHandler = async (req, res, logger, db) => {
+export const analyticsHandler = async (req, res, logger, db, producer) => {
   const { type, eventId } = req.body;
   const trackingProperties = buildTrackingProperties(req.body);
-  logger.info('🚜 Track event', {
+  const payload = {
     eventType: EVENT_TYPES[type],
     eventId,
     ...trackingProperties
+  };
+  logger.info('🚜 Tracking event ==>', {
+    ...payload
   });
 
+  producer.send(
+    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  );
+
   try {
-    const payload = {
-      eventType: EVENT_TYPES[type],
-      eventId: req.body.eventId,
-      ...trackingProperties
-    };
     const query = db(ANALYTICS_TABLE)
       .insert(payload)
       .toString();
-    logger.info('💾 DB Insert: ', { query });
+    logger.info('💾 Inserting ==>', { query });
     const resp = await db(ANALYTICS_TABLE).insert(payload);
     res.status(200).json(resp);
   } catch (e) {

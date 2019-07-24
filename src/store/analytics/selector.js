@@ -1,6 +1,6 @@
 // TODO: integrate reselect
 export const someOtherThing = () => {};
-Z;
+
 /**
  *
  * @param state

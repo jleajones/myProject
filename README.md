@@ -16,6 +16,7 @@ Some introduction to the detailed info to come.
 - Postgres
 - GraphQL
 - Knex.js
+- axios
 ### Directory Structure
 ```yaml
 /
@@ -92,6 +93,19 @@ npn run start:prod
         - [ ] Selectors/Reselect
         - [ ] Persist
         - [x] Thunk
+- [ ] communication
+    - [] Async
+        - [x] Axios
+        - [ ] XSRF Token
+        - https://github.com/axios/axios
+    - [ ] Real-time
+        - [x] Kafka
+        - https://kafka.apache.org/
+        - [x] Kafka-node
+        - https://github.com/SOHU-Co/kafka-node
+        - [ ] Websocket
+        - [ ] Socket.io
+        - [ ] Something else...
 - [x] server
     - [x] Express
     - [x] Logging

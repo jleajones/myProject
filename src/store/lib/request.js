@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { API_PATH } from '@store/constants';
 
-// TODO: create axios instance, configure, for use on the client
-export const { get, post } = axios;
+const instance = axios.create({
+  baseURL: API_PATH,
+  timeout: 1500
+});
+
+export default instance;

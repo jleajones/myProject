@@ -1,5 +1,4 @@
-import { API_PATH } from '@store/constants';
-import { get } from '@store/lib/request';
+import request from '@store/lib/request';
 
 import { setError } from '@store/common/actions/creators';
 import { fetchUsers, setUsers } from './actions/creators';
@@ -12,7 +11,7 @@ export const getUsers = () => {
   return async dispatch => {
     try {
       dispatch(fetchUsers());
-      const response = await get(`${API_PATH}/user`);
+      const response = await request.get(`/users`);
       dispatch(setUsers(response.data));
     } catch (error) {
       dispatch(setError(error.message));
@@ -29,7 +28,7 @@ export const getUser = uid => {
   return async dispatch => {
     try {
       dispatch(fetchUsers());
-      const response = await get(`${API_PATH}/user/${uid}`);
+      const response = await request.get(`/user/${uid}`);
       dispatch(setUsers(response.data));
     } catch (error) {
       dispatch(setError(error));

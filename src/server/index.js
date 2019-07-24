@@ -19,15 +19,13 @@ const HOST = 'localhost';
 const PORT = 3001;
 
 const app = express();
+const { version, name } = projectConfig;
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/', express.static('build'));
 app.use(morgan('combined', { stream: logger.stream }));
 app.use('/api', apiBuilder(logger, apiVersion, db));
-app.use(
-  '/health-check',
-  healthCheck(logger, projectConfig.version, projectConfig.name, startTime)
-);
+app.use('/health-check', healthCheck(logger, version, name, startTime));
 
 app.get('*', async (req, res) => {
   await renderer(req, res, logger);

@@ -3,7 +3,8 @@ export const UUID_COOKIE_NAME = 'myproj_uuid';
 // ANALYTICS EVENT_TYPES
 export const EVENT_TYPES = {
   p: 'pageview',
-  i: 'interaction'
+  i: 'interaction',
+  u: 'identify'
 };
 
 // PARAMS

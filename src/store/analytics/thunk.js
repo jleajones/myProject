@@ -1,5 +1,4 @@
-import { API_PATH } from '@store/constants';
-import { get, post } from '@store/lib/request';
+import request from '@store/lib/request';
 
 import { setError } from '@store/common/actions/creators';
 
@@ -20,7 +19,7 @@ export const dispatchIdentity = () => {
   return async dispatch => {
     dispatch(getIdentity());
     try {
-      const response = await get(`${API_PATH}/analytics`);
+      const response = await request.get(`/analytics`);
       dispatch(setIdentity(response.data));
     } catch (error) {
       dispatch(setError(error));
@@ -37,7 +36,7 @@ export const dispatchPageview = (trackingProperties = {}) => {
   return async dispatch => {
     dispatch(pageview());
     try {
-      const response = await post(`${API_PATH}/analytics`, {
+      const response = await request.post(`/analytics`, {
         ...trackingProperties,
         type: 'p'
       });
@@ -57,7 +56,7 @@ export const dispatchInteraction = (trackingProperties = {}) => {
   return async dispatch => {
     try {
       dispatch(interaction());
-      const response = await post(`${API_PATH}/analytics`, {
+      const response = await request.post(`/analytics`, {
         ...trackingProperties,
         type: 'i'
       });

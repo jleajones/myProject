@@ -9,21 +9,21 @@ import PropTypes from 'prop-types';
  * @returns {*}
  * @constructor
  */
-const Redirect = ({ fromUrl, to }) => (
+const Redirect = ({ from, to }) => (
   <Route
     render={({ staticContext }) => {
       if (staticContext) {
         staticContext.statusCode = 302;
       }
 
-      return Array.isArray(fromUrl) ? (
+      return Array.isArray(from) ? (
         <Switch>
-          {fromUrl.map(cf => (
+          {from.map(cf => (
             <Original key={cf} from={cf} to={to} />
           ))}
         </Switch>
       ) : (
-        <Original key={fromUrl} from={fromUrl} to={to} />
+        <Original key={from} from={from} to={to} />
       );
     }}
   />
@@ -31,7 +31,7 @@ const Redirect = ({ fromUrl, to }) => (
 
 Redirect.propTypes = {
   to: PropTypes.string.isRequired,
-  fromUrl: PropTypes.arrayOf(PropTypes.string).isRequired
+  from: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Redirect;
