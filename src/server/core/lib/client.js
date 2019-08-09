@@ -1,5 +1,5 @@
 import { KafkaClient } from 'kafka-node';
 
 export default new KafkaClient({
-  kafkaHost: 'localhost:9092'
+  kafkaHost: process.env.KAFKA_HOST
 });

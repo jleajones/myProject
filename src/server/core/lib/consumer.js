@@ -4,7 +4,8 @@ import Client from './client';
 const options = {
   autoCommit: false,
   fetchMaxWaitMs: 1000,
-  fetchMaxBytes: 1024 * 1024
+  fetchMaxBytes: 1024 * 1024,
+  fromOffset: true
 };
 
 export default kafkaTopics => {

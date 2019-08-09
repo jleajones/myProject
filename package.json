@@ -9,8 +9,16 @@
     "test:coverage": "jest --coverage --colors",
     "build": "NODE_ENV=development webpack -w",
     "start": "NODE_ENV=development nodemon -r esm ./bin/server.js",
+    "start:debug": "NODE_ENV=development DEBUG=true nodemon -r esm ./bin/server.js",
+    "build:qa": "NODE_ENV=qa webpack",
+    "start:qa": "NODE_ENV=qa node -r esm ./bin/server.js",
+    "start:qa:debug": "NODE_ENV=qa DEBUG=true node -r esm ./bin/server.js",
+    "build:staging": "NODE_ENV=staging webpack",
+    "start:staging": "NODE_ENV=staging node -r esm ./bin/server.js",
+    "start:staging:debug": "NODE_ENV=staging DEBUG=true node -r esm ./bin/server.js",
     "build:prod": "NODE_ENV=production webpack",
-    "start:prod": "NODE_ENV=production node -r esm ./bin/server.js"
+    "start:prod": "NODE_ENV=production node -r esm ./bin/server.js",
+    "start:prod:debug": "NODE_ENV=production DEBUG=true node -r esm ./bin/server.js"
   },
   "keywords": [
     "jest",
@@ -35,6 +43,7 @@
     "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-list-endpoints": "^4.0.1",
     "jss": "^9.8.7",

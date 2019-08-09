@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+// const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const dotenv = require('dotenv');
+const fs = require('fs');
 const path = require('path');
 
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -31,6 +33,17 @@ const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
 
 // const wpPlugins = [
 // ];
+
+const currentPath = path.join(__dirname);
+const basePath = `${currentPath}/.env`;
+const envPath = `${basePath}.${process.env.NODE_ENV}`;
+const finalPath = fs.existsSync(envPath) ? envPath : basePath;
+const envConfig = dotenv.config({ path: finalPath }).parsed;
+const envKeys = Object.keys(envConfig).reduce((prev, next) => {
+  const newPrev = { ...prev };
+  newPrev[`process.env.${next}`] = JSON.stringify(envConfig[next]);
+  return newPrev;
+}, {});
 
 const browserConfig = {
   mode,
@@ -64,7 +77,8 @@ const browserConfig = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new LoadablePlugin()
+    new LoadablePlugin(),
+    new webpack.DefinePlugin(envKeys)
   ],
   resolve: {
     alias: {
@@ -124,7 +138,8 @@ const serverConfig = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new webpack.DefinePlugin(envKeys)
     // new MiniCssExtractPlugin({
     //   filename: cssFileName,
     //   chunkFilename: 'css/[chunkhash].css'

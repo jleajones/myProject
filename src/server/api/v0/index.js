@@ -43,7 +43,10 @@ export default (logger, db) => {
     healthCheckHandler(req, res, listEndpoints(router))
   );
   /* ******************ANALYTICS********************** */
-  router.get('/analytics', (req, res) => identityHandler(req, res, logger, db, producer));
+  router.get('/analytics', (req, res) =>
+    identityHandler(req, res, logger, db, producer)
+  );
+
   router.post('/analytics', (req, res) =>
     analyticsHandler(req, res, logger, db, producer)
   );

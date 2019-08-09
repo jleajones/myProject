@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { API_PATH } from '@store/constants';
 
 const instance = axios.create({
-  baseURL: API_PATH,
+  baseURL: process.env.API_HOST,
   timeout: 1500
 });
 

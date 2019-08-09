@@ -120,7 +120,11 @@ npn run start:prod
     - `.eslintrc`
     - `webpack.config.js`
 - [x] PropTypes
-- [ ] Environment Configuration
+- [x] Environment Configuration
+    - [x] DotEnv
+    - https://github.com/motdotla/dotenv
+    - [x] Webpack Support
+    - https://webpack.js.org/plugins/environment-plugin/
 - [ ] Database connection
     - [x] Postgres
     - [x] Knex

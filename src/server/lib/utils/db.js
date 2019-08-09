@@ -5,9 +5,9 @@ export const ANALYTICS_TABLE = 'analytics';
 
 export default dbConnection({
   client: 'pg',
-  host: 'localhost',
-  port: '5432',
-  user: 'jasonlea-jones',
-  password: '',
-  database: 'myproject'
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
