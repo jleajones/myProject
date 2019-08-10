@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { camelCase } from '@clientLib/utils';
 
 import PATHS from '@constants/paths';
@@ -15,9 +14,9 @@ import lang from './language';
  */
 const NavMenu = () => (
   <nav>
-    <NavList>
+    <ul>
       {items.map(item => (
-        <NavItem key={item}>
+        <li key={item}>
           <Link
             to={PATHS[camelCase(item)].path}
             category="header"
@@ -26,18 +25,18 @@ const NavMenu = () => (
           >
             {lang[camelCase(item)]()}
           </Link>
-        </NavItem>
+        </li>
       ))}
-    </NavList>
+    </ul>
   </nav>
 );
 
-const NavList = styled.ul`
-  margin: 0;
-`;
-
-const NavItem = styled.li`
-  color: ${props => props.theme.colors.primary};
-`;
+// const NavList = styled.ul`
+//   margin: 0;
+// `;
+//
+// const NavItem = styled.li`
+//   color: ${props => props.theme.colors.primary};
+// `;
 
 export default NavMenu;

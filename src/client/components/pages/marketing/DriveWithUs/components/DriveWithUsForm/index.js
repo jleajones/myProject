@@ -5,7 +5,6 @@ import { Typography } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import NoSsr from '@material-ui/core/NoSsr';
-import styled from 'styled-components';
 
 import Link from '@shared/Link';
 import PersonalInfo from './PersonalInfo';
@@ -56,7 +55,7 @@ const DriveWithUsForm = () => {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <FormSection>
+      <section>
         <PersonalInfo
           onBlur={handleOnBlur}
           firstName={firstName}
@@ -68,8 +67,8 @@ const DriveWithUsForm = () => {
           updateSSN={updateSSN}
           updateDOB={updateDOB}
         />
-      </FormSection>
-      <FormSection>
+      </section>
+      <section>
         <Address
           onBlur={handleOnBlur}
           streetAddress={streetAddress}
@@ -85,8 +84,8 @@ const DriveWithUsForm = () => {
           updateState={updateState}
           updatePostalCode={updatePostalCode}
         />
-      </FormSection>
-      <FormSection>
+      </section>
+      <section>
         <ContactInfo
           onBlur={handleOnBlur}
           phoneNumber={phoneNumber}
@@ -102,8 +101,8 @@ const DriveWithUsForm = () => {
           emailConfirmation={emailConfirmation}
           updateEmailConfirmation={updateEmailConfirmation}
         />
-      </FormSection>
-      <FormSection>
+      </section>
+      <section>
         <LicenseOverview
           licenseNumber={licenseNumber}
           updateLicenseNumber={updateLicenseNumber}
@@ -118,9 +117,9 @@ const DriveWithUsForm = () => {
           endorsements={endorsements}
           updateEndorsements={updateEndorsements}
         />
-      </FormSection>
+      </section>
       <NoSsr>
-        <FormSection>
+        <section>
           <Grid container>
             <FormControlLabel
               control={
@@ -132,18 +131,18 @@ const DriveWithUsForm = () => {
                 />
               }
               label={
-                <ConsentText>
+                <Typography>
                   I agree to the use and disclosure of my information as
                   described in{' '}
                   <Link to="/privacy-policy" label="privacy-policy">
                     LJ&amp;G Freight&apos;s privacy policy
                   </Link>
                   .
-                </ConsentText>
+                </Typography>
               }
             />
           </Grid>
-        </FormSection>
+        </section>
       </NoSsr>
       <Grid container justify="flex-end">
         <Button variant="contained" color="primary" onClick={handleOnSubmit}>
@@ -153,13 +152,5 @@ const DriveWithUsForm = () => {
     </form>
   );
 };
-
-const ConsentText = styled(Typography)`
-  font-size: 10px;
-`;
-
-const FormSection = styled.section`
-  margin: 24px 0;
-`;
 
 export default DriveWithUsForm;

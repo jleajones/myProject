@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+
 import Routes from '@components/Routes';
 import Header from '@shared/Header';
 import Footer from '@shared/Footer';
@@ -25,7 +28,9 @@ const App = ({ dispatchIdentity }) => {
     <>
       <CssBaseline />
       <Header />
-      <Routes />
+      <Container maxWidth={false}>
+        <Routes />
+      </Container>
       <Footer />
     </>
   );

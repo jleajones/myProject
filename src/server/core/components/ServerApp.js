@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Frontload } from 'react-frontload';
-import MyThemeProvider from '@shared/theme';
+import ThemeProvider from '@shared/theme';
 import App from '@components/App';
 import { StaticRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -19,9 +19,9 @@ const ServerApp = ({ req, staticContext, store }) => {
     <Provider store={store}>
       <StaticRouter location={req.url} context={staticContext}>
         <Frontload isServer>
-          <MyThemeProvider>
+          <ThemeProvider>
             <App />
-          </MyThemeProvider>
+          </ThemeProvider>
         </Frontload>
       </StaticRouter>
     </Provider>

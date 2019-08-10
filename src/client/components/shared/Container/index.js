@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 /**
@@ -8,18 +7,18 @@ import PropTypes from 'prop-types';
  * @returns {*}
  * @constructor
  */
-const Container = ({ children }) => <MyContainer>{children}</MyContainer>;
+const Container = ({ children }) => <div>{children}</div>;
 
 Container.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const MyContainer = styled.div`
-  padding: 0 20px;
-
-  @media (max-width: 600px) {
-    padding: 0;
-  }
-`;
+// const MyContainer = styled.div`
+//   padding: 0 20px;
+//
+//   @media (max-width: 600px) {
+//     padding: 0;
+//   }
+// `;
 
 export default Container;
