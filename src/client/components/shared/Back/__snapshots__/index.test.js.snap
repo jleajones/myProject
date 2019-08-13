@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders Back Button 1`] = `
-<Back__BackContainer>
+exports[`<Back /> Renders component without crashing 1`] = `
+<div
+  className="makeStyles-root-1"
+>
   <WithStyles(ForwardRef(Typography))
     variant="h6"
   >
     <Connect(withRouter(Link))
-      category="top-nav"
-      color="primary"
+      category="header"
+      className="makeStyles-link-2"
       label="back"
       to={
         Object {
@@ -15,13 +17,8 @@ exports[`Renders Back Button 1`] = `
         }
       }
     >
-      <Back__WhiteText>
-        <KeyboardBackspaceIcon />
-        <Back__InnerText>
-          Back
-        </Back__InnerText>
-      </Back__WhiteText>
+      Back
     </Connect(withRouter(Link))>
   </WithStyles(ForwardRef(Typography))>
-</Back__BackContainer>
+</div>
 `;

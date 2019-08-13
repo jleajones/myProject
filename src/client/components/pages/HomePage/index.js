@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import getCareers from '@store/careers/thunk';
 import { getUsers } from '@store/users/thunk';
 import Component from './component';
 
@@ -11,7 +10,7 @@ import Component from './component';
 const mapStateToProps = state => {
   const { users } = state;
   return {
-    users: users.list
+    users: users.data
   };
 };
 

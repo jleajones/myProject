@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AboutPage /> Renders component without crashing 1`] = `
+<Connect(Component)
+  pageName="AboutPage"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      About Page
+    </title>
+    <meta
+      content="This is the About..."
+      name="description"
+    />
+  </HelmetWrapper>
+  <div>
+    this is the about page..
+  </div>
+</Connect(Component)>
+`;

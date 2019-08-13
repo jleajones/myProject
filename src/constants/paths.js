@@ -5,10 +5,16 @@ export default {
   about: {
     path: '/about'
   },
+  applyNow: {
+    path: '/apply-now'
+  },
   driveWithUs: {
     path: '/drive-with-us'
   },
-  applyNow: {
-    path: '/apply-now'
+  login: {
+    path: '/login'
+  },
+  shipWithUs: {
+    path: '/ship-with-us'
   }
 };

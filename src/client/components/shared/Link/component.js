@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Link as OriginalLink } from 'react-router-dom';
+import { withRouter, Link as RouterLink } from 'react-router-dom';
 import MUILink from '@material-ui/core/Link';
 
 const EVENT_NAME = `Click`;
@@ -16,6 +16,8 @@ const EVENT_NAME = `Click`;
  * @param onClick
  * @param to
  * @param uuid
+ * @param className
+ * @param component
  * @returns {*}
  * @constructor
  */
@@ -28,7 +30,9 @@ const Link = ({
   label,
   onClick,
   to,
-  uuid
+  uuid,
+  className,
+  component
 }) => {
   const onClickFn = e => {
     e.preventDefault();
@@ -46,23 +50,26 @@ const Link = ({
   };
 
   return (
-    <OriginalLink onClick={onClickFn} to={to}>
-      <MUILink color={color} component="span">
+    <RouterLink onClick={onClickFn} to={to}>
+      <MUILink color={color} className={className} component={component}>
         {children}
       </MUILink>
-    </OriginalLink>
+    </RouterLink>
   );
 };
 
 Link.defaultProps = {
   category: '',
+  className: '',
   onClick: () => {},
-  color: 'primary'
+  color: 'inherit',
+  component: 'span'
 };
 
 Link.propTypes = {
   label: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
   to: PropTypes.oneOfType([
     PropTypes.string,
@@ -78,6 +85,7 @@ Link.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
+  component: PropTypes.string,
   onClick: PropTypes.func,
   dispatchInteraction: PropTypes.func.isRequired
 };

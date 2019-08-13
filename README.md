@@ -88,7 +88,7 @@ npn run start:prod
     - [x] Aliases
 - [x] client
     - [x] React
-    - [x] Styled Components
+    - [x] ~~Styled Components~~
     - [ ] Redux
         - [ ] Selectors/Reselect
         - [ ] Persist
@@ -114,7 +114,10 @@ npn run start:prod
         - [x] request
         - https://github.com/expressjs/morgan
     - [x] API
-    - [x] SSR
+    - [ ] SSR
+        - [x] Components
+        - [x] Store
+        - [ ] Styles
     - [ ] Auth
 - [x] eslint configuration
     - `.eslintrc`

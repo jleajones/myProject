@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/23</span>
+        <span class='fraction'>0/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/23</span>
+        <span class='fraction'>0/18</span>
       </div>
     </div>
     <p class="quiet">
@@ -106,8 +106,8 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,26 +122,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -149,11 +135,27 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,7 +173,6 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { frontloadServerRender } from 'react-frontload';
-import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
 import { ChunkExtractor } from '@loadable/server';
 &nbsp;
@@ -182,32 +183,36 @@ import ServerApp from '@serverCore/components/ServerApp';
 const statsFile = <span class="cstat-no" title="statement not covered" >path.resolve('./build/loadable-stats.json');</span>
 const extractor = <span class="cstat-no" title="statement not covered" >new ChunkExtractor({ statsFile });</span>
 &nbsp;
+/**
+ *
+ * @param req
+ * @param res
+ * @param logger
+ * @returns {Promise&lt;void&gt;}
+ */
 const renderer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (req, res, logger) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  logger.info('⚙️ ==&gt; rendering ', { url: req.url });</span>
+<span class="cstat-no" title="statement not covered" >  logger.info('🖌==&gt; rendering ', { url: req.url });</span>
   const staticContext = <span class="cstat-no" title="statement not covered" >{};</span>
-  const scSheets = <span class="cstat-no" title="statement not covered" >new ServerStyleSheet();</span>
   const muiSheets = <span class="cstat-no" title="statement not covered" >new ServerStyleSheets();</span>
   const store = <span class="cstat-no" title="statement not covered" >configureStore();</span>
 &nbsp;
+  // TODD: mui SSR doesn't work with this configuration
   const getStaticMarkup = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const markup = <span class="cstat-no" title="statement not covered" >extractor.collectChunks(</span>
-      muiSheets.collect(
+    const markup = <span class="cstat-no" title="statement not covered" >muiSheets.collect(</span>
+      extractor.collectChunks(
         &lt;ServerApp req={req} staticContext={staticContext} store={store} /&gt;
       )
     );
-<span class="cstat-no" title="statement not covered" >    scSheets.collectStyles(markup);</span>
 <span class="cstat-no" title="statement not covered" >    return ReactDOMServer.renderToString(markup);</span>
   };
 &nbsp;
   const staticMarkup = <span class="cstat-no" title="statement not covered" >await frontloadServerRender(getStaticMarkup);</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  if (staticContext.statusCode === 302) {</span>
 <span class="cstat-no" title="statement not covered" >    res.redirect(302, staticContext.url);</span>
   } else {
     const scriptTags = <span class="cstat-no" title="statement not covered" >extractor.getScriptTags();</span>
-    const styleTags = <span class="cstat-no" title="statement not covered" >extractor.getStyleTags();</span>
     const muiCss = <span class="cstat-no" title="statement not covered" >muiSheets.toString();</span>
-    const scCss = <span class="cstat-no" title="statement not covered" >scSheets.getStyleTags();</span>
-<span class="cstat-no" title="statement not covered" >    scSheets.seal();</span>
 &nbsp;
     const meta = <span class="cstat-no" title="statement not covered" >Helmet.renderStatic();</span>
 <span class="cstat-no" title="statement not covered" >    logger.info('📦 ==&gt; sending html', { status: staticContext.statusCode });</span>
@@ -216,9 +221,7 @@ const renderer = <span class="cstat-no" title="statement not covered" ><span cla
         body: staticMarkup,
         meta,
         scripts: scriptTags,
-        styles: styleTags,
         muiCss,
-        scCss,
         state: store.getState()
       })
     );
@@ -232,7 +235,7 @@ export default renderer;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 05 2019 21:00:24 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 13 2019 00:56:34 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -25,10 +25,14 @@ const NotFoundPage = ({ staticContext }) => {
   );
 };
 
+NotFoundPage.defaultProps = {
+  staticContext: {}
+};
+
 NotFoundPage.propTypes = {
   staticContext: PropTypes.shape({
     statusCode: PropTypes.number
-  }).isRequired
+  })
 };
 
 export default NotFoundPage;

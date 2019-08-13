@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> Renders component without crashing 1`] = `
+<footer>
+  <WithStyles(ForwardRef(Container))>
+    <WithStyles(ForwardRef(Typography))>
+      All Rights Reserved. Copyright © 2019
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Container))>
+</footer>
+`;

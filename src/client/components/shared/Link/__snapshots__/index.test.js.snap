@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> Renders component without crashing 1`] = `
+<ContextProvider
+  value={null}
+>
+  <withRouter(Link)
+    category="someCategory"
+    dispatchInteraction={[Function]}
+    history={Object {}}
+    label="some label"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    to="/some/url"
+    uuid="aaaa-sss-asdfd-asdgsd"
+  >
+    Some Text
+  </withRouter(Link)>
+</ContextProvider>
+`;

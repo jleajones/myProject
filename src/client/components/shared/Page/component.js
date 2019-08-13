@@ -1,5 +1,19 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { frontloadConnect } from 'react-frontload';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const frontload = async ({ fetchData }) => {
+  if (fetchData) {
+    await fetchData();
+  }
+};
+
+const useStyles = makeStyles({
+  root: {
+    paddingTop: '30px'
+  }
+});
 
 /**
  *
@@ -11,7 +25,8 @@ import PropTypes from 'prop-types';
  * @returns {*}
  * @constructor
  */
-const Page = ({ pageName, uuid, children, style, dispatchPageview }) => {
+const Page = ({ pageName, uuid, children, dispatchPageview }) => {
+  const classes = useStyles();
   useEffect(() => {
     if (uuid) {
       dispatchPageview({
@@ -28,19 +43,14 @@ const Page = ({ pageName, uuid, children, style, dispatchPageview }) => {
       });
     }
   }, [pageName, uuid]);
-  return <main style={style}>{children}</main>;
-};
-
-Page.defaultProps = {
-  style: {}
+  return <main className={classes.root}>{children}</main>;
 };
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
   pageName: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
-  style: PropTypes.shape(),
   dispatchPageview: PropTypes.func.isRequired
 };
 
-export default Page;
+export default frontloadConnect(frontload)(Page);

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>2/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,19 +32,19 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>2/3</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,31 +87,7 @@
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L42'></a><a href='#L42'>42</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,11 +109,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,59 +131,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { frontloadConnect } from 'react-frontload';
-import Typography from '@material-ui/core/Typography';
 &nbsp;
 import Page from '@shared/Page';
-import Container from '@shared/Container';
-import Footer from '@shared/Footer';
+import Hero from '@pages/HomePage/components/Hero';
 &nbsp;
-const fetchData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync ({ getCareers }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  await getCareers();</span>
-};
-&nbsp;
-const HomePage = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> careers }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  console.log(careers);</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;Page
-      name="HomePage"
-      style={{
+/**
+ *
+ * @param users
+ * @param {Function} getUsers
+ * @returns {*}
+ * @constructor
+ *
+ style={{
         backgroundImage:
           'url("https://source.unsplash.com/collection/4625959/1600x900")',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         minHeight: '100vh'
       }}
-    &gt;
+ */
+const HomePage = <span class="fstat-no" title="function not covered" >({</span> users, getUsers }) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;Page pageName="HomePage" fetchData={getUsers}&gt;
       &lt;Helmet&gt;
         &lt;title&gt;HomePage&lt;/title&gt;
         &lt;meta name="description" content="This is the homepage..." /&gt;
       &lt;/Helmet&gt;
-      &lt;Container&gt;
-        &lt;Typography&gt;This is the home page...&lt;/Typography&gt;
-      &lt;/Container&gt;
-      &lt;Footer /&gt;
+      &lt;Hero users={users} /&gt;
     &lt;/Page&gt;
   );
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >HomePage.propTypes = {</span>
-  careers: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired
-    })
-  ).isRequired
+HomePage.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getUsers: PropTypes.func.isRequired
 };
 &nbsp;
 // export default HomePage;
-export default frontloadConnect(fetchData)(HomePage);
+export default HomePage;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 05 2019 21:00:24 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 13 2019 00:56:34 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavMenu /> Renders component without crashing 1`] = `
+<nav
+  className="makeStyles-root-1"
+>
+  <Connect(withRouter(Link))
+    category="header"
+    className="makeStyles-link-2"
+    key="ship with us"
+    label="ship-with-us"
+    to="/ship-with-us"
+  >
+    ship with us
+  </Connect(withRouter(Link))>
+  <Connect(withRouter(Link))
+    category="header"
+    className="makeStyles-link-2"
+    key="drive with us"
+    label="drive-with-us"
+    to="/drive-with-us"
+  >
+    drive with us
+  </Connect(withRouter(Link))>
+  <Connect(withRouter(Link))
+    category="header"
+    className="makeStyles-link-2"
+    key="login"
+    label="login"
+    to="/login"
+  >
+    login
+  </Connect(withRouter(Link))>
+  <WithStyles(ForwardRef(Button))
+    className="makeStyles-button-3"
+    size="small"
+    variant="outlined"
+  >
+    Call Us Today
+  </WithStyles(ForwardRef(Button))>
+</nav>
+`;

@@ -26,9 +26,10 @@ const renderer = async (req, res, logger) => {
   const muiSheets = new ServerStyleSheets();
   const store = configureStore();
 
+  // TODD: mui SSR doesn't work with this configuration
   const getStaticMarkup = () => {
-    const markup = extractor.collectChunks(
-      muiSheets.collect(
+    const markup = muiSheets.collect(
+      extractor.collectChunks(
         <ServerApp req={req} staticContext={staticContext} store={store} />
       )
     );
@@ -36,6 +37,7 @@ const renderer = async (req, res, logger) => {
   };
 
   const staticMarkup = await frontloadServerRender(getStaticMarkup);
+
   if (staticContext.statusCode === 302) {
     res.redirect(302, staticContext.url);
   } else {

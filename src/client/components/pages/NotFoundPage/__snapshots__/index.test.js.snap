@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFoundPage /> Renders component without crashing 1`] = `
+<Connect(Component)
+  pageName="NotFound"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Not Found
+    </title>
+    <meta
+      content="This is the About..."
+      name="description"
+    />
+  </HelmetWrapper>
+  <div>
+    404 Page
+  </div>
+</Connect(Component)>
+`;

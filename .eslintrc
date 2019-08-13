@@ -25,6 +25,9 @@
     "document": "readonly",
     "window": "writable",
     "test": "readonly",
-    "expect": "readonly"
+    "expect": "readonly",
+    "describe": "readonly",
+    "beforeEach": "readonly",
+    "jest": "readonly"
   }
 }

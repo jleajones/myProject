@@ -1,1 +1,1 @@
-export default ['home', 'about', 'drive with us'];
+export default ['ship with us', 'drive with us', 'login'];

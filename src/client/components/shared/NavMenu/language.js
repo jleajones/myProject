@@ -1,5 +1,5 @@
 export default {
-  home: () => 'home',
-  about: () => 'about',
-  driveWithUs: () => 'drive with us'
+  driveWithUs: () => 'drive with us',
+  login: () => 'login',
+  shipWithUs: () => 'ship with us'
 };

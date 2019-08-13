@@ -26,9 +26,11 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^@shared(.*)$': '<rootDir>/src/client/components/shared$1',
+    '^@clientLib(.*)$': '<rootDir>/src/client/lib$1',
     '^@client(.*)$': '<rootDir>/src/client$1',
     '^@constants(.*)$': '<rootDir>/src/constants$1',
+    '^@pages(.*)$': '<rootDir>/src/client/components/pages$1',
+    '^@shared(.*)$': '<rootDir>/src/client/components/shared$1',
     '^@store(.*)$': '<rootDir>/src/store$1'
   },
 

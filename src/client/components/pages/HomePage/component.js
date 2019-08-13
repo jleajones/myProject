@@ -1,47 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { frontloadConnect } from 'react-frontload';
-
-import Typography from '@material-ui/core/Typography';
 
 import Page from '@shared/Page';
-
-const fetchData = async ({ getUsers }) => {
-  await getUsers();
-};
+import Hero from '@pages/HomePage/components/Hero';
 
 /**
  *
  * @param users
+ * @param {Function} getUsers
  * @returns {*}
  * @constructor
- */
-const HomePage = ({ users }) => {
-  console.log(users);
-  return (
-    <Page
-      pageName="HomePage"
-      style={{
+ *
+ style={{
         backgroundImage:
           'url("https://source.unsplash.com/collection/4625959/1600x900")',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         minHeight: '100vh'
       }}
-    >
+ */
+const HomePage = ({ users, getUsers }) => {
+  return (
+    <Page pageName="HomePage" fetchData={getUsers}>
       <Helmet>
         <title>HomePage</title>
         <meta name="description" content="This is the homepage..." />
       </Helmet>
-      <Typography>This is the home page...</Typography>
+      <Hero users={users} />
     </Page>
   );
 };
 
 HomePage.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape()).isRequired
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getUsers: PropTypes.func.isRequired
 };
 
 // export default HomePage;
-export default frontloadConnect(fetchData)(HomePage);
+export default HomePage;

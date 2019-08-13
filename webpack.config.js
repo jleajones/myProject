@@ -6,9 +6,6 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const autoprefixer = require("autoprefixer");
-
 const directoryAliases = {
   '@api': path.resolve(__dirname, './src/server/api'),
   '@client': path.resolve(__dirname, './src/client'),
@@ -29,7 +26,6 @@ const directoryAliases = {
 const isDev = process.env.NODE_ENV === 'development';
 const mode = isDev ? 'development' : 'production';
 const jsFileName = isDev ? 'js/[name].js' : 'js/[chunkhash].js';
-// const cssFileName = isDev ? 'css/[name].css' : 'css/[chunkhash].css';
 
 // const wpPlugins = [
 // ];
@@ -39,11 +35,27 @@ const basePath = `${currentPath}/.env`;
 const envPath = `${basePath}.${process.env.NODE_ENV}`;
 const finalPath = fs.existsSync(envPath) ? envPath : basePath;
 const envConfig = dotenv.config({ path: finalPath }).parsed;
-const envKeys = Object.keys(envConfig).reduce((prev, next) => {
+const envVarCmdKeys = [
+  'APP_MODE',
+  'SOME_OTHER_KEY',
+  'JUST_FOR_TEST',
+  'CUZ_FOUR_IS_LOKO'
+];
+
+const envVarCmdConfig = {};
+envVarCmdKeys.forEach(key => {
+  envVarCmdConfig[`${key}`] = process.env[key];
+});
+const customEnvConfig = Object.assign({}, { ...envVarCmdConfig, ...envConfig });
+const envKeys = Object.keys(customEnvConfig).reduce((prev, next) => {
   const newPrev = { ...prev };
-  newPrev[`process.env.${next}`] = JSON.stringify(envConfig[next]);
+  newPrev[`process.env.${next}`] = JSON.stringify(customEnvConfig[next]);
   return newPrev;
 }, {});
+
+// envKeys['process.env.APP_MODE'] = JSON.stringify(process.env.APP_MODE);
+
+console.log(envKeys);
 
 const browserConfig = {
   mode,
@@ -75,10 +87,10 @@ const browserConfig = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(envKeys),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new LoadablePlugin(),
-    new webpack.DefinePlugin(envKeys)
+    new LoadablePlugin()
   ],
   resolve: {
     alias: {
@@ -137,9 +149,9 @@ const serverConfig = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(envKeys),
     new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin(),
-    new webpack.DefinePlugin(envKeys)
+    new CleanWebpackPlugin()
     // new MiniCssExtractPlugin({
     //   filename: cssFileName,
     //   chunkFilename: 'css/[chunkhash].css'
