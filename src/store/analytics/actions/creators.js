@@ -1,4 +1,4 @@
-import { Types, PAGE_VIEW, INTERACTION, IDENTITY } from './types';
+import { Types, PAGE_VIEW, INTERACTION, IDENTITY, EVENTS } from './types';
 
 /**
  *
@@ -56,6 +56,26 @@ export const getIdentity = () => ({
 export const setIdentity = (data = {}) => {
   return {
     type: Types[IDENTITY].SUCCESS,
+    data
+  };
+};
+
+/**
+ *
+ * @returns {{type: string}}
+ */
+export const getEvents = () => ({
+  type: Types[EVENTS].PENDING
+});
+
+/**
+ *
+ * @param data
+ * @returns {{data, type: string}}
+ */
+export const setEvents = (data = {}) => {
+  return {
+    type: Types[EVENTS].SUCCESS,
     data
   };
 };

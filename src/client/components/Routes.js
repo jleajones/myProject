@@ -21,6 +21,7 @@ const Routes = () => (
     <Route path={PATHS.about.path} exact component={AboutPage} />
     <Route path={PATHS.driveWithUs.path} exact component={DriveWithUs} />
     <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
+    <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
     <Redirect from={['/new-about']} to="/" />
     <Route path="*" component={NotFoundPage} />
   </Switch>

@@ -1,9 +1,16 @@
-import { Types, PAGE_VIEW, INTERACTION, IDENTITY } from './actions/types';
+import {
+  Types,
+  PAGE_VIEW,
+  INTERACTION,
+  IDENTITY,
+  EVENTS
+} from './actions/types';
 
 const initialState = {
   pageviews: [],
   interactions: [],
-  uuid: ''
+  uuid: '',
+  events: []
 };
 
 /**
@@ -45,6 +52,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         uuid: data
+      };
+    case Types[EVENTS].SUCCESS:
+      return {
+        ...state,
+        events: data
       };
     default:
       return state;

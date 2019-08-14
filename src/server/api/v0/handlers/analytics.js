@@ -1,12 +1,27 @@
 import uuidv4 from 'uuid/v4';
 import { ANALYTICS_TABLE } from '@serverLib/utils/db';
 import { UUID_COOKIE_NAME, EVENT_TYPES } from '@serverLib/constants';
-import {
-  producerCallback,
-  buildProducerPayloads
-} from '@serverCore/lib/producer';
+// import {
+//   producerCallback,
+//   buildProducerPayloads
+// } from '@serverCore/lib/producer';
+//
+// const KAFKA_TOPIC = 'analytics';
 
-const KAFKA_TOPIC = 'analytics';
+/**
+ *
+ * @param body
+ * @returns {{uuid: *, properties: {}}}
+ */
+const buildIdentityProperties = body => {
+  const { url, properties = {} } = body;
+  return {
+    url,
+    properties: {
+      ...properties
+    }
+  };
+};
 
 /**
  *
@@ -53,6 +68,9 @@ const buildTrackingProperties = body => {
   if (body.type === 'p') {
     return buildPageviewProperties(body);
   }
+  if (body.type === 'u') {
+    return buildIdentityProperties(body);
+  }
   return buildInteractionProperties(body);
 };
 
@@ -62,22 +80,44 @@ const buildTrackingProperties = body => {
  * @param res
  * @param logger
  * @param db
- * @param producer
  */
-export const identityHandler = (req, res, logger, db, producer) => {
+// export const identityHandler = (req, res, logger, db, producer) => {
+export const identityHandler = async (req, res, logger, db) => {
+  const { eventId } = req.body;
+  // if cookie exist
+  // send in response
+  // else
+  // create new one
+  // store in DB
+  // store in cookie
+  // send in response
   const uuid = req.cookies[UUID_COOKIE_NAME] || uuidv4();
+  const trackingProperties = buildTrackingProperties(req.body);
+
   const payload = {
+    ...trackingProperties,
     eventType: EVENT_TYPES.u,
-    eventId: req.body.eventId,
+    eventId,
     uuid
   };
-  logger.info('👤 Setting UUID ==>', { ...payload });
-  producer.send(
-    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
-    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
-  );
+
   res.cookie(UUID_COOKIE_NAME, uuid, { path: '/' });
-  res.status(200).json(uuid);
+  logger.info('👤 Setting UUID ==>', { uuid });
+  try {
+    const query = db(ANALYTICS_TABLE)
+      .insert(payload)
+      .toString();
+    logger.info('💾 Inserting ==>', { query });
+    await db(ANALYTICS_TABLE).insert(payload);
+    res.status(200).json(uuid);
+  } catch (e) {
+    logger.error(e);
+    res.json(e);
+  }
+  // producer.send(
+  //   buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+  //   (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  // );
 };
 
 /**
@@ -86,10 +126,10 @@ export const identityHandler = (req, res, logger, db, producer) => {
  * @param res
  * @param logger
  * @param db
- * @param producer
  * @returns {Promise<void>}
  */
-export const analyticsHandler = async (req, res, logger, db, producer) => {
+// export const analyticsHandler = async (req, res, logger, db, producer) => {
+export const analyticsHandler = async (req, res, logger, db) => {
   const { type, eventId } = req.body;
   const trackingProperties = buildTrackingProperties(req.body);
   const payload = {
@@ -101,10 +141,10 @@ export const analyticsHandler = async (req, res, logger, db, producer) => {
     ...payload
   });
 
-  producer.send(
-    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
-    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
-  );
+  // producer.send(
+  //   buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+  //   (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  // );
 
   try {
     const query = db(ANALYTICS_TABLE)
@@ -112,6 +152,35 @@ export const analyticsHandler = async (req, res, logger, db, producer) => {
       .toString();
     logger.info('💾 Inserting ==>', { query });
     const resp = await db(ANALYTICS_TABLE).insert(payload);
+    res.status(200).json(resp);
+  } catch (e) {
+    logger.error(e);
+    res.json(e);
+  }
+};
+
+/**
+ *
+ * @param req
+ * @param res
+ * @param logger
+ * @param db
+ * @returns {Promise<void>}
+ */
+export const eventsHandler = async (req, res, logger, db) => {
+  try {
+    const query = db
+      .select()
+      .from(ANALYTICS_TABLE)
+      .orderBy('timestamp', 'desc')
+      .limit(20)
+      .toString();
+    logger.info('💾 Selecting ==>', { query });
+    const resp = await db
+      .select()
+      .from(ANALYTICS_TABLE)
+      .orderBy('timestamp', 'desc')
+      .limit(20);
     res.status(200).json(resp);
   } catch (e) {
     logger.error(e);

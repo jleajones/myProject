@@ -8,8 +8,14 @@ export default {
   applyNow: {
     path: '/apply-now'
   },
+  dashboard: {
+    path: '/dashboard'
+  },
   driveWithUs: {
     path: '/drive-with-us'
+  },
+  howItWorks: {
+    path: '/how-it-works'
   },
   login: {
     path: '/login'

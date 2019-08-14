@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CarrierSignUp /> Renders component without crashing 1`] = `
+<Dialog
+  fullScreen={true}
+  label="ship-with-us-dialog-title"
+  onClose={[MockFunction]}
+  open={false}
+  title="Ship With Us"
+>
+  <WithStyles(ForwardRef(AppBar))>
+    <WithStyles(ForwardRef(Toolbar))>
+      <WithStyles(ForwardRef(IconButton))
+        aria-label="close"
+        color="inherit"
+        edge="start"
+        onClick={[MockFunction]}
+      >
+        <CloseIcon />
+      </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(Typography))
+        variant="h6"
+      >
+        Ship With Us
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Button))
+        color="inherit"
+        onClick={[MockFunction]}
+      >
+        save
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(Toolbar))>
+  </WithStyles(ForwardRef(AppBar))>
+</Dialog>
+`;

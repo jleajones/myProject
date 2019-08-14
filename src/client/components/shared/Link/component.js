@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
 import MUILink from '@material-ui/core/Link';
-
-const EVENT_NAME = `Click`;
+import EVENT_NAMES from '@shared/constants';
 
 /**
  *
@@ -37,7 +36,7 @@ const Link = ({
   const onClickFn = e => {
     e.preventDefault();
     dispatchInteraction({
-      eventName: EVENT_NAME,
+      eventName: EVENT_NAMES.CLICK,
       label: `${label}-link`,
       category,
       url: window.location.href,
@@ -46,7 +45,7 @@ const Link = ({
     });
 
     if (onClick) onClick(e);
-    history.push(to);
+    if (to) history.push(to);
   };
 
   return (
@@ -63,7 +62,8 @@ Link.defaultProps = {
   className: '',
   onClick: () => {},
   color: 'inherit',
-  component: 'span'
+  component: 'span',
+  to: {}
 };
 
 Link.propTypes = {
@@ -79,7 +79,7 @@ Link.propTypes = {
       hash: PropTypes.string,
       state: PropTypes.string
     })
-  ]).isRequired,
+  ]),
   color: PropTypes.string,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired

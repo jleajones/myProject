@@ -1,46 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomePage /> Renders component without crashing 1`] = `
-<ContextProvider
-  value={null}
+<Connect(Component)
+  pageName="HomePage"
 >
-  <HomePage
-    getUsers={[Function]}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-    users={
-      Array [
-        Object {
-          "email": "harvey@email.com",
-          "id": 1,
-          "joined": "2019-07-07T04:45:04.524Z",
-          "last_logged_in": "2019-07-07T04:45:04.524Z",
-          "username": "HarveyD",
-        },
-        Object {
-          "email": "jleajones@email.com",
-          "id": 3,
-          "joined": "2019-08-12T19:24:21.942Z",
-          "last_logged_in": "2019-08-12T19:24:21.942Z",
-          "username": "jleajones",
-        },
-        Object {
-          "email": "darmstr2@email.com",
-          "id": 4,
-          "joined": "2019-08-12T19:24:39.744Z",
-          "last_logged_in": "2019-08-12T19:24:39.744Z",
-          "username": "darmstr2",
-        },
-      ]
-    }
-  />
-</ContextProvider>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      HomePage
+    </title>
+    <meta
+      content="This is the homepage..."
+      name="description"
+    />
+  </HelmetWrapper>
+  <Hero />
+</Connect(Component)>
 `;

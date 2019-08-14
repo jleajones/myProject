@@ -7,9 +7,20 @@ exports[`<NavMenu /> Renders component without crashing 1`] = `
   <Connect(withRouter(Link))
     category="header"
     className="makeStyles-link-2"
+    key="how it works"
+    label="how-it-works"
+    onClick={[Function]}
+    to="/how-it-works"
+  >
+    how it works
+  </Connect(withRouter(Link))>
+  <Connect(withRouter(Link))
+    category="header"
+    className="makeStyles-link-2"
     key="ship with us"
     label="ship-with-us"
-    to="/ship-with-us"
+    onClick={[Function]}
+    to={Object {}}
   >
     ship with us
   </Connect(withRouter(Link))>
@@ -18,6 +29,7 @@ exports[`<NavMenu /> Renders component without crashing 1`] = `
     className="makeStyles-link-2"
     key="drive with us"
     label="drive-with-us"
+    onClick={[Function]}
     to="/drive-with-us"
   >
     drive with us
@@ -27,7 +39,8 @@ exports[`<NavMenu /> Renders component without crashing 1`] = `
     className="makeStyles-link-2"
     key="login"
     label="login"
-    to="/login"
+    onClick={[Function]}
+    to={Object {}}
   >
     login
   </Connect(withRouter(Link))>
@@ -38,5 +51,13 @@ exports[`<NavMenu /> Renders component without crashing 1`] = `
   >
     Call Us Today
   </WithStyles(ForwardRef(Button))>
+  <LoginDialog
+    handleClose={[Function]}
+    open={false}
+  />
+  <CarrierSignUp
+    handleClose={[Function]}
+    open={false}
+  />
 </nav>
 `;

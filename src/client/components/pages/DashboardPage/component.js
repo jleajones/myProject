@@ -8,7 +8,9 @@ import Hero from '@pages/HomePage/components/Hero';
 /**
  *
  * @param users
+ * @param eventData
  * @param {Function} getUsers
+ * @param {Function} fetchEvents
  * @returns {*}
  * @constructor
  *
@@ -20,22 +22,27 @@ import Hero from '@pages/HomePage/components/Hero';
         minHeight: '100vh'
       }}
  */
-const HomePage = ({ users, getUsers }) => {
+const DashboardPage = ({ events, fetchEvents }) => {
   return (
-    <Page pageName="HomePage" fetchData={getUsers}>
+    <Page
+      pageName="Dashboard"
+      fetchData={async () => {
+        await fetchEvents();
+      }}
+    >
       <Helmet>
-        <title>HomePage</title>
-        <meta name="description" content="This is the homepage..." />
+        <title>Dashboard</title>
+        <meta name="description" content="This is the dashboard..." />
       </Helmet>
-      <Hero users={users} />
+      <Hero data={events} />
     </Page>
   );
 };
 
-HomePage.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getUsers: PropTypes.func.isRequired
+DashboardPage.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fetchEvents: PropTypes.func.isRequired
 };
 
 // export default HomePage;
-export default HomePage;
+export default DashboardPage;

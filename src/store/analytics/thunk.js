@@ -8,18 +8,22 @@ import {
   interaction,
   setInteraction,
   getIdentity,
-  setIdentity
+  setIdentity,
+  getEvents,
+  setEvents
 } from './actions/creators';
 
 /**
  *
  * @returns {Function}
  */
-export const dispatchIdentity = () => {
+export const dispatchIdentity = (trackingProperties = {}) => {
   return async dispatch => {
     dispatch(getIdentity());
     try {
-      const response = await request.get(`/analytics`);
+      const response = await request.post(`/analytics/identify`, {
+        ...trackingProperties
+      });
       dispatch(setIdentity(response.data));
     } catch (error) {
       dispatch(setError(error));
@@ -63,6 +67,22 @@ export const dispatchInteraction = (trackingProperties = {}) => {
       dispatch(setInteraction(response.data));
     } catch (error) {
       dispatch(setError(error));
+    }
+  };
+};
+
+/**
+ *
+ * @returns {Function}
+ */
+export const fetchEvents = () => {
+  return async dispatch => {
+    try {
+      dispatch(getEvents());
+      const response = await request.get(`/analytics`);
+      dispatch(setEvents(response.data));
+    } catch (error) {
+      dispatch(setError(error.message));
     }
   };
 };

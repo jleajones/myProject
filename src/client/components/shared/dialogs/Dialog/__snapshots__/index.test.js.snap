@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dialog /> Renders component without crashing 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  aria-labelledby="test-dialog"
+  fullScreen={false}
+  onClose={[MockFunction]}
+  open={true}
+>
+  <div>
+    some test content
+  </div>
+</WithStyles(ForwardRef(Dialog))>
+`;

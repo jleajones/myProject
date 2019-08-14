@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hero /> Renders component without crashing 1`] = `
+<WithStyles(ForwardRef(Container))>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    spacing={2}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      key="1"
+      xs={12}
+    >
+      <Connect(EnhancedPaper)
+        category="hero"
+        classFromParent={
+          Object {
+            "child": undefined,
+          }
+        }
+        label="1"
+      >
+        <WithStyles(ForwardRef(Typography))
+          key="1-id"
+        >
+          <b>
+            id
+          </b>
+           
+          1
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="1-username"
+        >
+          <b>
+            username
+          </b>
+           
+          HarveyD
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="1-email"
+        >
+          <b>
+            email
+          </b>
+           
+          harvey@email.com
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="1-joined"
+        >
+          <b>
+            joined
+          </b>
+           
+          2019-07-07T04:45:04.524Z
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="1-last_logged_in"
+        >
+          <b>
+            last_logged_in
+          </b>
+           
+          2019-07-07T04:45:04.524Z
+        </WithStyles(ForwardRef(Typography))>
+      </Connect(EnhancedPaper)>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      key="3"
+      xs={12}
+    >
+      <Connect(EnhancedPaper)
+        category="hero"
+        classFromParent={
+          Object {
+            "child": undefined,
+          }
+        }
+        label="3"
+      >
+        <WithStyles(ForwardRef(Typography))
+          key="3-id"
+        >
+          <b>
+            id
+          </b>
+           
+          3
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="3-username"
+        >
+          <b>
+            username
+          </b>
+           
+          jleajones
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="3-email"
+        >
+          <b>
+            email
+          </b>
+           
+          jleajones@email.com
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="3-joined"
+        >
+          <b>
+            joined
+          </b>
+           
+          2019-08-12T19:24:21.942Z
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="3-last_logged_in"
+        >
+          <b>
+            last_logged_in
+          </b>
+           
+          2019-08-12T19:24:21.942Z
+        </WithStyles(ForwardRef(Typography))>
+      </Connect(EnhancedPaper)>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      key="4"
+      xs={12}
+    >
+      <Connect(EnhancedPaper)
+        category="hero"
+        classFromParent={
+          Object {
+            "child": undefined,
+          }
+        }
+        label="4"
+      >
+        <WithStyles(ForwardRef(Typography))
+          key="4-id"
+        >
+          <b>
+            id
+          </b>
+           
+          4
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="4-username"
+        >
+          <b>
+            username
+          </b>
+           
+          darmstr2
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="4-email"
+        >
+          <b>
+            email
+          </b>
+           
+          darmstr2@email.com
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="4-joined"
+        >
+          <b>
+            joined
+          </b>
+           
+          2019-08-12T19:24:39.744Z
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          key="4-last_logged_in"
+        >
+          <b>
+            last_logged_in
+          </b>
+           
+          2019-08-12T19:24:39.744Z
+        </WithStyles(ForwardRef(Typography))>
+      </Connect(EnhancedPaper)>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Container))>
+`;

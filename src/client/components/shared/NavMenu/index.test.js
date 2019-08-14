@@ -5,7 +5,16 @@ import NavMenu from '.';
 
 describe('<NavMenu />', () => {
   test('Renders component without crashing', () => {
-    const component = shallow(<NavMenu />);
+    const handleCloseDialog = jest.fn();
+    const handleOpenDialog = jest.fn();
+    const open = false;
+    const component = shallow(
+      <NavMenu
+        handleCloseDialog={handleCloseDialog}
+        handleOpenDialog={handleOpenDialog}
+        open={open}
+      />
+    );
 
     expect(component).toMatchSnapshot();
   });

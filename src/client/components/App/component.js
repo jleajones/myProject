@@ -21,7 +21,9 @@ const App = ({ dispatchIdentity }) => {
       jssStyles.parentNode.removeChild(jssStyles);
     }
 
-    dispatchIdentity();
+    dispatchIdentity({
+      url: window.location.href
+    });
   }, []);
 
   return (

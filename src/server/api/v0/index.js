@@ -1,11 +1,15 @@
 import { Router } from 'express';
 import listEndpoints from 'express-list-endpoints';
 
-import producer from '@serverCore/lib/producer';
-import buildConsumer from '@serverCore/lib/consumer';
+// import producer from '@serverCore/lib/producer';
+// import buildConsumer from '@serverCore/lib/consumer';
 
 import healthCheckHandler from './handlers/healthCheck';
-import { analyticsHandler, identityHandler } from './handlers/analytics';
+import {
+  analyticsHandler,
+  identityHandler,
+  eventsHandler
+} from './handlers/analytics';
 
 // import { getJobs, getJobTitles, getJob } from './handlers/jobs';
 import {
@@ -26,16 +30,16 @@ import {
  * @returns {Router}
  */
 export default (logger, db) => {
-  const kafkaTopics = ['analytics'];
-  const consumer = buildConsumer(kafkaTopics);
-
-  consumer.on('message', async message => {
-    logger.info('kafka::consumer-> ', { message: message.value });
-  });
-
-  consumer.on('error', err => {
-    logger.info('kafka::consumer:error-> ', err);
-  });
+  // const kafkaTopics = ['analytics'];
+  // const consumer = buildConsumer(kafkaTopics);
+  //
+  // consumer.on('message', async message => {
+  //   logger.info('kafka::consumer-> ', { message: message.value });
+  // });
+  //
+  // consumer.on('error', err => {
+  //   logger.info('kafka::consumer:error-> ', err);
+  // });
 
   const router = Router();
   /* ******************HEALTHCHECK********************** */
@@ -43,13 +47,15 @@ export default (logger, db) => {
     healthCheckHandler(req, res, listEndpoints(router))
   );
   /* ******************ANALYTICS********************** */
-  router.get('/analytics', (req, res) =>
-    identityHandler(req, res, logger, db, producer)
+  router.post('/analytics/identify', (req, res) =>
+    identityHandler(req, res, logger, db)
   );
 
   router.post('/analytics', (req, res) =>
-    analyticsHandler(req, res, logger, db, producer)
+    analyticsHandler(req, res, logger, db)
   );
+
+  router.get('/analytics', (req, res) => eventsHandler(req, res, logger, db));
   /* ******************JOBS********************** */
   // router.get('/jobs', (req, res) => getJobs(req, res, logger, db));
   // router.get('/jobs/titles', (req, res) => getJobTitles(req, res, logger, db));

@@ -5,3 +5,9 @@ exports[`<Header /> Renders component without crashing 1`] = `
   <Component />
 </ContextConsumer>
 `;
+
+exports[`<Header /> Renders component without crashing 2`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

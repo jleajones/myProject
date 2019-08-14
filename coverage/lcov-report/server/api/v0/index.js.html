@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/32</span>
+        <span class='fraction'>0/28</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/15</span>
+        <span class='fraction'>0/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/24</span>
+        <span class='fraction'>0/19</span>
       </div>
     </div>
     <p class="quiet">
@@ -121,7 +121,28 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,17 +171,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,6 +183,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,11 +211,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from 'express';
 import listEndpoints from 'express-list-endpoints';
 &nbsp;
-import producer from '@serverCore/lib/producer';
-import buildConsumer from '@serverCore/lib/consumer';
+// import producer from '@serverCore/lib/producer';
+// import buildConsumer from '@serverCore/lib/consumer';
 &nbsp;
 import healthCheckHandler from './handlers/healthCheck';
-import { analyticsHandler, identityHandler } from './handlers/analytics';
+import {
+  analyticsHandler,
+  identityHandler,
+  eventsHandler
+} from './handlers/analytics';
 &nbsp;
 // import { getJobs, getJobTitles, getJob } from './handlers/jobs';
 import {
@@ -224,16 +240,16 @@ import {
  * @returns {Router}
  */
 export default <span class="fstat-no" title="function not covered" >(l</span>ogger, db) =&gt; {
-  const kafkaTopics = <span class="cstat-no" title="statement not covered" >['analytics'];</span>
-  const consumer = <span class="cstat-no" title="statement not covered" >buildConsumer(kafkaTopics);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  consumer.on('message', <span class="fstat-no" title="function not covered" >as</span>ync message =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    logger.info('kafka::consumer-&gt; ', { message: message.value });</span>
-  });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  consumer.on('error', <span class="fstat-no" title="function not covered" >er</span>r =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    logger.info('kafka::consumer:error-&gt; ', err);</span>
-  });
+  // const kafkaTopics = ['analytics'];
+  // const consumer = buildConsumer(kafkaTopics);
+  //
+  // consumer.on('message', async message =&gt; {
+  //   logger.info('kafka::consumer-&gt; ', { message: message.value });
+  // });
+  //
+  // consumer.on('error', err =&gt; {
+  //   logger.info('kafka::consumer:error-&gt; ', err);
+  // });
 &nbsp;
   const router = <span class="cstat-no" title="statement not covered" >Router();</span>
   /* ******************HEALTHCHECK********************** */
@@ -241,13 +257,15 @@ export default <span class="fstat-no" title="function not covered" >(l</span>ogg
 <span class="cstat-no" title="statement not covered" >    healthCheckHandler(req, res, listEndpoints(router))</span>
   );
   /* ******************ANALYTICS********************** */
-<span class="cstat-no" title="statement not covered" >  router.get('/analytics', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >    identityHandler(req, res, logger, db, producer)</span>
+<span class="cstat-no" title="statement not covered" >  router.post('/analytics/identify', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    identityHandler(req, res, logger, db)</span>
   );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  router.post('/analytics', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >    analyticsHandler(req, res, logger, db, producer)</span>
+<span class="cstat-no" title="statement not covered" >    analyticsHandler(req, res, logger, db)</span>
   );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  router.get('/analytics', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; <span class="cstat-no" title="statement not covered" >eventsHandler(req, res, logger, db))</span>;</span>
   /* ******************JOBS********************** */
   // router.get('/jobs', (req, res) =&gt; getJobs(req, res, logger, db));
   // router.get('/jobs/titles', (req, res) =&gt; getJobTitles(req, res, logger, db));
@@ -277,7 +295,7 @@ export default <span class="fstat-no" title="function not covered" >(l</span>ogg
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 13 2019 00:56:34 GMT-0400 (Eastern Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 14 2019 17:38:30 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

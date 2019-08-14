@@ -6,7 +6,16 @@ import Header from '.';
 
 describe('<Header />', () => {
   test('Renders component without crashing', () => {
-    const component = shallow(<Header location={PATHS.home.path} />);
+    const component = shallow(
+      <Header location={{ pathname: PATHS.home.path }} />
+    );
+
+    expect(component).toMatchSnapshot();
+  });
+  test('Renders component without crashing', () => {
+    const component = shallow(
+      <Header location={{ pathname: PATHS.driveWithUs.path }} />
+    );
 
     expect(component).toMatchSnapshot();
   });
