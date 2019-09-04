@@ -1,5 +1,5 @@
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import theme from './constants';
 
@@ -11,7 +11,7 @@ import theme from './constants';
  * @constructor
  */
 const Theme = ({ children }) => (
-  <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
 Theme.propTypes = {

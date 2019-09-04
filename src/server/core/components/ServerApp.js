@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Theme from '@shared/theme';
 import App from '@components/App';
 import { StaticRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Theme from '@shared/Theme';
 
 /**
  *

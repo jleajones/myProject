@@ -23,35 +23,37 @@ const extractor = new ChunkExtractor({ statsFile });
 const renderer = async (req, res, logger) => {
   logger.info('🖌==> rendering ', { url: req.url });
   const staticContext = {};
-  logger.info('Creating New SeverStyleSheet');
-  const muiSheets = new ServerStyleSheets();
   const store = configureStore();
+  const sheets = new ServerStyleSheets();
 
-  // TODD: mui SSR doesn't work with this configuration
-  const staticMarkup = await frontloadServerRender(() => {
-    const markup = extractor.collectChunks(
-      muiSheets.collect(
-        <ServerApp req={req} staticContext={staticContext} store={store} />
+  const generateMarkup = () => {
+    return ReactDOMServer.renderToString(
+      extractor.collectChunks(
+        sheets.collect(
+          <ServerApp req={req} staticContext={staticContext} store={store} />
+        )
       )
     );
-    return ReactDOMServer.renderToString(markup);
-  });
+  };
 
-  logger.info('static markup complete...');
+  const markup = await frontloadServerRender(generateMarkup);
+
   if (staticContext.statusCode === 302) {
+    logger.info('🔁 ==> redirecting ', { url: staticContext.url });
     res.redirect(302, staticContext.url);
   } else {
-    const scriptTags = extractor.getScriptTags();
-    const muiCss = muiSheets.toString();
-
-    const meta = Helmet.renderStatic();
     logger.info('📦 ==> sending html', { status: staticContext.statusCode });
+    // Grab the JS from our extractor.
+    const scripts = extractor.getScriptTags();
+    // Grab the CSS from our sheets.
+    const css = sheets.toString();
+    // Send the rendered page back to the client.
     res.status(staticContext.statusCode || 200).send(
       html({
-        body: staticMarkup,
-        meta,
-        scripts: scriptTags,
-        muiCss,
+        body: markup,
+        meta: Helmet.renderStatic(),
+        scripts,
+        css,
         state: store.getState()
       })
     );

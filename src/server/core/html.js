@@ -4,18 +4,17 @@
  * @param meta
  * @param scripts
  * @param styles
- * @param muiCss
- * @param scCss
+ * @param css
  * @param state
  * @returns {string}
  */
-export default ({ body, meta, scripts, muiCss, state }) => {
+export default ({ body, meta, scripts, css, state }) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
       <head>
         ${meta.title.toString()}
-        <style id="jss-server-side">${muiCss}</style>
+        <style id="jss-server-side">${css}</style>
       </head>
       <body>
         <div id="root">${body}</div>
