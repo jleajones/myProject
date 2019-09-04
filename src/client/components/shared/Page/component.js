@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { frontloadConnect } from 'react-frontload';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const frontload = async ({ fetchData }) => {
   if (fetchData) {
     await fetchData();
   }
 };
-
-const useStyles = makeStyles({
-  root: {
-    padding: '30px 0'
-  }
-});
 
 /**
  *
@@ -26,7 +19,6 @@ const useStyles = makeStyles({
  * @constructor
  */
 const Page = ({ pageName, uuid, children, dispatchPageview }) => {
-  const classes = useStyles();
   useEffect(() => {
     if (uuid) {
       dispatchPageview({
@@ -43,7 +35,7 @@ const Page = ({ pageName, uuid, children, dispatchPageview }) => {
       });
     }
   }, [pageName, uuid]);
-  return <main className={classes.root}>{children}</main>;
+  return <main>{children}</main>;
 };
 
 Page.propTypes = {

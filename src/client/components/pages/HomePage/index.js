@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 
 import Page from '@shared/Page';
 import Hero from '@pages/HomePage/components/Hero';
+import Features from '@pages/HomePage/components/Features';
+import Stats from '@pages/HomePage/components/Stats';
 
 /**
  *
@@ -26,6 +28,8 @@ const HomePage = () => {
         <meta name="description" content="This is the homepage..." />
       </Helmet>
       <Hero />
+      <Features />
+      <Stats />
     </Page>
   );
 };

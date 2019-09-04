@@ -1,6 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#63a4ff',
+      main: '#1976d2',
+      dark: '#004ba0',
+      contrastText: '#fff'
+    },
+    secondary: {
+      light: '#ffffa8',
+      main: '#fff176',
+      dark: '#cabf45',
+      contrastText: '#000000'
+    }
+  }
+});
 
 // theme.overrides = {
 //   MuiContainer: {

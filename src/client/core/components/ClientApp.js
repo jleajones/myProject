@@ -1,9 +1,9 @@
+import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { Frontload } from 'react-frontload';
-import ThemeProvider from '@shared/theme';
 import PropTypes from 'prop-types';
-import React from 'react';
+
+import Theme from '@shared/theme';
 
 /**
  *
@@ -13,13 +13,11 @@ import React from 'react';
  * @constructor
  */
 const ClientApp = ({ store, children }) => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <Frontload>
-        <ThemeProvider>{children}</ThemeProvider>
-      </Frontload>
-    </BrowserRouter>
-  </Provider>
+  <Theme>
+    <Provider store={store}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </Provider>
+  </Theme>
 );
 
 ClientApp.propTypes = {

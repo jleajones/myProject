@@ -11,18 +11,10 @@ import lang from './language';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    '& a': {
-      textDecoration: 'none',
-      '& :hover': {
-        textDecoration: 'none',
-        color: '#ffffff'
-      }
-    }
+    justifyContent: 'flex-end'
   },
   link: {
-    color: '#cccccc',
-    textTransform: 'capitalize'
+    color: 'rgba(255, 255, 255, 0.55)'
   }
 });
 

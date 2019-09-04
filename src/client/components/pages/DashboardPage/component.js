@@ -3,24 +3,15 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import Page from '@shared/Page';
-import Hero from '@pages/HomePage/components/Hero';
+import Dashboard from './components/Dashboard';
 
 /**
  *
- * @param users
- * @param eventData
- * @param {Function} getUsers
+ * @param events
  * @param {Function} fetchEvents
  * @returns {*}
  * @constructor
  *
- style={{
-        backgroundImage:
-          'url("https://source.unsplash.com/collection/4625959/1600x900")',
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        minHeight: '100vh'
-      }}
  */
 const DashboardPage = ({ events, fetchEvents }) => {
   return (
@@ -34,7 +25,7 @@ const DashboardPage = ({ events, fetchEvents }) => {
         <title>Dashboard</title>
         <meta name="description" content="This is the dashboard..." />
       </Helmet>
-      <Hero data={events} />
+      <Dashboard data={events} />
     </Page>
   );
 };
@@ -44,5 +35,4 @@ DashboardPage.propTypes = {
   fetchEvents: PropTypes.func.isRequired
 };
 
-// export default HomePage;
 export default DashboardPage;

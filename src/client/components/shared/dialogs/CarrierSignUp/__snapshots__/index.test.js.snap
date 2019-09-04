@@ -19,6 +19,7 @@ exports[`<CarrierSignUp /> Renders component without crashing 1`] = `
         <CloseIcon />
       </WithStyles(ForwardRef(IconButton))>
       <WithStyles(ForwardRef(Typography))
+        className="makeStyles-title-1"
         variant="h6"
       >
         Ship With Us

@@ -1,12 +1,12 @@
 import uuidv4 from 'uuid/v4';
 import { ANALYTICS_TABLE } from '@serverLib/utils/db';
 import { UUID_COOKIE_NAME, EVENT_TYPES } from '@serverLib/constants';
-// import {
-//   producerCallback,
-//   buildProducerPayloads
-// } from '@serverCore/lib/producer';
-//
-// const KAFKA_TOPIC = 'analytics';
+import {
+  producerCallback,
+  buildProducerPayloads
+} from '@serverCore/lib/producer';
+
+const KAFKA_TOPIC = 'analytics';
 
 /**
  *
@@ -81,8 +81,8 @@ const buildTrackingProperties = body => {
  * @param logger
  * @param db
  */
-// export const identityHandler = (req, res, logger, db, producer) => {
-export const identityHandler = async (req, res, logger, db) => {
+export const identityHandler = async (req, res, logger, db, producer) => {
+  // export const identityHandler = async (req, res, logger, db) => {
   const { eventId } = req.body;
   // if cookie exist
   // send in response
@@ -114,10 +114,10 @@ export const identityHandler = async (req, res, logger, db) => {
     logger.error(e);
     res.json(e);
   }
-  // producer.send(
-  //   buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
-  //   (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
-  // );
+  producer.send(
+    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  );
 };
 
 /**
@@ -128,8 +128,8 @@ export const identityHandler = async (req, res, logger, db) => {
  * @param db
  * @returns {Promise<void>}
  */
-// export const analyticsHandler = async (req, res, logger, db, producer) => {
-export const analyticsHandler = async (req, res, logger, db) => {
+export const analyticsHandler = async (req, res, logger, db, producer) => {
+  // export const analyticsHandler = async (req, res, logger, db) => {
   const { type, eventId } = req.body;
   const trackingProperties = buildTrackingProperties(req.body);
   const payload = {
@@ -141,10 +141,10 @@ export const analyticsHandler = async (req, res, logger, db) => {
     ...payload
   });
 
-  // producer.send(
-  //   buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
-  //   (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
-  // );
+  producer.send(
+    buildProducerPayloads(KAFKA_TOPIC, JSON.stringify(payload)),
+    (err, data) => producerCallback(err, data, KAFKA_TOPIC, logger)
+  );
 
   try {
     const query = db(ANALYTICS_TABLE)

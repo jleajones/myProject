@@ -4,8 +4,8 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 
 import { camelCase } from '@clientLib/utils';
-
 import PATHS from '@constants/paths';
+
 import Link from '@shared/Link';
 import LoginDialog from '@shared/dialogs/Login';
 import CarrierSignUp from '@shared/dialogs/CarrierSignUp';
@@ -17,28 +17,18 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'center',
-    '& a': {
-      textDecoration: 'none',
-      '& :hover': {
-        color: 'rgba(255, 255, 255, 1)',
-        textDecoration: 'none'
-      }
-    }
+    alignItems: 'center'
   },
   link: {
     color: 'rgba(255, 255, 255, 0.55)',
     textTransform: 'capitalize',
-    margin: `0 ${theme.spacing(1)}px`
+    margin: `0 ${theme.spacing(1)}px`,
+    '&:hover': {
+      color: 'rgba(255, 255, 255, 1)'
+    }
   },
   button: {
-    marginLeft: theme.spacing(1),
-    color: 'rgba(255, 255, 255, 0.55)',
-    borderColor: 'rgba(255, 255, 255, 0.55)',
-    '&:hover': {
-      color: 'rgba(255, 255, 255, 1)',
-      borderColor: 'rgba(255, 255, 255, 1)'
-    }
+    marginLeft: theme.spacing(1)
   }
 }));
 
@@ -80,8 +70,13 @@ const NavMenu = () => {
         );
       })}
 
-      <Button variant="outlined" size="small" className={classes.button}>
-        Call Us Today
+      <Button
+        variant="outlined"
+        size="small"
+        color="secondary"
+        className={classes.button}
+      >
+        Sign Up
       </Button>
       <LoginDialog handleClose={handleCloseDialog('login')} open={loginOpen} />
       <CarrierSignUp

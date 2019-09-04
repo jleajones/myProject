@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
+
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import MUILink from '@material-ui/core/Link';
+
 import EVENT_NAMES from '@shared/constants';
+
+const useStyles = makeStyles({
+  root: {
+    textDecoration: 'none'
+  }
+});
 
 /**
  *
- * @param category
- * @param children
- * @param color
- * @param dispatchInteraction
- * @param history
- * @param label
- * @param onClick
- * @param to
- * @param uuid
- * @param className
- * @param component
+ * @param {string} category - Category for event tracking
+ * @param {node|string} children - Clickable content
+ * @param {string} color - text color
+ * @param {function} dispatchInteraction - event tracking call
+ * @param {object} history - react router history object
+ * @param {string} label - label for event tracking
+ * @param {function} onClick - callback fired on click
+ * @param {(string|object)} to - next page
+ * @param {string} uuid - unique user identifier
+ * @param {string} className - css classname
+ * @param {string} component - wrapping Html element
+ * @param {string} underline - when to show underline ('none'|'underline'|'always')
  * @returns {*}
  * @constructor
  */
@@ -31,8 +41,10 @@ const Link = ({
   to,
   uuid,
   className,
-  component
+  component,
+  underline
 }) => {
+  const classes = useStyles();
   const onClickFn = e => {
     e.preventDefault();
     dispatchInteraction({
@@ -49,8 +61,13 @@ const Link = ({
   };
 
   return (
-    <RouterLink onClick={onClickFn} to={to}>
-      <MUILink color={color} className={className} component={component}>
+    <RouterLink onClick={onClickFn} to={to} className={classes.root}>
+      <MUILink
+        color={color}
+        className={className}
+        component={component}
+        underline={underline}
+      >
         {children}
       </MUILink>
     </RouterLink>
@@ -63,7 +80,8 @@ Link.defaultProps = {
   onClick: () => {},
   color: 'inherit',
   component: 'span',
-  to: {}
+  to: {},
+  underline: 'none'
 };
 
 Link.propTypes = {
@@ -85,6 +103,7 @@ Link.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
+  underline: PropTypes.string,
   component: PropTypes.string,
   onClick: PropTypes.func,
   dispatchInteraction: PropTypes.func.isRequired

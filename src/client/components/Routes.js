@@ -5,7 +5,8 @@ import {
   AboutPage,
   DriveWithUs,
   HomePage,
-  NotFoundPage
+  NotFoundPage,
+  DashboardPage
 } from '@components/pages';
 
 import Redirect from '@shared/Redirect';
@@ -21,7 +22,7 @@ const Routes = () => (
     <Route path={PATHS.about.path} exact component={AboutPage} />
     <Route path={PATHS.driveWithUs.path} exact component={DriveWithUs} />
     <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
-    <Route path={PATHS.applyNow.path} exact component={DriveWithUs} />
+    <Route path={PATHS.dashboard.path} exact component={DashboardPage} />
     <Redirect from={['/new-about']} to="/" />
     <Route path="*" component={NotFoundPage} />
   </Switch>

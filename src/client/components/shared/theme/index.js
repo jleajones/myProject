@@ -1,26 +1,21 @@
 import React from 'react';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
+import MUIThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
 import theme from './constants';
 
 /**
- *
+ *x`
  * @param children
  * @param muiTheme
  * @returns {*}
  * @constructor
  */
-const ThemeProvider = ({ children, muiTheme }) => (
-  <MuiThemeProvider theme={muiTheme}>{children}</MuiThemeProvider>
+const Theme = ({ children }) => (
+  <MUIThemeProvider theme={theme}>{children}</MUIThemeProvider>
 );
 
-ThemeProvider.defaultProps = {
-  muiTheme: theme
+Theme.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  muiTheme: PropTypes.shape()
-};
-
-export default ThemeProvider;
+export default Theme;

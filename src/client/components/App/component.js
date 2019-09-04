@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Frontload } from 'react-frontload';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -6,7 +7,6 @@ import Routes from '@components/Routes';
 import Header from '@shared/Header';
 import Footer from '@shared/Footer';
 import PropTypes from 'prop-types';
-import Toolbar from '@material-ui/core/Toolbar';
 
 /**
  *
@@ -27,13 +27,14 @@ const App = ({ dispatchIdentity }) => {
   }, []);
 
   return (
-    <>
-      <CssBaseline />
-      <Header />
-      <Toolbar />
-      <Routes />
-      <Footer />
-    </>
+    <Frontload>
+      <>
+        <CssBaseline />
+        <Header />
+        <Routes />
+        <Footer />
+      </>
+    </Frontload>
   );
 };
 
