@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { frontloadServerRender } from 'react-frontload';
-import ServerStyleSheets from '@material-ui/styles/ServerStyleSheets';
+import { ServerStyleSheets } from '@material-ui/styles';
 import { ChunkExtractor } from '@loadable/server';
 
 import configureStore from '@store/index';
@@ -29,8 +29,6 @@ const renderer = async (req, res, logger) => {
 
   // TODD: mui SSR doesn't work with this configuration
   const staticMarkup = await frontloadServerRender(() => {
-    console.log('in the frontloadServerRender...');
-    logger.info('staticMarkup', { url: req.url });
     const markup = extractor.collectChunks(
       muiSheets.collect(
         <ServerApp req={req} staticContext={staticContext} store={store} />
